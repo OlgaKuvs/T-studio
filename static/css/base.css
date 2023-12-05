@@ -1,0 +1,118 @@
+html {
+    height: 100%;
+}
+
+body {
+    color: #292f36; 
+    background-color: #f8f9fa;
+    font-family: 'Lato';
+}
+
+.main {
+    margin-top: 150px;    
+    /* border: 1px solid red; */
+}
+
+.text_upper {
+    text-transform: uppercase;
+}
+
+.search-block {
+    border: none;
+}
+
+
+/* COLOURS */
+
+h2 {
+    color: #292f36; 
+}
+
+h3, h4, h5, h6 {
+    color: #ff7b54;
+}
+
+.text-black {
+    color: #000 !important;
+}
+
+.bg-header,
+.dropdown-main-menu {    
+    background: #ffd56f !important;
+}
+
+.logo-colour {
+    color: #ff7b54;
+}
+
+.icons-colour,
+.map-text {
+    color:#292f36;  
+}
+
+.icons-colour:hover {
+    color:#ff7b54;
+}
+
+.bg-dropdown a:hover,
+.bg-logo,
+.bg-header {
+    background-color: #fff;
+}
+
+.bg-nav-shop,
+.bg-shop-header {
+  background-color: #ffb26b;
+}
+
+.btn-orange {
+  background-color: #ff7b54;
+}
+
+.offers-banner {
+    background-color: #ff7b54;
+    color:#292f36;    
+}
+
+.capture-services {
+    color:#292f36; 
+}
+
+/* HEADER */
+
+header {
+    padding: 0 !important;
+}
+
+.logo-link {
+    width: -moz-fit-content;
+    width: fit-content; 
+    font-family: 'Merriweather', serif;  
+}
+
+.navbar {
+    padding: 0 !important;
+}
+
+.nav-link {
+    padding: 0.15rem;
+}
+
+.navbar-shop {
+    padding: 10px !important;
+}
+  
+#slogan {
+    letter-spacing: 2px;
+    white-space: nowrap;
+    color: #939b62;
+    font-family: 'Merriweather', serif;
+}
+
+.cart,
+.dropdown {
+  float: right;
+  margin-right: 10px;
+}
+
+
