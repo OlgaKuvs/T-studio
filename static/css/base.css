@@ -126,3 +126,301 @@ header {
 .footer-content > ul > li {
 list-style: none;    
 }
+
+
+
+
+/* Carousel */
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #ff7b54 !important;
+}
+
+/* .carousel-multiple::before {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 30px; 
+    content: "xs - default breakpoint";
+  } */
+
+  @media (min-width: 576px) and (max-width: 767px) {
+    /* .carousel-multiple::before {
+      content: "media-breakpoint-between(sm, sm)";
+    } */
+    .carousel-multiple .carousel-item.active,
+  .carousel-multiple .carousel-item-next,
+  .carousel-multiple .carousel-item-prev {
+      display: flex;
+    }
+    .carousel-multiple .carousel-inner {
+      overflow: visible;
+    }
+    .carousel-multiple .carousel-inner .carousel-item {
+      margin-right: inherit;
+    }
+    .carousel-multiple .carousel-inner .carousel-item.active + .carousel-item + .carousel-item, .carousel-multiple .carousel-inner .carousel-item.active + .carousel-item {
+      display: flex;
+    }
+    .carousel-multiple .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) {
+      transition: none;
+    }
+    .carousel-multiple .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item {
+      transition: none;
+    }
+    .carousel-multiple .carousel-inner .carousel-item.active + .carousel-item + .carousel-item {
+      position: absolute;
+      top: 0;
+      right: -50%;
+      z-index: -1;
+      display: flex;
+      visibility: visible;
+      height: 100%;
+    }
+    .carousel-multiple .carousel-inner .carousel-item-next, .carousel-multiple .carousel-inner .carousel-item-prev {
+      position: relative;
+      transform: translate3d(0, 0, 0);
+    }
+    .carousel-multiple .carousel-inner .carousel-item-prev.carousel-item-right {
+      position: absolute;
+      top: 0;
+      right: 100%;
+      z-index: -1;
+      display: flex;
+      visibility: visible;
+      height: 100%;
+      transform: translate3d(100%, 0, 0);
+    }
+    .carousel-multiple .active.carousel-item-left + .carousel-item-next.carousel-item-left {
+      position: relative;
+      transform: translate3d(-100%, 0, 0);
+      visibility: visible;
+    }
+    .carousel-multiple .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item, .carousel-multiple .carousel-item-next.carousel-item-left + .carousel-item {
+      position: relative;
+      transform: translate3d(-100%, 0, 0);
+      visibility: visible;
+    }
+    .carousel-multiple .active.carousel-item-right + .carousel-item-prev.carousel-item-right {
+      position: relative;
+      transform: translate3d(100%, 0, 0);
+      display: flex;
+      visibility: visible;
+    }
+    .carousel-multiple .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item, .carousel-multiple .carousel-item-prev.carousel-item-right + .carousel-item {
+      position: relative;
+      transform: translate3d(100%, 0, 0);
+      display: flex;
+      visibility: visible;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 991px) {
+    /* .carousel-multiple::before {
+      content: "media-breakpoint-between(md, md)";
+    } */
+    .carousel-multiple .carousel-item.active,
+  .carousel-multiple .carousel-item-next,
+  .carousel-multiple .carousel-item-prev {
+      display: flex;
+    }
+    .carousel-multiple .carousel-inner {
+      overflow: visible;
+    }
+    .carousel-multiple .carousel-inner .carousel-item {
+      margin-right: inherit;
+    }
+    .carousel-multiple .carousel-inner .carousel-item.active + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-inner .carousel-item.active + .carousel-item + .carousel-item, .carousel-multiple .carousel-inner .carousel-item.active + .carousel-item {
+      display: flex;
+    }
+    .carousel-multiple .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) {
+      transition: none;
+    }
+    .carousel-multiple .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item, .carousel-multiple .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item {
+      transition: none;
+    }
+    .carousel-multiple .carousel-inner .carousel-item.active + .carousel-item + .carousel-item + .carousel-item {
+      position: absolute;
+      top: 0;
+      right: -33.3333333333%;
+      z-index: -1;
+      display: flex;
+      visibility: visible;
+      height: 100%;
+    }
+    .carousel-multiple .carousel-inner .carousel-item-next, .carousel-multiple .carousel-inner .carousel-item-prev {
+      position: relative;
+      transform: translate3d(0, 0, 0);
+    }
+    .carousel-multiple .carousel-inner .carousel-item-prev.carousel-item-right {
+      position: absolute;
+      top: 0;
+      right: 100%;
+      z-index: -1;
+      display: flex;
+      visibility: visible;
+      height: 100%;
+      transform: translate3d(100%, 0, 0);
+    }
+    .carousel-multiple .active.carousel-item-left + .carousel-item-next.carousel-item-left {
+      position: relative;
+      transform: translate3d(-100%, 0, 0);
+      visibility: visible;
+    }
+    .carousel-multiple .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item, .carousel-multiple .carousel-item-next.carousel-item-left + .carousel-item {
+      position: relative;
+      transform: translate3d(-100%, 0, 0);
+      visibility: visible;
+    }
+    .carousel-multiple .active.carousel-item-right + .carousel-item-prev.carousel-item-right {
+      position: relative;
+      transform: translate3d(100%, 0, 0);
+      display: flex;
+      visibility: visible;
+    }
+    .carousel-multiple .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item, .carousel-multiple .carousel-item-prev.carousel-item-right + .carousel-item {
+      position: relative;
+      transform: translate3d(100%, 0, 0);
+      display: flex;
+      visibility: visible;
+    }
+  }
+  @media (min-width: 992px) and (max-width: 1199px) {
+    /* .carousel-multiple::before {
+      content: "media-breakpoint-between(lg, lg)";
+    } */
+    .carousel-multiple .carousel-item.active,
+  .carousel-multiple .carousel-item-next,
+  .carousel-multiple .carousel-item-prev {
+      display: flex;
+    }
+    .carousel-multiple .carousel-inner {
+      overflow: visible;
+    }
+    .carousel-multiple .carousel-inner .carousel-item {
+      margin-right: inherit;
+    }
+    .carousel-multiple .carousel-inner .carousel-item.active + .carousel-item + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-inner .carousel-item.active + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-inner .carousel-item.active + .carousel-item + .carousel-item, .carousel-multiple .carousel-inner .carousel-item.active + .carousel-item {
+      display: flex;
+    }
+    .carousel-multiple .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) {
+      transition: none;
+    }
+    .carousel-multiple .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item, .carousel-multiple .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item {
+      transition: none;
+    }
+    .carousel-multiple .carousel-inner .carousel-item.active + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+      position: absolute;
+      top: 0;
+      right: -25%;
+      z-index: -1;
+      display: flex;
+      visibility: visible;
+      height: 100%;
+    }
+    .carousel-multiple .carousel-inner .carousel-item-next, .carousel-multiple .carousel-inner .carousel-item-prev {
+      position: relative;
+      transform: translate3d(0, 0, 0);
+    }
+    .carousel-multiple .carousel-inner .carousel-item-prev.carousel-item-right {
+      position: absolute;
+      top: 0;
+      right: 100%;
+      z-index: -1;
+      display: flex;
+      visibility: visible;
+      height: 100%;
+      transform: translate3d(100%, 0, 0);
+    }
+    .carousel-multiple .active.carousel-item-left + .carousel-item-next.carousel-item-left {
+      position: relative;
+      transform: translate3d(-100%, 0, 0);
+      visibility: visible;
+    }
+    .carousel-multiple .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item, .carousel-multiple .carousel-item-next.carousel-item-left + .carousel-item {
+      position: relative;
+      transform: translate3d(-100%, 0, 0);
+      visibility: visible;
+    }
+    .carousel-multiple .active.carousel-item-right + .carousel-item-prev.carousel-item-right {
+      position: relative;
+      transform: translate3d(100%, 0, 0);
+      display: flex;
+      visibility: visible;
+    }
+    .carousel-multiple .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item, .carousel-multiple .carousel-item-prev.carousel-item-right + .carousel-item {
+      position: relative;
+      transform: translate3d(100%, 0, 0);
+      display: flex;
+      visibility: visible;
+    }
+  }
+  @media (min-width: 1200px) {
+    /* .carousel-multiple::before {
+      content: "media-breakpoint-up(xl)";
+    } */
+    .carousel-multiple .carousel-item.active,
+  .carousel-multiple .carousel-item-next,
+  .carousel-multiple .carousel-item-prev {
+      display: flex;
+    }
+    .carousel-multiple .carousel-inner {
+      overflow: visible;
+    }
+    .carousel-multiple .carousel-inner .carousel-item {
+      margin-right: inherit;
+    }
+    .carousel-multiple .carousel-inner .carousel-item.active + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-inner .carousel-item.active + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-inner .carousel-item.active + .carousel-item + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-inner .carousel-item.active + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-inner .carousel-item.active + .carousel-item + .carousel-item, .carousel-multiple .carousel-inner .carousel-item.active + .carousel-item {
+      display: flex;
+    }
+    .carousel-multiple .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) {
+      transition: none;
+    }
+    .carousel-multiple .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item, .carousel-multiple .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item {
+      transition: none;
+    }
+    .carousel-multiple .carousel-inner .carousel-item.active + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+      position: absolute;
+      top: 0;
+      right: -16.6666666667%;
+      z-index: -1;
+      display: flex;
+      visibility: visible;
+      height: 100%;
+    }
+    .carousel-multiple .carousel-inner .carousel-item-next, .carousel-multiple .carousel-inner .carousel-item-prev {
+      position: relative;
+      transform: translate3d(0, 0, 0);
+    }
+    .carousel-multiple .carousel-inner .carousel-item-prev.carousel-item-right {
+      position: absolute;
+      top: 0;
+      right: 100%;
+      z-index: -1;
+      display: flex;
+      visibility: visible;
+      height: 100%;
+      transform: translate3d(100%, 0, 0);
+    }
+    .carousel-multiple .active.carousel-item-left + .carousel-item-next.carousel-item-left {
+      position: relative;
+      transform: translate3d(-100%, 0, 0);
+      visibility: visible;
+    }
+    .carousel-multiple .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item, .carousel-multiple .carousel-item-next.carousel-item-left + .carousel-item {
+      position: relative;
+      transform: translate3d(-100%, 0, 0);
+      visibility: visible;
+    }
+    .carousel-multiple .active.carousel-item-right + .carousel-item-prev.carousel-item-right {
+      position: relative;
+      transform: translate3d(100%, 0, 0);
+      display: flex;
+      visibility: visible;
+    }
+    .carousel-multiple .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item, .carousel-multiple .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item, .carousel-multiple .carousel-item-prev.carousel-item-right + .carousel-item {
+      position: relative;
+      transform: translate3d(100%, 0, 0);
+      display: flex;
+      visibility: visible;
+    }
+  }
