@@ -118,13 +118,13 @@ header {
 
 /* FOOTER */
 
-.footer {
+.footer-container {
     background-color: #ffd56f;
     padding: 15px;
 }
 
 .footer-content > ul > li {
-list-style: none;    
+    list-style: none;    
 }
 
 
