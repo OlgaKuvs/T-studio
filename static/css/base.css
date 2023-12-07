@@ -74,9 +74,16 @@ h3, h4, h5, h6 {
     color:#292f36;    
 }
 
-.capture-services {
+.capture-services,
+.badge-category:hover {
     color:#292f36; 
 }
+
+.badge-category {
+  color:#939b62;
+}
+
+
 
 /* HEADER */
 
