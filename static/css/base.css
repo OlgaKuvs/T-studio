@@ -8,9 +8,18 @@ body {
     font-family: 'Lato';
 }
 
-.main {
-    margin-top: 150px;    
-    /* border: 1px solid red; */
+/* .main {
+    margin-top: 150px;   
+} */
+
+.header-container {
+  margin-top: 150px; 
+}
+
+.product-row, 
+.product-container {
+  justify-content: center;
+  align-content: center;
 }
 
 .text_upper {
@@ -20,7 +29,6 @@ body {
 .search-block {
     border: none;
 }
-
 
 /* COLOURS */
 

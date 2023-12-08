@@ -13,3 +13,4 @@ __pycache__
 .env
 static/images
 media
+launch.json
