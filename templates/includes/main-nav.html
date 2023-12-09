@@ -22,11 +22,12 @@
                 Shop
             </a>
             <div class="dropdown-menu dropdown-main-menu border-0 mt-0 rounded-0" aria-labelledby="shop-link">
-                <a href="#" class="dropdown-item text_upper">Mats</a>
-                <a href="#" class="dropdown-item text_upper">Rollers</a>
-                <a href="#" class="dropdown-item text_upper">Bands</a>
-                <a href="#" class="dropdown-item text_upper">Belts</a>
-                <a href="#" class="dropdown-item text_upper"> Massagers</a>                    
+                <a href="{% url 'products:category' 'Mats' %}" class="dropdown-item text_upper">Mats</a>
+                <a href="{% url 'products:category' 'Rollers' %}" class="dropdown-item text_upper">Rollers</a>
+                <a href="{% url 'products:category' 'Bands' %}" class="dropdown-item text_upper">Bands</a>
+                <a href="{% url 'products:category' 'Belts' %}" class="dropdown-item text_upper">Belts</a>
+                <a href="{% url 'products:category' 'Massagers' %}" class="dropdown-item text_upper">Massagers</a>
+                <a href="{% url 'products:products' %}" class="dropdown-item text_upper">All products</a>                  
             </div>
         </li>
         <li class="nav-item d-block">
