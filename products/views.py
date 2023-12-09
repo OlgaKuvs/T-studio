@@ -44,5 +44,19 @@ def CategoryView(request, slug):
         return render(request, 'products/products.html', context)
     except:
         messages.error(request, "That category doesn't exist")
-        return redirect('products:products')  
+        return redirect('products:products')
+    
+    
+def product_detail(request, product_id):
+    """A view to show individual product details"""
+
+    product = get_object_or_404(Product, pk=product_id)
+    print(product)
+    category = Category.objects.filter(product=product)
+    print(category)
+    context = {
+        "product": product,
+        "category": category,        
+    }
+    return render(request, "products/product_detail.html", context)
 
