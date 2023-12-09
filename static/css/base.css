@@ -30,6 +30,12 @@ body {
     border: none;
 }
 
+.products-link:hover,
+.top-products-link:hover {  
+  text-decoration: none;
+}
+
+
 /* COLOURS */
 
 h2 {
@@ -92,6 +98,14 @@ h3, h4, h5, h6 {
   color:#939b62;
 }
 
+.products-link:hover {
+  color: #939b62;  
+}
+
+.top-products-link,
+.top-products-link:hover  {
+  color: #ff7b54; 
+}
 
 
 /* HEADER */
@@ -144,6 +158,22 @@ header {
 }
 
 
+/* bootstrap toasts */
+
+.message-container {
+  position: fixed;
+  top: 95px;
+  right: 30px;
+  z-index: 99999999999;
+}
+
+.custom-toast {
+  overflow: visible;
+}
+
+.toast-capper {
+  height: 3px;
+}
 
 
 /* Carousel */
