@@ -51,9 +51,9 @@ def product_detail(request, product_id):
     """A view to show individual product details"""
 
     product = get_object_or_404(Product, pk=product_id)
-    print(product)
+    # print(product)
     category = Category.objects.filter(product=product)
-    print(category)
+    # print(category)
     context = {
         "product": product,
         "category": category,        

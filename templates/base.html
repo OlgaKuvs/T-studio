@@ -64,17 +64,26 @@
                             </a>
                         </div>
                     </li>
-                    <li class="list-inline-item cart">
-                        <a class="nav-link icons-colour" href="#">
+                    <li class="list-inline-item cart ml-2">
+                        <a class="nav-link icons-colour" href="{% url 'view_cart' %}" >
                             <div class="text-center">
-                                <div><i class="fas fa-shopping-bag fa-lg"></i></div>
-                                <p class="my-0">
-                                    Cart
-                                </p>
+                                <div><i class="fas fa-shopping-bag fa-lg"></i>&nbsp; &nbsp;
+                                    {% if product_count %}
+                                    <span class="badge badge-warning"> {{ product_count }}</span>
+                                    {% endif %}
+                                    <p class="my-0">
+                                        Cart<br>
+                                        {% if grand_total %}
+                                            €{{ grand_total|floatformat:2 }}
+                                        {% else %}
+                                            €0.00
+                                        {% endif %}
+                                    </p>
+                                </div>                               
                             </div>
                         </a>
                     </li>
-                    <li class="list-inline-item dropdown">
+                    <li class="list-inline-item dropdown ml-2">
                         <a class="nav-link icons-colour" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div class="text-center">
                                 <div><i class="fas fa-user fa-lg"></i></div>
