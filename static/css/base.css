@@ -35,6 +35,14 @@ body {
   text-decoration: none;
 }
 
+.btn-basic {
+  border: 2px solid #ff7b54;  
+  background: #fff;
+}
+
+.btn-basic:hover {
+  color: #ff7b54;   
+}
 
 /* COLOURS */
 
@@ -144,6 +152,7 @@ header {
   float: right;
   margin-right: 10px;
 }
+
 
 
 /* FOOTER */
