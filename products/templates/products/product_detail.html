@@ -40,7 +40,7 @@
                     <small class="text-muted">5 types of needles: <strong>iron, copper, nickel, zinc, silver</strong></small>
                 </p>
 
-                <form class="form" action="#" method="POST">
+                <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
                     {% csrf_token %}
                     <div class="form-row">  
                         <div class="col-12">
