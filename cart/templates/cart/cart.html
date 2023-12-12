@@ -65,9 +65,9 @@
                         {% endfor %}
                         <tr>
                             <td colspan="5" class="pt-5 text-right">
-                                <h6><strong>Cart Total: €{{ total|floatformat:2 }}</strong></h6>
-                                <h6>Delivery: €{{ delivery|floatformat:2 }}</h6>
-                                <h4 class="mt-4"><strong>Grand Total: €{{ grand_total|floatformat:2 }}</strong></h4>
+                                <h6 class="text-black"><strong>Cart Total: €{{ total|floatformat:2 }}</strong></h6>
+                                <h6 class="text-black"><strong>Shipping: €{{ shipping_cost }}</strong></h6>
+                                <h4 class="mt-4 text-black"><strong>Grand Total: €{{ grand_total|floatformat:2 }}</strong></h4>
                             </td>
                         </tr>
                         <tr>

@@ -46,7 +46,8 @@ body {
 
 /* COLOURS */
 
-h2 {
+h2,
+.text-black {
     color: #292f36; 
 }
 
