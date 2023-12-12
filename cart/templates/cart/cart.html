@@ -56,7 +56,7 @@
                                         </div>
                                     </form>
                                     <a class="update-item text-info mr-3" data-item="{{ item.item_id }}"><small>Update</small></a>
-                                    <a class="delete-item text-danger" data-item="delete_{{ item.item_id }}"><small>Remove</small></a>
+                                    <a class="delete-item text-danger" id="delete_{{ item.item_id }}"><small>Remove</small></a>
                                 </td>
                                 <td class="py-3">
                                     <p class="my-0">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
@@ -118,7 +118,7 @@
     $('.delete-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('delete_')[1];        
-        var url = `/cart/remove/${itemId}/`;
+        var url = `/cart/delete/${itemId}/`;
         var data = {'csrfmiddlewaretoken': csrfToken};
 
         $.post(url, data)
