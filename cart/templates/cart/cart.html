@@ -45,18 +45,18 @@
                                     <p class="my-0">€{{ item.product.price }}</p>
                                 </td>
                                 <td class="py-3 w-25">
-                                    <form class="form update-form w-50" method="POST" action="#">
+                                    <form class="form update-form w-50" method="POST" action="{% url 'adjust_cart' item.item_id %}">
                                         {% csrf_token %}
                                         <div class="form-group">
                                             <div class="input-group input-group-{{ item.item_id }}">            
                                                 <input class="form-control form-control-sm qty_input id_qty_{{ item.item_id }}" type="number"
                                                     name="quantity" value="{{ item.quantity }}" min="1" max="99"
-                                                    data-item_id="{{ item.item_id }}"> 
+                                                    data-item_id="{{ item.item_id }}" id="item_quantity"> 
                                             </div>
                                         </div>
                                     </form>
-                                    <a class="update-link text-info mr-3"><small>Update</small></a>
-                                    <a class="remove-item text-danger" id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}"><small>Remove</small></a>
+                                    <a class="update-item text-info mr-3" data-item="{{ item.item_id }}"><small>Update</small></a>
+                                    <a class="delete-item text-danger" data-item="delete_{{ item.item_id }}"><small>Remove</small></a>
                                 </td>
                                 <td class="py-3">
                                     <p class="my-0">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
@@ -101,5 +101,35 @@
     </div>
 </div>
 
-
 {% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+
+<script type="text/javascript">
+    
+    // Update quantity on click
+    $('.update-item').click(function(e) {
+        var form = $(this).prev('.update-form');
+        form.submit();
+    })
+
+    // Remove item and reload on click
+    $('.delete-item').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('delete_')[1];        
+        var url = `/cart/remove/${itemId}/`;
+        var data = {'csrfmiddlewaretoken': csrfToken};
+
+        $.post(url, data)
+         .done(function() {
+             location.reload();
+         });
+    })
+
+</script>
+   
+{% endblock %}
+
+
+

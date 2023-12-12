@@ -44,6 +44,11 @@ body {
   color: #ff7b54;   
 }
 
+.update-item,
+.delete-item {
+    cursor: pointer;
+}
+
 /* COLOURS */
 
 h2,
@@ -172,7 +177,7 @@ header {
 
 .message-container {
   position: fixed;
-  top: 95px;
+  top: 120px;
   right: 30px;
   z-index: 99999999999;
 }
