@@ -41,9 +41,12 @@ def cart_contents(request):
            
     shipping_cost = Shipping.objects.filter(order_weight=parcel_weight)\
                     .values_list('postal_rates').first()[0]
-    # print("SSS", shipping_cost) 
+    # print("SSS", shipping_cost)
 
-    grand_total = shipping_cost + total
+    if total:
+        grand_total = shipping_cost + total
+    else:
+        grand_total=0        
     # print(cart_items)
       
     context = {
