@@ -19,24 +19,24 @@ def cart_contents(request):
         total += quantity * product.price
         product_count += quantity
         line_items_weight = quantity * product.weight
-        print("III", line_items_weight)        
+        # print("III", line_items_weight)        
         total_weight += line_items_weight    
         cart_items.append({
             'item_id': item_id,
             'quantity': quantity,
             'product': product,         
         })
-    print("ttt", total_weight)
+    # print("ttt", total_weight)
 
     """Get the shipping cost from the database for 
     the current parcel weight + 100g per packaging """
 
     all_rates= Shipping.objects.order_by('order_weight')
-    print("all_weights", all_rates)
+    # print("all_weights", all_rates)
     for r in all_rates:        
         if r.order_weight > total_weight + 100:
             parcel_weight = r.order_weight                   
-            print("PPP", parcel_weight)
+            # print("PPP", parcel_weight)
             break                 
            
     shipping_cost = Shipping.objects.filter(order_weight=parcel_weight)\

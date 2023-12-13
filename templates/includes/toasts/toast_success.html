@@ -15,7 +15,7 @@
             <p class="logo-font py-2 ml-2">Your Cart ({{ product_count }})</p>
             <div class="cart-notification-wrapper">
                 {% for item in cart_items %}
-                    <div class="row">
+                    <div class="row ml-1">
                         <div class="col-3 my-1">
                             {% if item.product.image %}
                             <img class="w-100" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
