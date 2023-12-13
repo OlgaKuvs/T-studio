@@ -159,6 +159,11 @@ header {
   margin-right: 10px;
 }
 
+.cart-notification-wrapper {
+  height: 150px; 
+  overflow-x: hidden;
+  overflow-y: auto;  
+}
 
 
 /* FOOTER */
@@ -176,7 +181,8 @@ header {
 /* bootstrap toasts */
 
 .message-container {
-  position: fixed;
+  position: fixed; 
+  background-color: #f8f9fa;
   top: 120px;
   right: 30px;
   z-index: 99999999999;
@@ -190,6 +196,15 @@ header {
   height: 3px;
 }
 
+/* Media */
+
+@media (min-width: 320px) and (max-width: 767px) {
+
+.update-form,
+.form-control {
+  min-width: 100% !important;
+}
+}
 
 /* Carousel */
 

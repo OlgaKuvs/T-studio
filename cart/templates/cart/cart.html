@@ -66,19 +66,19 @@
                         <tr>
                             <td colspan="5" class="pt-5 text-right">
                                 <h6 class="text-black"><strong>Cart Total: €{{ total|floatformat:2 }}</strong></h6>
-                                <h6 class="text-black"><strong>Shipping: €{{ shipping_cost }}</strong></h6>
+                                <h6 class="text-black"><strong>Shipping costs: €{{ shipping_cost }}</strong></h6>
                                 <h4 class="mt-4 text-black"><strong>Grand Total: €{{ grand_total|floatformat:2 }}</strong></h4>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="5" class="text-right">
-                                <a href="{% url 'products:products' %}" class="btn btn-basic">
+                                <a href="{% url 'products:products' %}" class="btn btn-basic mt-2 mr-2">
                                     <span class="icon">
                                         <i class="fas fa-chevron-left"></i>
                                     </span>
-                                    <span class="text-uppercase mr-2">Keep Shopping</span>
+                                    <span class="text-uppercase">Keep Shopping</span>
                                 </a>
-                                <a href="#" class="btn btn-basic">
+                                <a href="#" class="btn btn-basic mt-2">
                                     <span class="text-uppercase">Secure Checkout</span>
                                     <span class="icon">
                                         <i class="fas fa-lock"></i>

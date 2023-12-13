@@ -178,10 +178,14 @@
         <!-- End Footer -->
 
     {% block postloadjs %}
-    <script type="text/javascript">
-        $('.toast').toast('show');
+    <script type="text/javascript">        
+            $('.toast').toast('show');  
+        // setTimeout(() => {
+        //     $('.toast').toast('hide');
+        // }, "7000");   
     </script>
     {% endblock %}
 
  </body>
 </html>
+
