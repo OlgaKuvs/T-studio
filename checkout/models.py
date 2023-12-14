@@ -10,6 +10,7 @@ from cart.models import Shipping
 class Order(models.Model):
      
     COUNTIES = [
+    ('', 'Choose a county*'),
     ('carlow', 'Carlow'),
     ('cavan', 'Cavan'),
     ('clare', 'Clare'),
@@ -75,16 +76,11 @@ class Order(models.Model):
         all_rates= Shipping.objects.order_by('order_weight')
         for r in all_rates:        
             if r.order_weight > self.order_weight + 100:
-                parcel_weight = r.order_weight  
-                break
+                parcel_weight = r.order_weight                
+                break      
+       
         self.shipping_cost = Shipping.objects.filter(order_weight=parcel_weight)\
-                    .values_list('postal_rates').first()[0]                
-        
-        # if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
-        #     sdp = settings.STANDARD_DELIVERY_PERCENTAGE
-        #     self.delivery_cost = self.order_total * sdp / 100
-        # else:
-        #     self.delivery_cost = 0
+                    .values_list('postal_rates').first()[0]
         self.grand_total = self.order_total + self.shipping_cost 
         self.save()
     
