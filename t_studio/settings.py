@@ -35,7 +35,7 @@ DEBUG = development
 if development:
     ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 else:
-    ALLOWED_HOSTS = ['t-studio-bbb312a89660.herokuapp.com/']
+    ALLOWED_HOSTS = ['t-studio-bbb312a89660.herokuapp.com']
 
 
 # Application definition
