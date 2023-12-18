@@ -2,6 +2,7 @@ import uuid
 from django.db import models
 from django.db.models import Sum
 from django.conf import settings
+from django_countries.fields import CountryField
 
 from products.models import Product
 from cart.models import Shipping
@@ -43,7 +44,7 @@ class Order(models.Model):
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=False, blank=False)
-    country = models.CharField(max_length=50, default='Ireland', null=False, blank=False)
+    country = models.CharField(max_length=50, default='IE', null=False, blank=False)
     postcode = models.CharField(max_length=20, null=True, blank=True)
     city = models.CharField(max_length=40, null=False, blank=False)
     street_address1 = models.CharField(max_length=80, null=False, blank=False)
@@ -81,7 +82,11 @@ class Order(models.Model):
        
         self.shipping_cost = Shipping.objects.filter(order_weight=parcel_weight)\
                     .values_list('postal_rates').first()[0]
-        self.grand_total = self.order_total + self.shipping_cost 
+        if self.order_total:
+            self.grand_total = self.order_total + self.shipping_cost 
+        else:
+            self.grand_total = 0
+            self.shipping_cost = 0
         self.save()
     
     def save(self, *args, **kwargs):
