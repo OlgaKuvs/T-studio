@@ -1,0 +1,24 @@
+.profile-details {
+    min-height: 100%;
+    border-right: solid #939b62 1px;
+    text-align: left;
+}
+
+.profile-main {
+    text-align: left;
+}
+
+.profile-links {
+    color: #292f36; 
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.profile-links:hover {
+    color:#939b62; 
+    text-decoration: none;  
+}
+
+.profile-header {
+    color:#939b62;
+}

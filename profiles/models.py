@@ -10,6 +10,8 @@ class UserProfile(models.Model):
     A user profile model 
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=40, null=True, blank=True)
+    last_name = models.CharField(max_length=100, null=True, blank=True)
     phone_number = models.CharField(max_length=20, null=True, blank=True)   
 
     def __str__(self):
@@ -48,7 +50,8 @@ class UserAddress(models.Model):
     ('wicklow', 'Wicklow')
     ]
 
-    profile_user = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE,
+                            related_name='addresses')
     profile_street_address1 = models.CharField(max_length=80, null=True, blank=True)
     profile_street_address2 = models.CharField(max_length=80, null=True, blank=True)
     profile_city = models.CharField(max_length=40, null=True, blank=True)

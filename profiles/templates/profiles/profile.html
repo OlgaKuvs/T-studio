@@ -8,16 +8,58 @@
 {% block page_header %}
     <div class="container header-container">
         <div class="row text-center">
-            <div class="col-12 mt-2 my-auto">
+            <div class="col-12 mt-2 my-auto py-2">
                 <h3 class="top-products-link">My profile</h3>
+                <hr> 
             </div>
+            
         </div>
-    </div>
-    {{ profile }} {{ profile.last_login }}
+    </div>    
 {% endblock %}
 
 {% block content %}
-
+<div class="container main text-center my-auto">
+    <div class="row">        
+        <div class="col-12 col-md-4 profile-details mb-3">
+            <h5 class="profile-header">Profile Details</h5>
+            <ul class="navbar-nav">
+                <li class="mt-2">
+                    <a class="profile-links" href="#" id="">
+                        Personal Information
+                    </a>
+                    <hr>
+                </li>
+                
+                <li class="nav-item mt-2">
+                    <a class="profile-links" href="#" id="">
+                        Addresses
+                    </a>
+                    <hr>
+                </li>
+             
+                <li class="nav-item mt-2">
+                    <a class="profile-links" href="#" id="">
+                        Orders
+                    </a>
+                    <hr>
+                </li>
+                
+            </ul>
+           
+        </div>
+        <div class="col-12 col-md-8 profile-main">
+            <h5 class="profile-header">Personal Information</h5>
+            <p>Username: {{ profile.username }}</p>
+            <p>E-mail: {{ profile.email }}</p>
+            {% if profile.first_name %}
+            <p>First Name: {{ profile.first_name }}</p>
+            {% endif %}
+            {% if profile.last_name %}
+            <p>Last Name: {{ profile.last_name }}</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
 
 
 {% endblock %}

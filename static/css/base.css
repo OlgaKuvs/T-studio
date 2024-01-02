@@ -1,16 +1,17 @@
 html {
     height: 100%;
+    margin: 0;
 }
 
 body {
-    color: #292f36; 
-    background-color: #f8f9fa;
-    font-family: 'Lato';
+  color: #292f36; 
+  background-color: #f8f9fa;
+  font-family: 'Lato';
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* .main {
-    margin-top: 150px;   
-} */
 
 .header-container {
   margin-top: 150px; 
@@ -170,7 +171,7 @@ header {
 
 .footer-container {
     background-color: #ffd56f;
-    padding: 15px;
+    padding: 15px;    
 }
 
 .footer-content > ul > li {
