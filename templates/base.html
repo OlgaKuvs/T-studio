@@ -96,10 +96,10 @@
                         </a>
                         <div class="dropdown-menu border-0" aria-labelledby="user-options">                           
                                 <a href="#" class="dropdown-item icons-colour">Product Management</a>                                
-                                <a href="#" class="dropdown-item icons-colour">My Profile</a>
-                                <a href="#" class="dropdown-item icons-colour">Logout</a>
-                                <a href="#" class="dropdown-item icons-colour">Register</a>
-                                <a href="#" class="dropdown-item icons-colour">Login</a>
+                                <a href="{% url 'profile' %}" class="dropdown-item icons-colour">My Profile</a>
+                                <a href="{% url 'account_logout' %}" class="dropdown-item icons-colour">Logout</a>
+                                <a href="{% url 'account_signup' %}" class="dropdown-item icons-colour">Register</a>
+                                <a href="{% url 'account_login' %}" class="dropdown-item icons-colour">Login</a>
                         </div>
                     </li>
                 </ul>
@@ -140,7 +140,7 @@
     {% endblock %}
 
      <!-- Footer -->
-     <footer class="footer-container sticky-bottom">
+     <footer class="footer-container sticky-bottom mt-3">
         <div class="container">
             <div class="row footer-row">
                 <div class="col-md-3 col-sm-12">
