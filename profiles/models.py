@@ -21,7 +21,7 @@ class UserProfile(models.Model):
 class UserAddress(models.Model):
 
     COUNTIES = [
-    ('', 'Choose a county*'),
+    ('', 'Choose a county'),
     ('carlow', 'Carlow'),
     ('cavan', 'Cavan'),
     ('clare', 'Clare'),
@@ -50,7 +50,7 @@ class UserAddress(models.Model):
     ('wicklow', 'Wicklow')
     ]
 
-    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE,
+    username = models.ForeignKey(UserProfile, on_delete=models.CASCADE,
                             related_name='addresses')
     profile_street_address1 = models.CharField(max_length=80, null=True, blank=True)
     profile_street_address2 = models.CharField(max_length=80, null=True, blank=True)
@@ -61,7 +61,10 @@ class UserAddress(models.Model):
     is_default = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.user
+        return str(self.username)
+    
+    class Meta:
+        verbose_name_plural = 'User Addresses'
 
 
 @receiver(post_save, sender=User)

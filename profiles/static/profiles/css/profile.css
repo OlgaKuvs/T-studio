@@ -5,7 +5,7 @@
 }
 
 .profile-main {
-    text-align: left;
+    text-align: center;
 }
 
 .profile-links {
@@ -21,4 +21,29 @@
 
 .profile-header {
     color:#939b62;
+}
+
+#add-address-form .form-control {
+    color: #292f36; 
+}
+
+#add-address-form input::placeholder {
+    color: #636c72;
+}
+
+#id_profile_county,
+#id_profile_county option:not(:first-child) {
+    color: #292f36;     
+}
+
+#id_profile_country {
+    background: #f5f7fa;   
+}
+
+#div_id_is_default {
+    text-align: left !important;
+}
+
+.text-small {
+    font-size: 0.8rem;
 }

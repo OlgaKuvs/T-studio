@@ -43,19 +43,29 @@
             </ul>
         </div>
         <div class="col-12 col-md-8 profile-main">
-            <h5 class="profile-header mb-3">Personal Information</h5>
-            <p>Username: {{ profile.user.username }}</p>
-            <p>E-mail: {{ profile.user.email }}</p>
-            {% if profile.first_name %}
-            <p>First Name: {{ profile.first_name }}</p>
-            {% endif %}
-            {% if profile.last_name %}
-            <p>Last Name: {{ profile.last_name }}</p>
-            {% endif %}
+            <h5 class="profile-header mb-3">Add Shipping Address<br>
+                <span class="text-muted text-small">(Republic of Ireland only!)</span></h5>
+            
+            <form class="mt-3 mb-3" action="{% url 'add_address' %}" method="POST" id="add-address-form">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <button type="submit" class="btn btn-basic">Add address</button>
+            </form>
         </div>
     </div>
 </div>
 
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'profiles/js/countyfield.js' %}">
+    </script>
+    <script>
+        $('#add-address-form').submit(function(){
+        $('#add-address-form :disabled').removeAttr('disabled');
+        });
+    </script>
 
 {% endblock %}
 
