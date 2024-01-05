@@ -27,9 +27,9 @@ class AddressForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper(self)        
-        self.fields['profile_street_address2'].required = False
-        self.fields['profile_postcode'].required = False
-        self.fields['is_default'].required = False
+        self.fields['profile_street_address1'].required = True
+        self.fields['profile_city'].required = True
+        self.fields['profile_county'].required = True
 
         placeholders = {
                 'profile_street_address1': 'Street Address Line 1',
@@ -43,10 +43,13 @@ class AddressForm(forms.ModelForm):
         self.fields['profile_country'].widget.attrs['disabled'] = True                   
         for field in self.fields:
             if field != 'profile_county':
-                placeholder = placeholders[field]
+                if self.fields[field].required:
+                    placeholder = f'{placeholders[field]} *'
+                else:
+                    placeholder = placeholders[field]                
                 self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].label = False
-            self.fields['is_default'].label = 'Set as default address'  
+        self.fields['is_default'].label = 'Set as default address'  
 
     class Meta:
         model = UserAddress

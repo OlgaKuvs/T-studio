@@ -9,7 +9,7 @@
     <div class="container header-container">
         <div class="row text-center">
             <div class="col-12 mt-2 my-auto py-2">
-                <h3 class="top-products-link">My profile</h3>
+                <h3 class="top-products-link">My Profile</h3>
                 <hr> 
             </div>
         </div>
@@ -61,9 +61,10 @@
     {{ block.super }}
     <script type="text/javascript" src="{% static 'profiles/js/countyfield.js' %}">
     </script>
+    <!-- Remove disabled attribute from form fields -->
     <script>
         $('#add-address-form').submit(function(){
-        $('#add-address-form :disabled').removeAttr('disabled');
+        $('#add-address-form :disabled').removeAttr('disabled');             
         });
     </script>
 

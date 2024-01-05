@@ -21,7 +21,7 @@ class UserProfile(models.Model):
 class UserAddress(models.Model):
 
     COUNTIES = [
-    ('', 'Choose a county'),
+    ('', 'Choose a county *'),
     ('carlow', 'Carlow'),
     ('cavan', 'Cavan'),
     ('clare', 'Clare'),
