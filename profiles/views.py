@@ -68,3 +68,10 @@ def add_address(request):
 
 def shipping_addresses(request):
     """ Display the user's shipping addresses"""
+    username = get_object_or_404(UserProfile, user=request.user)      
+    addresses = UserAddress.objects.filter(username_id=username.id)  
+    template = 'profiles/shipping_addresses.html'
+    context = {
+        'addresses': addresses,        
+    }    
+    return render(request, template, context)

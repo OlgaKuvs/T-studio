@@ -9,7 +9,7 @@
     <div class="container header-container">
         <div class="row text-center">
             <div class="col-12 mt-2 my-auto py-2">
-                <h3 class="top-products-link">My profile</h3>
+                <h3 class="top-products-link">My Profile</h3>
                 <hr> 
             </div>
         </div>
@@ -18,32 +18,11 @@
 
 {% block content %}
 <div class="container main text-center">
-    <div class="row">        
-        <div class="col-12 col-md-4 profile-details mb-3">
-            <h5 class="profile-header">Profile Details</h5>
-            <ul class="navbar-nav">
-                <li class="mt-2">
-                    <a class="profile-links" href="#" id="">
-                        Personal Information
-                    </a>
-                    <hr>
-                </li>
-                <li class="nav-item mt-2">
-                    <a class="profile-links" href="#" id="">
-                        Addresses
-                    </a>
-                    <hr>
-                </li>
-                <li class="nav-item mt-2">
-                    <a class="profile-links" href="#" id="">
-                        Orders
-                    </a>
-                    <hr>
-                </li>
-            </ul>
-        </div>
+    <div class="row">
+        {% include 'includes/profile-nav.html' %}        
+        
         <div class="col-12 col-md-8 profile-main">
-            <h5 class="profile-header mb-3">Personal Information</h5>
+            <h4 class="profile-header mb-3">Personal Information</h4>
             <p>Username: {{ profile.user.username }}</p>
             <p>E-mail: {{ profile.user.email }}</p>
             {% if profile.first_name %}

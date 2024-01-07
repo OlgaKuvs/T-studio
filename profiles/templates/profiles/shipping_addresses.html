@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row text-center">
+            <div class="col-12 mt-2 my-auto py-2">
+                <h3 class="top-products-link">My Profile</h3>
+                <hr> 
+            </div>
+        </div>
+    </div>    
+{% endblock %}
+
+{% block content %}
+<div class="container main text-center">
+    <div class="row">        
+        {% include 'includes/profile-nav.html' %}  
+        <div class="col-12 col-md-8 profile-main">
+            <div class="container">                
+                <div class="row profile-main">
+                    <div class="col-12 profile-main">
+                        <h4 class="profile-header mb-3">Shipping Addresses</h4>                        
+                    </div>
+                    <div class="col-12 profile-main mb-3">
+                        <a href="{% url 'add_address' %}" class="btn btn-basic mt-2 ml-3">Add new address</a>                         
+                    </div>
+                </div>               
+                <div class="row">   
+                    {% for address in addresses %} 
+                    <div class="col-12 col-md-6 mt-2 mb-2">                              
+                        <div class="card h-100 border border-grey">
+                            <div class="row card-body">
+                                <div class="col p-2">
+                                    <p class="text-left">Address Line 1: {{ address.profile_street_address1 }}</p>
+                                    {% if address.profile.street_address2 %}
+                                        <p class="text-left">Address Line 2:{{ address.profile.street_address2 }}</p>
+                                    {% endif %}
+                                    <p class="text-left">City: {{ address.profile_city }}</p>
+                                    <p class="text-left">County: {{ address.profile_county }}</p>
+                                    {% if address.profile.postcode %}
+                                        <p class="text-left">Postcode: {{ address.profile_postcode }}</p>
+                                    {% endif %}
+                                    {% if address.profile_country == 'IE' %}
+                                        <p class="text-left">Ireland</p>
+                                    {% endif %}
+                                    <div class='text-center'>
+                                        <a href="#" class="btn btn-basic text-small mt-2 ml-3">Edit address</a>                                    
+                                        <a href="#" class="btn btn-basic text-small mt-2 ml-3">Delete address</a>
+                                    </div>                        
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+

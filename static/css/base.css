@@ -50,6 +50,10 @@ body {
     cursor: pointer;
 }
 
+.top-products-link {
+  font-weight: 600;
+}
+
 /* COLOURS */
 
 h2,
@@ -153,6 +157,9 @@ header {
     color: #939b62;
     font-family: 'Merriweather', serif;
 }
+
+
+
 
 .cart,
 .dropdown {

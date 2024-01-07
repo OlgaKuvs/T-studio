@@ -5,7 +5,7 @@
 }
 
 .profile-main {
-    text-align: center;
+    text-align: center;   
 }
 
 .profile-links {
@@ -21,6 +21,7 @@
 
 .profile-header {
     color:#939b62;
+    font-weight: 600;
 }
 
 #add-address-form .form-control {
@@ -47,3 +48,16 @@
 .text-small {
     font-size: 0.8rem;
 }
+
+
+
+/* Media */
+
+@media (max-width: 767px) {
+
+.profile-details { 
+    border-right: hidden;
+}
+
+}
+
