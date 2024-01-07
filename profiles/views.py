@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 
+
 from .models import UserProfile, UserAddress
 from .forms import ProfileForm, AddressForm 
 
@@ -17,6 +18,18 @@ def profile(request):
     return render(request, template, context)
 
 
+def shipping_addresses(request):
+    """ Display the user's shipping addresses"""
+    username = get_object_or_404(UserProfile, user=request.user)      
+    addresses = UserAddress.objects.filter(
+        username_id=username.id).order_by('-is_default')  
+    template = 'profiles/shipping_addresses.html'
+    context = {
+        'addresses': addresses,        
+    }    
+    return render(request, template, context)
+
+
 def add_address(request):
     """ Add new shipping address """
     username = get_object_or_404(UserProfile, user=request.user)   
@@ -26,7 +39,7 @@ def add_address(request):
         if form.is_valid():
             """ Check if user wants to save 
             this shipping address as default or
-            user has no addresses yet """    
+            if user has no addresses yet """    
             if form.cleaned_data[
                 'is_default'] == True or not all_addresses.exists():
                 is_default = True
@@ -64,14 +77,27 @@ def add_address(request):
             'form': form,        
         }
         return render(request, template, context)
+    
+
+def delete_address(request, id):
+    """ Delete shipping address """ 
+    user = get_object_or_404(UserProfile, user=request.user)      
+    address = UserAddress.objects.get(id=id, username_id=user.id)
+    delete_address = request.GET.get('delete_address')
+    if delete_address == 'true':
+        address.delete()
+        messages.warning(request,
+                      "Your address has been deleted.")
+        return redirect('shipping_addresses')
+    else:
+        template = 'profiles/delete_address.html'
+        context = {
+            'address': address,
+            'id': address.id,        
+        }
+        return render(request, template, context)
+
+    
 
 
-def shipping_addresses(request):
-    """ Display the user's shipping addresses"""
-    username = get_object_or_404(UserProfile, user=request.user)      
-    addresses = UserAddress.objects.filter(username_id=username.id)  
-    template = 'profiles/shipping_addresses.html'
-    context = {
-        'addresses': addresses,        
-    }    
-    return render(request, template, context)
+

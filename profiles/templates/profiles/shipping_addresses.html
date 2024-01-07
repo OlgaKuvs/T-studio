@@ -35,7 +35,7 @@
                     <div class="col-12 col-md-6 mt-2 mb-2">                              
                         <div class="card h-100 border border-grey">
                             <div class="row card-body">
-                                <div class="col p-2">
+                                <div class="col p-2">                                    
                                     <p class="text-left">Address Line 1: {{ address.profile_street_address1 }}</p>
                                     {% if address.profile.street_address2 %}
                                         <p class="text-left">Address Line 2:{{ address.profile.street_address2 }}</p>
@@ -47,10 +47,15 @@
                                     {% endif %}
                                     {% if address.profile_country == 'IE' %}
                                         <p class="text-left">Ireland</p>
-                                    {% endif %}
-                                    <div class='text-center'>
-                                        <a href="#" class="btn btn-basic text-small mt-2 ml-3">Edit address</a>                                    
-                                        <a href="#" class="btn btn-basic text-small mt-2 ml-3">Delete address</a>
+                                    {% endif %}                                   
+                                    <div class="text-left">
+                                        <a href="#" class="btn btn-basic text-small mt-2">Edit</a>
+                                    {% if address.is_default %}
+                                    <h6 class="text-left mt-2">Default address</h6>
+                                    {% else %}
+                                    <a href="{% url 'delete_address' address.id %}" class="btn btn-basic text-small mt-2 ml-2">Delete</a>
+                                    {% endif %}                                    
+                                        
                                     </div>                        
                                 </div>
                             </div>
