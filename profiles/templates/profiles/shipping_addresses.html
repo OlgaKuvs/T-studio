@@ -36,20 +36,20 @@
                         <div class="card h-100 border border-grey">
                             <div class="row card-body">
                                 <div class="col p-2">                                    
-                                    <p class="text-left">Address Line 1: {{ address.profile_street_address1 }}</p>
+                                    <p class="text-left">{{ address.profile_street_address1 | capfirst }}</p>
                                     {% if address.profile.street_address2 %}
-                                        <p class="text-left">Address Line 2:{{ address.profile.street_address2 }}</p>
+                                        <p class="text-left">{{ address.profile.street_address2 | capfirst  }}</p>
                                     {% endif %}
-                                    <p class="text-left">City: {{ address.profile_city }}</p>
-                                    <p class="text-left">County: {{ address.profile_county }}</p>
+                                    <p class="text-left">{{ address.profile_city | capfirst  }}</p>
+                                    <p class="text-left">{{ address.profile_county | capfirst }}</p>
                                     {% if address.profile.postcode %}
-                                        <p class="text-left">Postcode: {{ address.profile_postcode }}</p>
+                                        <p class="text-left">{{ address.profile_postcode }}</p>
                                     {% endif %}
                                     {% if address.profile_country == 'IE' %}
                                         <p class="text-left">Ireland</p>
                                     {% endif %}                                   
                                     <div class="text-left">
-                                        <a href="#" class="btn btn-basic text-small mt-2">Edit</a>
+                                        <a href="{% url 'edit_address' address.id %}" class="btn btn-basic text-small mt-2">Edit</a>
                                     {% if address.is_default %}
                                     <h6 class="text-left mt-2">Default address</h6>
                                     {% else %}

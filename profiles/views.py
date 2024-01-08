@@ -1,6 +1,5 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
-
 
 from .models import UserProfile, UserAddress
 from .forms import ProfileForm, AddressForm 
@@ -22,8 +21,11 @@ def shipping_addresses(request):
     """ Display the user's shipping addresses"""
     username = get_object_or_404(UserProfile, user=request.user)      
     addresses = UserAddress.objects.filter(
-        username_id=username.id).order_by('-is_default')  
-    template = 'profiles/shipping_addresses.html'
+        username_id=username.id).order_by('-is_default')
+    if addresses.exists():
+        template = 'profiles/shipping_addresses.html'
+    else:
+        return redirect('add_address')
     context = {
         'addresses': addresses,        
     }    
@@ -66,7 +68,7 @@ def add_address(request):
             )            
             address.save()
             messages.success(request, 'Shipping address has been added successfully')
-            return redirect('profile')
+            return redirect('shipping_addresses')
         else:
             messages.error(request, 'Please ensure the form is valid.')
     else:
@@ -81,12 +83,12 @@ def add_address(request):
 
 def delete_address(request, id):
     """ Delete shipping address """ 
-    user = get_object_or_404(UserProfile, user=request.user)      
+    user = get_object_or_404(UserProfile, user=request.user)
     address = UserAddress.objects.get(id=id, username_id=user.id)
     delete_address = request.GET.get('delete_address')
     if delete_address == 'true':
         address.delete()
-        messages.warning(request,
+        messages.success(request,
                       "Your address has been deleted.")
         return redirect('shipping_addresses')
     else:
@@ -94,6 +96,32 @@ def delete_address(request, id):
         context = {
             'address': address,
             'id': address.id,        
+        }
+        return render(request, template, context)
+    
+
+def edit_address(request, id):
+    """ Edit shipping address """ 
+    user = get_object_or_404(UserProfile, user=request.user)      
+    address = UserAddress.objects.get(id=id, username_id=user.id)
+    if request.method == 'POST':
+        form = AddressForm(request.POST, instance=address)
+        if form.is_valid():
+            address.profile_country = 'IE'
+            form.save()
+            messages.success(request, 'Successfully updated address!')
+            return redirect(reverse('shipping_addresses'))
+        else:
+            messages.error(request,
+                           'Failed to update address.'
+                           'Please ensure the form is valid.')
+    else:
+        address.profile_country = 'Ireland'
+        form = AddressForm(instance=address)    
+        template = 'profiles/edit_address.html'
+        context = {
+            'form': form,
+            'address': address,
         }
         return render(request, template, context)
 
