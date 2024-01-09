@@ -48,11 +48,11 @@
                                     {% if address.profile_country == 'IE' %}
                                         <p class="text-left">Ireland</p>
                                     {% endif %}                                   
-                                    <div class="text-left">
-                                        <a href="{% url 'edit_address' address.id %}" class="btn btn-basic text-small mt-2">Edit</a>
+                                    <div class="text-left">                                      
                                     {% if address.is_default %}
-                                    <h6 class="text-left mt-2">Default address</h6>
+                                    <h6 class="text-left mt-3 text-uppercase">Default address</h6>
                                     {% else %}
+                                    <a href="{% url 'edit_address' address.id %}" class="btn btn-basic text-small mt-2">Edit</a>
                                     <a href="{% url 'delete_address' address.id %}" class="btn btn-basic text-small mt-2 ml-2">Delete</a>
                                     {% endif %}                                    
                                         
@@ -67,8 +67,6 @@
         </div>
     </div>
 </div>
-
-
 {% endblock %}
 
 

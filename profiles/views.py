@@ -42,12 +42,12 @@ def add_address(request):
         if form.is_valid():
             """ Check if user wants to save 
             this shipping address as default or
-            if user has no addresses yet """    
+            if user has no addresses yet """ 
             if form.cleaned_data[
                 'is_default'] == True or not all_addresses.exists():
-                is_default = True
+                is_default = True               
                 for a in all_addresses:
-                    a.is_default = False
+                    a.is_default = False                    
                     a.save()
             else:
                 is_default = False 
@@ -104,7 +104,8 @@ def delete_address(request, id):
 def edit_address(request, id):
     """ Edit shipping address """ 
     user = get_object_or_404(UserProfile, user=request.user)      
-    address = UserAddress.objects.get(id=id, username_id=user.id)
+    address = UserAddress.objects.get(id=id, username_id=user.id)    
+    
     if request.method == 'POST':
         form = AddressForm(request.POST, instance=address)
         if form.is_valid():
@@ -125,6 +126,18 @@ def edit_address(request, id):
             'address': address,            
         }
         return render(request, template, context)
+    
+
+def orders(request):
+    """ Display the user's orders"""
+    username = get_object_or_404(UserProfile, user=request.user)      
+    orders = Order.objects.filter(
+        user_profile_id=username.id).order_by('-date')
+    template = 'profiles/orders.html'
+    context = {
+        'orders': orders,        
+    }    
+    return render(request, template, context)
     
 
 

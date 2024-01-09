@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row text-center">
+            <div class="col-12 mt-2 my-auto py-2">
+                <h3 class="top-products-link">My Profile</h3>
+                <hr> 
+            </div>
+        </div>
+    </div>    
+{% endblock %}
+
+{% block content %}
+<div class="container main text-center">
+    <div class="row">        
+        {% include 'includes/profile-nav.html' %}  
+        <div class="col-12 col-md-8 profile-main">
+            <div class="container">                
+                <div class="row profile-main">
+                    <div class="col-12 profile-main">
+                        <h4 class="profile-header mb-3">Order History</h4>                        
+                    </div>                   
+                </div>               
+                <div class="row"> 
+                    <div class="col-12">                       
+                        <div class="order-history table-responsive">
+                            {% if orders %}
+                            <table class="table table-sm table-borderless">
+                                <thead>
+                                    <tr>
+                                        <th>Order Number</th>
+                                        <th>Date</th>                                        
+                                        <th>Order Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for order in orders %}
+                                        <tr>
+                                            <td>
+                                                <a href="#"
+                                                title="{{ order.order_number }}">
+                                                    {{ order.order_number|truncatechars:6 }}
+                                                </a>
+                                            </td>
+                                            <td>{{ order.date|date:'d M Y' }}</td>                                            
+                                            <td>€{{ order.grand_total }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            {% else %}
+                            <p>You have no orders yet.</p>
+                            <a href="{% url 'products:products' %}" class="btn btn-basic mt-2">Place an order</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

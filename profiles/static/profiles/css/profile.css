@@ -49,7 +49,14 @@
     font-size: 0.8rem;
 }
 
+.order-history {
+    max-height: 300px; 
+    overflow-y: auto;
+}
 
+.tb-cell {
+
+}
 
 /* Media */
 

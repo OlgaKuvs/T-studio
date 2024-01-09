@@ -24,9 +24,9 @@ class OrderAdmin(admin.ModelAdmin):
               'stripe_pid', 'order_weight',
               )
 
-    list_display = ('order_number', 'date', 'full_name',
-                    'order_total', 'shipping_cost',
-                    'grand_total',)
+    list_display = ('order_number', 'user_profile', 'date', 
+                    'full_name', 'order_total', 
+                    'shipping_cost', 'grand_total',)
 
     ordering = ('-date',)
 
