@@ -104,11 +104,22 @@ def delete_address(request, id):
 def edit_address(request, id):
     """ Edit shipping address """ 
     user = get_object_or_404(UserProfile, user=request.user)      
-    address = UserAddress.objects.get(id=id, username_id=user.id)    
+    address = UserAddress.objects.get(id=id, username_id=user.id)
+    all_addresses = UserAddress.objects.filter(username_id=user.id)   
     
     if request.method == 'POST':
         form = AddressForm(request.POST, instance=address)
         if form.is_valid():
+            """ Check if user wants to save 
+            this shipping address as default """ 
+            if form.cleaned_data[
+                'is_default'] == True:
+                address.is_default = True               
+                for a in all_addresses:
+                    a.is_default = False                    
+                    a.save()
+            else:
+                address.is_default = False 
             address.profile_country = 'IE'
             form.save()
             messages.info(request, 'Successfully updated address!')
