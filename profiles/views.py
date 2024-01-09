@@ -8,13 +8,30 @@ from .forms import ProfileForm, AddressForm
 
 def profile(request):
     """ Display the user's profile. """
-    profile = get_object_or_404(UserProfile, user=request.user)
-    form = ProfileForm(instance=profile)
+    profile = get_object_or_404(UserProfile, user=request.user)   
     template = 'profiles/profile.html'
     context = {
-        'profile':  profile,
-        'form':  form,        
+        'profile': profile,
     }
+    return render(request, template, context)
+
+
+def edit_profile(request):
+    """ Edit profile information """
+    profile = get_object_or_404(UserProfile, user=request.user)
+    form = ProfileForm(instance=profile)
+    if request.POST:
+        form = ProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.info(request,                        
+                        'Your profile has been updated')
+        return redirect('profile')
+    form = ProfileForm(instance=profile)
+    context = {
+        'form': form
+    }
+    template = 'profiles/edit_profile.html'
     return render(request, template, context)
 
 

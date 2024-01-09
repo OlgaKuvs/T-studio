@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row text-center">
+            <div class="col-12 mt-2 my-auto py-2">
+                <h3 class="top-products-link">My Profile</h3>
+                <hr> 
+            </div>
+        </div>
+    </div>    
+{% endblock %}
+
+{% block content %}
+<div class="container main text-center">
+    <div class="row">        
+        {% include 'includes/profile-nav.html' %}   
+        <div class="col-12 col-md-8 profile-main">
+            <h4 class="profile-header mb-3">Edit Personal Information</h4>
+            
+            <form class="mt-3 mb-3" action="{% url 'edit_profile' %}" method="POST" id="edit-profile-form">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <button type="submit" class="btn btn-basic">Edit</button>
+                <a href="{% url 'profile' %}" class="btn btn-basic ml-3">Cancel</a>                
+            </form>
+           
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

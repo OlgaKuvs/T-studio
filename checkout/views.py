@@ -39,7 +39,7 @@ def checkout(request):
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     if request.method == 'POST':
-        cart = request.session.get('cart', {})        
+        cart = request.session.get('cart', {})               
 
         form_data = {
             'full_name': request.POST['full_name'],
@@ -52,8 +52,14 @@ def checkout(request):
             'street_address2': request.POST['street_address2'],
             'county': request.POST['county'],
         }
-
         order_form = OrderForm(form_data)
+        full_name = request.POST['full_name']
+        name_parts = full_name.split()
+        if len(name_parts) < 2:
+            messages.error(request, "Please enter your full name " 
+                           "with both first and last names.")
+            return redirect(reverse('checkout'))
+             
         if order_form.is_valid():
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]

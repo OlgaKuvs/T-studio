@@ -23,13 +23,17 @@
         <div class="col-12 col-md-8 profile-main">
             <h4 class="profile-header mb-3">Personal Information</h4>
             <p>Username: {{ profile.user.username }}</p>
-            <p>E-mail: {{ profile.user.email }}</p>
+            <p>E-mail: {{ profile.user.email }}</p>           
             {% if profile.first_name %}
             <p>First Name: {{ profile.first_name }}</p>
             {% endif %}
             {% if profile.last_name %}
             <p>Last Name: {{ profile.last_name }}</p>
             {% endif %}
+            {% if profile.phone_number %}
+            <p>Phone Number: {{ profile.phone_number }}</p>
+            {% endif %}
+            <a href="{% url 'edit_profile' %}" class="btn btn-basic text-small mt-2">Edit</a>
         </div>
     </div>
 </div>
