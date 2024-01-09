@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 
 from .models import UserProfile, UserAddress
+from checkout.models import Order
 from .forms import ProfileForm, AddressForm 
 
 
@@ -12,7 +13,7 @@ def profile(request):
     template = 'profiles/profile.html'
     context = {
         'profile':  profile,
-        'form':  form,
+        'form':  form,        
     }
     return render(request, template, context)
 
@@ -66,8 +67,8 @@ def add_address(request):
                 profile_country = 'IE',
                 is_default = is_default
             )            
-            address.save()
-            messages.success(request, 'Shipping address has been added successfully')
+            address.save()            
+            messages.info(request, 'Shipping address has been added successfully')
             return redirect('shipping_addresses')
         else:
             messages.error(request, 'Please ensure the form is valid.')
@@ -76,7 +77,7 @@ def add_address(request):
         form.fields['profile_country'].initial = 'Ireland'
         template = 'profiles/add_address.html'
         context = {
-            'form': form,        
+            'form': form,                 
         }
         return render(request, template, context)
     
@@ -87,15 +88,15 @@ def delete_address(request, id):
     address = UserAddress.objects.get(id=id, username_id=user.id)
     delete_address = request.GET.get('delete_address')
     if delete_address == 'true':
-        address.delete()
-        messages.success(request,
+        address.delete()        
+        messages.info(request,
                       "Your address has been deleted.")
         return redirect('shipping_addresses')
     else:
         template = 'profiles/delete_address.html'
         context = {
             'address': address,
-            'id': address.id,        
+            'id': address.id,                   
         }
         return render(request, template, context)
     
@@ -109,7 +110,7 @@ def edit_address(request, id):
         if form.is_valid():
             address.profile_country = 'IE'
             form.save()
-            messages.success(request, 'Successfully updated address!')
+            messages.info(request, 'Successfully updated address!')
             return redirect(reverse('shipping_addresses'))
         else:
             messages.error(request,
@@ -121,9 +122,11 @@ def edit_address(request, id):
         template = 'profiles/edit_address.html'
         context = {
             'form': form,
-            'address': address,
+            'address': address,            
         }
         return render(request, template, context)
+    
+
 
     
 
