@@ -40,8 +40,9 @@
                             <table class="table table-sm order-table">
                                 <thead>
                                     <tr>
+                                        <th>Image</th>
                                         <th>Product</th>
-                                        <th> </th>                                        
+                                        <th></th>                                        
                                         <th>Quantity</th>
                                         <th>Price</th>
                                         <th>Total</th>
@@ -50,7 +51,14 @@
                                 <tbody>
                                     {% for item in order.lineitems.all %}
                                     <tr>
-                                        <td>{{ item.product.name }}</td>
+                                        <td class="w-25">                                        
+                                            {% if item.product.image %}
+                                            <img class="card-img-top w-50 img-fluid" src="{{ item.product.image.url }}" alt="{{ product.name }}">
+                                            {% else %}
+                                           <img class="card-img-top w-50 img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                            {% endif %}
+                                            </td>
+                                        <td>{{ item.product.name }}</td>                                       
                                         <td><a href="{% url 'products:review_product' item.product.id %}" class="btn btn-basic text-small">Leave Review</a></td>
                                         <td>{{ item.quantity }}</td>
                                         <td>€{{ item.product.price }}</td>                                               
@@ -58,7 +66,7 @@
                                     </tr>
                                     {% endfor %}
                                     <tr>
-                                        <td colspan="5" class="text-right">
+                                        <td colspan="6" class="text-right">
                                             <p class="mb-1">Total: €{{ order.order_total }}</p>
                                             <p class="mb-1">Shipping: €{{ order.shipping_cost }}</p>
                                             <p class="mb-1"><strong>Grand Total: €{{ order.grand_total }}</strong></p>
