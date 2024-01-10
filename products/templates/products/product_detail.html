@@ -31,7 +31,12 @@
                     </a>
                 </p>
                 {% if product.rating %}
-                <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }}</small>
+                Rating: {{ product.rating }}
+                {% if product.rating > 0 %} <i class='fa fa-star text-muted'></i> {% endif %}
+                {% if product.rating > 1 %} <i class='fa fa-star text-muted'></i> {% endif %}
+                {% if product.rating > 2 %} <i class='fa fa-star text-muted'></i> {% endif %}
+                {% if product.rating > 3 %} <i class='fa fa-star text-muted'></i> {% endif %}
+                {% if product.rating > 4 %} <i class='fa fa-star text-muted'></i> {% endif %}
                 {% else %}
                 <small class="text-muted">No Rating</small>
                 {% endif %}
@@ -74,6 +79,34 @@
             <h4>Description:</h4>
             <p class="mt-1">{{ product.description }}</p>
             {% endautoescape %} 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-8 offset-lg-2 mt-3">
+            <h4>Reviews</h4>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-8 offset-lg-2">
+            {% if product.reviews.all %} 
+                {% for review in product.reviews.all %}
+                    <strong>
+                        {{ review.author }} -  
+                        {{ review.created_at }} 
+                    </strong><br>
+                    {{ review.comment }}
+                    <br>
+                    <p>Rate:
+                        {% if review.rate|add:'0' > 0 %} <span class="fa fa-star"></span>{% endif %}
+                        {% if review.rate|add:'0' > 1 %} <span class="fa fa-star"></span>{% endif %}
+                        {% if review.rate|add:'0' > 2 %} <span class="fa fa-star"></span>{% endif %}
+                        {% if review.rate|add:'0' > 3 %} <span class="fa fa-star"></span>{% endif %}
+                        {% if review.rate|add:'0' > 4 %} <span class="fa fa-star"></span>{% endif %}
+                    </p>
+                <hr class="line-review">
+                {% endfor %}
+            {% endif %} 
         </div>
     </div>
 </div>
