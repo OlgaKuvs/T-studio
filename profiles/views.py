@@ -166,6 +166,16 @@ def orders(request):
         'orders': orders,        
     }    
     return render(request, template, context)
+
+
+def order_details(request, order_number):
+    order = get_object_or_404(Order, order_number=order_number)
+    template = 'profiles/order_details.html'
+    context = {
+        'order': order,        
+    }    
+    return render(request, template, context)
+    
     
 
 

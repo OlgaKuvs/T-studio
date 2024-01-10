@@ -51,11 +51,18 @@
 
 .order-history {
     max-height: 300px; 
-    overflow-y: auto;
+    overflow-y: auto;    
 }
 
-.tb-cell {
+.order-details {
+    max-height: 400px; 
+    overflow-y: auto;
+    overflow-x: auto;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
 
+.order-table {
+    margin-bottom: 0;
 }
 
 /* Media */
@@ -64,6 +71,14 @@
 
 .profile-details { 
     border-right: hidden;
+}
+
+.profile-header {
+    text-align: left !important;
+}
+
+.profile-main {
+    padding: 0 !important;  
 }
 
 }
