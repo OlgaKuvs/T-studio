@@ -50,8 +50,8 @@
                                 <tbody>
                                     {% for item in order.lineitems.all %}
                                     <tr>
-                                        <td>{{ item.product.name }} </td>
-                                        <td><a href="#" class="btn btn-basic text-small">Leave Review</a></td>
+                                        <td>{{ item.product.name }}</td>
+                                        <td><a href="{% url 'products:review_product' item.product.id %}" class="btn btn-basic text-small">Leave Review</a></td>
                                         <td>{{ item.quantity }}</td>
                                         <td>€{{ item.product.price }}</td>                                               
                                         <td>€{{ item.product.price | calc_subtotal:item.quantity }}</td>

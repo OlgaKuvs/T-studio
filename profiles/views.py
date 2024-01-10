@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from .models import UserProfile, UserAddress
 from checkout.models import Order
-from .forms import ProfileForm, AddressForm 
+from .forms import ProfileForm, AddressForm
 
 
+@login_required
 def profile(request):
     """ Display the user's profile. """
     profile = get_object_or_404(UserProfile, user=request.user)   
@@ -16,6 +18,7 @@ def profile(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_profile(request):
     """ Edit profile information """
     profile = get_object_or_404(UserProfile, user=request.user)
@@ -35,6 +38,7 @@ def edit_profile(request):
     return render(request, template, context)
 
 
+@login_required
 def shipping_addresses(request):
     """ Display the user's shipping addresses"""
     username = get_object_or_404(UserProfile, user=request.user)      
@@ -50,6 +54,7 @@ def shipping_addresses(request):
     return render(request, template, context)
 
 
+@login_required
 def add_address(request):
     """ Add new shipping address """
     username = get_object_or_404(UserProfile, user=request.user)   
@@ -99,6 +104,7 @@ def add_address(request):
         return render(request, template, context)
     
 
+@login_required
 def delete_address(request, id):
     """ Delete shipping address """ 
     user = get_object_or_404(UserProfile, user=request.user)
@@ -118,6 +124,7 @@ def delete_address(request, id):
         return render(request, template, context)
     
 
+@login_required
 def edit_address(request, id):
     """ Edit shipping address """ 
     user = get_object_or_404(UserProfile, user=request.user)      
@@ -156,6 +163,7 @@ def edit_address(request, id):
         return render(request, template, context)
     
 
+@login_required
 def orders(request):
     """ Display the user's orders"""
     username = get_object_or_404(UserProfile, user=request.user)      
@@ -168,6 +176,7 @@ def orders(request):
     return render(request, template, context)
 
 
+@login_required
 def order_details(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
     template = 'profiles/order_details.html'
