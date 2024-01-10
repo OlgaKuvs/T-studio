@@ -28,6 +28,7 @@
                 {% csrf_token %}
                 {{ form | crispy }}
                 <button type="submit" class="btn btn-basic">Add address</button>
+                <span class="btn btn-basic ml-3" onclick="window.history.back()">Cancel</span>
             </form>
         </div>
     </div>

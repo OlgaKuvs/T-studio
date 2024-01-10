@@ -54,6 +54,11 @@ body {
   font-weight: 600;
 }
 
+.arrow-back:hover {
+  color: #ff7b54;
+  cursor: pointer;
+}
+
 /* COLOURS */
 
 h2,
