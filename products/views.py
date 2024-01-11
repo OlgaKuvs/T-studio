@@ -5,16 +5,27 @@ from django.db.models import Q
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from django.db.models import Avg
 
 from .models import Product, Category, Review
 from .forms import ReviewForm
 
 
 class ProductListView(ListView):
-    """A Class Based View to show all products, including search queries"""
+    """A Class Based View to show all products, including search queries,
+    to calculate and save to DB average product rating
+    """
     model = Product    
     template_name = 'products/products.html'
-    context_object_name = 'products'   
+    context_object_name = 'products'
+
+    for product in Product.objects.all():        
+        approved_reviews = Review.objects.filter(product_id=product.id,approved=True)
+        avg = approved_reviews.aggregate(Avg('rate'))['rate__avg']              
+        if avg is not None:
+            rounded_avg = 0.5 * round(avg/0.5)
+            product.rating = rounded_avg
+            product.save()    
     
     def get_queryset(self):
         queryset = super(ProductListView, self).get_queryset()
@@ -37,6 +48,9 @@ class ProductListView(ListView):
 
   
 def CategoryView(request, slug):
+    """A view to get all product categories and
+    products by current category
+    """
     try:
         current_category = Category.objects.get(name=slug)
         category_products = Product.objects.filter(category=current_category)
@@ -80,7 +94,6 @@ class ReviewView(SuccessMessageMixin, CreateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)        
-        context['product'] = get_object_or_404(Product, pk=self.kwargs['product_id'])
-        # print(context)
+        context['product'] = get_object_or_404(Product, pk=self.kwargs['product_id'])        
         return context
 

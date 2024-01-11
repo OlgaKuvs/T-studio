@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col text-center mt-3">
                 <h4 class="mt-3 map-text">Leave your review for the product:<br>
-                <span class="mt-3 logo-colour"><strong>{{ product.name }} </strong></span></h4>
+                <span class="mt-3 logo-colour"><strong>{{ product.name }}</strong></span></h4>
                 <hr>
             </div>
         </div>
@@ -27,7 +27,7 @@
                 {% csrf_token %}
                 {{ form | crispy }}
                 <div class="text-right">                    
-                    <a class="btn btn-basic" type="submit" href="#">Send review</a>
+                    <button class="btn btn-basic" type="submit">Send review</button>
                     <span class="btn btn-basic ml-3" onclick="window.history.back()">Cancel</span>
                 </div>
             </form>

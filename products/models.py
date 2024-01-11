@@ -32,7 +32,7 @@ class Product(models.Model):
     weight = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
-        return f"{self.name}, {self.rating}"
+        return f"{self.name}"
 
 
 class Review(models.Model):
