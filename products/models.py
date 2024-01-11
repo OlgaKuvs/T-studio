@@ -39,21 +39,21 @@ class Review(models.Model):
     """Model for user review"""
     
     RATE_CHOICES = [
-        ('5', 'Excellent'),
-        ('4', 'Very Good'),
-        ('3', 'Neutral'),
-        ('2', 'Bad'),
-        ('1', 'Very Bad'),
+        (5, 'Excellent'),
+        (4, 'Very Good'),
+        (3, 'Neutral'),
+        (2, 'Bad'),
+        (1, 'Very Bad'),
     ]    
 
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="reviews", null=True, blank=True)  
     author = models.CharField(max_length=50, null=False, blank=False)
     comment = models.TextField(null=False, blank=False)
-    rate = models.CharField(choices=RATE_CHOICES, max_length=50, default=None)
+    rate = models.IntegerField(choices=RATE_CHOICES, default=None)
     created_at = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"{self.product.name}, {self.user.user}, {self.rate}"
+        return f"{self.product.name}, {self.rate}"
         
