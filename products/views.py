@@ -85,20 +85,24 @@ class ReviewView(SuccessMessageMixin, CreateView):
     model = Review
     form_class = ReviewForm
     template_name = 'products/review_product.html'
-    success_message = "Your review was created! It will be shown after admin approval."
+    success_message = "Your review was created! It will be shown after admin approval"
+    extra_tags = 'flag'
     success_url = '/order_details/'
 
     def get_success_url(self):
-        return reverse('profile:order_details', kwargs={'order_id': self.kwargs['order_id']})   
+        return reverse('profile:order_details', kwargs={
+                       'order_id': self.kwargs['order_id']})   
    
     def form_valid(self, form):
         form.instance.user = self.request.user.userprofile
-        form.instance.product_id = self.kwargs['product_id']        
+        form.instance.product_id = self.kwargs['product_id']
+        success_message = self.get_success_message(form.cleaned_data)
+        if success_message:
+            messages.success(self.request, success_message, extra_tags=self.extra_tags)        
         return super().form_valid(form)
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['flag'] = True 
         context['product'] = get_object_or_404(Product, pk=self.kwargs['product_id'])
         context['order_id'] = get_object_or_404(Order, id=self.kwargs['order_id'])        
         return context

@@ -27,8 +27,9 @@ def edit_profile(request):
         form = ProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            messages.info(request,                        
-                        'Your profile has been updated')
+            messages.success(request,                        
+                        'Your profile has been updated',
+                        extra_tags='flag')
         return redirect('profile:profile')
     form = ProfileForm(instance=profile)
     context = {
@@ -90,7 +91,9 @@ def add_address(request):
                 is_default = is_default
             )            
             address.save()            
-            messages.info(request, 'Shipping address has been added successfully')
+            messages.success(request, 
+                             'Shipping address has been added successfully',
+                             extra_tags='flag')
             return redirect('profile:shipping_addresses')
         else:
             messages.error(request, 'Please ensure the form is valid.')
@@ -112,8 +115,9 @@ def delete_address(request, id):
     delete_address = request.GET.get('delete_address')
     if delete_address == 'true':
         address.delete()        
-        messages.info(request,
-                      "Your address has been deleted.")
+        messages.success(request,
+                      "Your address has been deleted.",
+                      extra_tags='flag')
         return redirect('profile:shipping_addresses')
     else:
         template = 'profiles/delete_address.html'
@@ -147,7 +151,8 @@ def edit_address(request, id):
                 address.is_default = False 
             address.profile_country = 'IE'
             form.save()
-            messages.info(request, 'Successfully updated address!')
+            messages.success(request, 'Successfully updated address!',
+                             extra_tags='flag')
             return redirect(reverse('profile:shipping_addresses'))
         else:
             messages.error(request,
@@ -178,9 +183,8 @@ def orders(request):
 
 
 @login_required
-def order_details(request, order_id):
-    username = get_object_or_404(UserProfile, user=request.user)    
-    order = get_object_or_404(Order, id=order_id, user_profile_id=username.id)      
+def order_details(request, order_id):    
+    order = get_object_or_404(Order, id=order_id)  
     template = 'profiles/order_details.html'
     context = {
         'order': order,        

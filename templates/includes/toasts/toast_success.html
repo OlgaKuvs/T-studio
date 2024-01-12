@@ -1,5 +1,4 @@
 {% load cart_tools %}
-
 <div class="toast custom-toast border-top-0" data-autohide="false">    
     <div class="w-100 toast-capper bg-success"></div>
     <div class="toast-header bg-white text-dark">
@@ -9,9 +8,9 @@
         </button>
     </div>
     <div class="toast-body bg-white">
-        {{ message }}         
+        {{ message }} 
     </div>
-    {% if grand_total and not flag %}
+    {% if grand_total and 'flag' not in message.tags and 'flag' not in extra_tags %}       
             <p class="logo-font py-2 ml-2">Your Cart ({{ product_count }})</p>
             <div class="cart-notification-wrapper">
                 {% for item in cart_items %}
