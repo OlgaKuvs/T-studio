@@ -29,7 +29,7 @@ def edit_profile(request):
             form.save()
             messages.info(request,                        
                         'Your profile has been updated')
-        return redirect('profile')
+        return redirect('profile:profile')
     form = ProfileForm(instance=profile)
     context = {
         'form': form
@@ -47,7 +47,7 @@ def shipping_addresses(request):
     if addresses.exists():
         template = 'profiles/shipping_addresses.html'
     else:
-        return redirect('add_address')
+        return redirect('profile:add_address')
     context = {
         'addresses': addresses,        
     }    
@@ -91,7 +91,7 @@ def add_address(request):
             )            
             address.save()            
             messages.info(request, 'Shipping address has been added successfully')
-            return redirect('shipping_addresses')
+            return redirect('profile:shipping_addresses')
         else:
             messages.error(request, 'Please ensure the form is valid.')
     else:
@@ -114,12 +114,13 @@ def delete_address(request, id):
         address.delete()        
         messages.info(request,
                       "Your address has been deleted.")
-        return redirect('shipping_addresses')
+        return redirect('profile:shipping_addresses')
     else:
         template = 'profiles/delete_address.html'
         context = {
             'address': address,
-            'id': address.id,                   
+            'id': address.id, 
+            'flag': True,                 
         }
         return render(request, template, context)
     
@@ -147,7 +148,7 @@ def edit_address(request, id):
             address.profile_country = 'IE'
             form.save()
             messages.info(request, 'Successfully updated address!')
-            return redirect(reverse('shipping_addresses'))
+            return redirect(reverse('profile:shipping_addresses'))
         else:
             messages.error(request,
                            'Failed to update address.'
@@ -158,7 +159,7 @@ def edit_address(request, id):
         template = 'profiles/edit_address.html'
         context = {
             'form': form,
-            'address': address,            
+            'address': address,                     
         }
         return render(request, template, context)
     
@@ -177,8 +178,9 @@ def orders(request):
 
 
 @login_required
-def order_details(request, order_number):
-    order = get_object_or_404(Order, order_number=order_number)
+def order_details(request, order_id):
+    username = get_object_or_404(UserProfile, user=request.user)    
+    order = get_object_or_404(Order, id=order_id, user_profile_id=username.id)      
     template = 'profiles/order_details.html'
     context = {
         'order': order,        

@@ -24,7 +24,7 @@
             <h4 class="profile-header mb-3">Add Shipping Address<br>
                 <span class="text-muted text-small">(Republic of Ireland only!)</span></h4>
             
-            <form class="mt-3 mb-3" action="{% url 'add_address' %}" method="POST" id="add-address-form">
+            <form class="mt-3 mb-3" action="{% url 'profile:add_address' %}" method="POST" id="add-address-form">
                 {% csrf_token %}
                 {{ form | crispy }}
                 <button type="submit" class="btn btn-basic">Add address</button>

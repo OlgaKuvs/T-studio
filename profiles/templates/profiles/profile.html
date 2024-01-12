@@ -33,7 +33,7 @@
             {% if profile.phone_number %}
             <p>Phone Number: {{ profile.phone_number }}</p>
             {% endif %}
-            <a href="{% url 'edit_profile' %}" class="btn btn-basic mt-2">Edit</a>
+            <a href="{% url 'profile:edit_profile' %}" class="btn btn-basic mt-2">Edit</a>
         </div>
     </div>
 </div>

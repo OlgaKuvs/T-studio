@@ -29,7 +29,7 @@
                 {% endif %}
             {% endif %}            
         </div>
-        <div class="col-lg-6 col-sm-12 mb-2 d-lg-flex d-none justify-content-end">
+        <div class="col-9 offset-1 mb-2 d-lg-flex d-none justify-content-end">
             <div class="search-block">
                 <form method="GET" action="{% url 'products:products' %}">
                     <div class="input-group w-100">
@@ -45,7 +45,7 @@
                 </form>
             </div>
         </div>
-        <div class="col-lg-6 col-sm-12 mb-2 d-flex justify-content-end">
+        <div class="col-9 offset-1 mb-2 d-flex justify-content-end search-box">
             <a class="text-black nav-link d-block d-lg-none" href="#" id="mobile-search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div class="text-center">
                     <div><i class="fas fa-search fa-lg"></i></div>                    
@@ -68,11 +68,11 @@
         </div> 
     </div>
     <div class="row">
-        <div class="product-container h-100 col-10 offset-1 mb-4">
+        <div class="product-container h-100 col-10 offset-2 mb-4">
             <div class="row product-row">
                 {% if category_products %}
                 {% for product in category_products %}               
-                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mt-2 mb-2">
+                <div class="col-sm-6 col-md-6 col-lg-4 mt-2 mb-2">
                     <div class="card h-100 border border-grey product-align">
                         <a class='products-link' href="{% url 'products:product_detail' product.id %}">                           
                             {% if product.image %}
@@ -110,7 +110,7 @@
                 {% endfor %} 
             {% else %}
                 {% for product in products %}
-                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 mt-2 mb-2">
+                <div class="col-sm-6 col-md-6 col-lg-4 mt-2 mb-2">
                     <div class="card h-100 border border-grey product-align">
                         <a class='products-link' href="{% url 'products:product_detail' product.id %}">                           
                             {% if product.image %}

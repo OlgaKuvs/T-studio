@@ -1,4 +1,4 @@
-html {
+html {e
     height: 100%;
     margin: 0;
 }
@@ -17,10 +17,19 @@ body {
   margin-top: 150px; 
 }
 
+.product-container {
+  border: 1px solid red;
+  max-width: 70% !important;
+}
+
+.search-box {
+  background: transparent !important;
+}
+
 .product-row, 
 .product-container {
   justify-content: center;
-  align-content: center;
+  align-content: center;  
 }
 
 .text_upper {
@@ -162,9 +171,6 @@ header {
     color: #939b62;
     font-family: 'Merriweather', serif;
 }
-
-
-
 
 .cart,
 .dropdown {

@@ -2,12 +2,13 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView
 from django.db.models import Q
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Avg
 
 from .models import Product, Category, Review
+from checkout.models import Order
 from .forms import ReviewForm
 
 
@@ -84,16 +85,21 @@ class ReviewView(SuccessMessageMixin, CreateView):
     model = Review
     form_class = ReviewForm
     template_name = 'products/review_product.html'
-    success_url = reverse_lazy('products:products')
     success_message = "Your review was created! It will be shown after admin approval."
+    success_url = '/order_details/'
 
+    def get_success_url(self):
+        return reverse('profile:order_details', kwargs={'order_id': self.kwargs['order_id']})   
+   
     def form_valid(self, form):
         form.instance.user = self.request.user.userprofile
         form.instance.product_id = self.kwargs['product_id']        
         return super().form_valid(form)
     
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)        
-        context['product'] = get_object_or_404(Product, pk=self.kwargs['product_id'])        
+        context = super().get_context_data(**kwargs)
+        context['flag'] = True 
+        context['product'] = get_object_or_404(Product, pk=self.kwargs['product_id'])
+        context['order_id'] = get_object_or_404(Order, id=self.kwargs['order_id'])        
         return context
 

@@ -23,7 +23,7 @@
         <div class="col-12 col-md-6 profile-main">
             <h4 class="profile-header mb-3">Edit Shipping Address</h4>
             
-            <form class="mt-3 mb-3" action="{% url 'edit_address' address.id %}" method="POST" id="edit-address-form">
+            <form class="mt-3 mb-3" action="{% url 'profile:edit_address' address.id %}" method="POST" id="edit-address-form">
                 {% csrf_token %}
                 {{ form | crispy }}
                 <button type="submit" class="btn btn-basic">Edit address</button>

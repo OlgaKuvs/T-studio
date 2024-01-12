@@ -27,7 +27,7 @@
                         <h4 class="profile-header mb-3">Shipping Addresses</h4>                        
                     </div>
                     <div class="col-12 profile-main mb-3">
-                        <a href="{% url 'add_address' %}" class="btn btn-basic mt-2 ml-3">Add new address</a>                         
+                        <a href="{% url 'profile:add_address' %}" class="btn btn-basic mt-2 ml-3">Add new address</a>                         
                     </div>
                 </div>               
                 <div class="row">   
@@ -37,12 +37,12 @@
                             <div class="row card-body">
                                 <div class="col p-2">                                    
                                     <p class="text-left">{{ address.profile_street_address1 | capfirst }}</p>
-                                    {% if address.profile.street_address2 %}
-                                        <p class="text-left">{{ address.profile.street_address2 | capfirst  }}</p>
+                                    {% if address.profile_street_address2 != None %}
+                                        <p class="text-left">{{ address.profile_street_address2 | capfirst  }}</p>
                                     {% endif %}
                                     <p class="text-left">{{ address.profile_city | capfirst  }}</p>
-                                    <p class="text-left">{{ address.profile_county | capfirst }}</p>
-                                    {% if address.profile.postcode %}
+                                    <p class="text-left">{{ address.profile_county | capfirst }}</p>                                   
+                                    {% if address.profile_postcode != None %}
                                         <p class="text-left">{{ address.profile_postcode }}</p>
                                     {% endif %}
                                     {% if address.profile_country == 'IE' %}
@@ -52,8 +52,8 @@
                                     {% if address.is_default %}
                                     <h6 class="text-left mt-3 text-uppercase">Default address</h6>
                                     {% else %}
-                                    <a href="{% url 'edit_address' address.id %}" class="btn btn-basic text-small mt-2">Edit</a>
-                                    <a href="{% url 'delete_address' address.id %}" class="btn btn-basic text-small mt-2 ml-2">Delete</a>
+                                    <a href="{% url 'profile:edit_address' address.id %}" class="btn btn-basic text-small mt-2">Edit</a>
+                                    <a href="{% url 'profile:delete_address' address.id %}" class="btn btn-basic text-small mt-2 ml-2">Delete</a>
                                     {% endif %}                                    
                                         
                                     </div>                        

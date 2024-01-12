@@ -41,9 +41,9 @@ class Review(models.Model):
     RATE_CHOICES = [
         (5, 'Excellent'),
         (4, 'Very Good'),
-        (3, 'Neutral'),
-        (2, 'Bad'),
-        (1, 'Very Bad'),
+        (3, 'Average'),
+        (2, 'Fair'),
+        (1, 'Poor'),
     ]    
 
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
