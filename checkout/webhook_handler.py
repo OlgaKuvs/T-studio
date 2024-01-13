@@ -6,6 +6,7 @@ import json
 
 from .models import Order, OrderLineItem
 from products.models import Product
+from profiles.models import UserProfile, UserAddress
 
 
 class StripeWH_Handler:
@@ -45,6 +46,25 @@ class StripeWH_Handler:
             if value == "":
                 shipping_details.address[field] = None
 
+        # Update profile information if save_info was checked
+        profile = None
+        username = intent.metadata.username
+        if username != 'AnonymousUser':
+            profile = UserProfile.objects.get(user__username=username)           
+            if save_info:
+                profile.phone_number = shipping_details.phone                
+                profile.save() 
+                address = UserAddress.objects.create(
+                    username = profile,                              
+                    profile_street_address1 = shipping_details.address.line1,
+                    profile_street_address2 = shipping_details.address.line2,
+                    profile_city = shipping_details.address.city,
+                    profile_county = shipping_details.address.state,
+                    profile_postcode = shipping_details.address.postal_code,
+                    profile_country = shipping_details.address.country,
+                    is_default = False
+                )
+
         order_exists = False
         attempt = 1
         while attempt <= 5:
@@ -76,7 +96,8 @@ class StripeWH_Handler:
             order = None
             try:
                 order = Order.objects.create(
-                        full_name=shipping_details.name,                    
+                        full_name=shipping_details.name,
+                        user_profile=profile,                   
                         email=billing_details.email,
                         phone_number=shipping_details.phone,
                         country=shipping_details.address.country,

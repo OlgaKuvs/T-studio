@@ -182,7 +182,7 @@ def checkout_success(request, order_number):
                 is_default = False
             )
 
-    messages.success(request, f'Order successfully processed! \
+        messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
     
