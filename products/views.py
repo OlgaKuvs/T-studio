@@ -18,11 +18,11 @@ class ProductListView(ListView):
     """
     model = Product    
     template_name = 'products/products.html'
-    context_object_name = 'products'
+    context_object_name = 'products'     
 
     for product in Product.objects.all():        
-        approved_reviews = Review.objects.filter(product_id=product.id,approved=True)
-        avg = approved_reviews.aggregate(Avg('rate'))['rate__avg']              
+        approved_reviews = Review.objects.filter(product_id=product.id,approved=True)       
+        avg = approved_reviews.aggregate(Avg('rate'))['rate__avg']                     
         if avg is not None:
             rounded_avg = 0.5 * round(avg/0.5)
             product.rating = rounded_avg
@@ -84,9 +84,7 @@ def product_detail(request, product_id):
 class ReviewView(SuccessMessageMixin, CreateView):
     model = Review
     form_class = ReviewForm
-    template_name = 'products/review_product.html'
-    success_message = "Your review was created! It will be shown after admin approval"
-    extra_tags = 'flag'
+    template_name = 'products/review_product.html'    
     success_url = '/order_details/'
 
     def get_success_url(self):
@@ -95,10 +93,10 @@ class ReviewView(SuccessMessageMixin, CreateView):
    
     def form_valid(self, form):
         form.instance.user = self.request.user.userprofile
-        form.instance.product_id = self.kwargs['product_id']
-        success_message = self.get_success_message(form.cleaned_data)
-        if success_message:
-            messages.success(self.request, success_message, extra_tags=self.extra_tags)        
+        form.instance.product_id = self.kwargs['product_id']       
+        success_message = "Thank you for the review! It will be published after admin approval."
+        extra_tags = 'flag'      
+        messages.success(self.request, success_message, extra_tags=extra_tags)        
         return super().form_valid(form)
     
     def get_context_data(self, **kwargs):

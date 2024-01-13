@@ -8,9 +8,9 @@
         </button>
     </div>
     <div class="toast-body bg-white">
-        {{ message }} 
+        {{ message }}
     </div>
-    {% if grand_total and 'flag' not in message.tags and 'flag' not in extra_tags %}       
+    {% if grand_total and message.extra_tags == None %}       
             <p class="logo-font py-2 ml-2">Your Cart ({{ product_count }})</p>
             <div class="cart-notification-wrapper">
                 {% for item in cart_items %}

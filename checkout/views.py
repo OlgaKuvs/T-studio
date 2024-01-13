@@ -4,6 +4,8 @@ from django.shortcuts import (render,
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
+from django.db.models.functions import Concat
+from django.db.models import Value
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
@@ -105,7 +107,30 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,       
         )
-        order_form = OrderForm()  
+         # Attempt to prefill the form with any info
+        # the user maintains in their profile
+        if request.user.is_authenticated:
+            try:
+                profile = UserProfile.objects.get(user=request.user)
+                address = UserAddress.objects.get(username=profile, is_default=True)                
+                full_name = UserProfile.objects.annotate(full_name=Concat(
+                    'first_name', Value(' '), 'last_name')).get(
+                    user=request.user).full_name
+                order_form = OrderForm(initial={
+                    'full_name': full_name, 
+                    'email': request.user.email,
+                    'phone_number': profile.phone_number,
+                    'country': address.profile_country,
+                    'postcode': address.profile_postcode,
+                    'city': address.profile_city,
+                    'street_address1': address.profile_street_address1,
+                    'street_address2': address.profile_street_address2,
+                    'county': address.profile_county,
+                })
+            except UserProfile.DoesNotExist:
+                order_form = OrderForm()
+        else:
+            order_form = OrderForm()
 
     if not stripe_public_key:
         messages.warning(request, ('Stripe public key is missing. '
