@@ -55,12 +55,13 @@ body {
 }
 
 .btn-grey {
-  border: 2px solid #292f36;   
+  border: 2px solid #939b62;  
   background: #fff;
+  color: #292f36; 
 }
 
 .btn-grey:hover {
-  color: #ff7b54;   
+  color: #939b62;    
 }
 
 .update-item,
