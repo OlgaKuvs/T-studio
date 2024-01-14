@@ -95,7 +95,7 @@
                             </div>
                         </a>
                         <div class="dropdown-menu border-0" aria-labelledby="user-options">                           
-                                <a href="#" class="dropdown-item icons-colour">Product Management</a>                                
+                                <a href="{% url 'products:add_product' %}" class="dropdown-item icons-colour">Product Management</a>                                
                                 <a href="{% url 'profile:profile' %}" class="dropdown-item icons-colour">My Profile</a>
                                 <a href="{% url 'account_logout' %}" class="dropdown-item icons-colour">Logout</a>
                                 <a href="{% url 'account_signup' %}" class="dropdown-item icons-colour">Register</a>

@@ -1,4 +1,4 @@
-html {e
+html {
     height: 100%;
     margin: 0;
 }
@@ -18,7 +18,7 @@ body {
 }
 
 .product-container {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   max-width: 70% !important;
 }
 
@@ -78,6 +78,11 @@ body {
   cursor: pointer;
 }
 
+.bg-header,
+.offers-banner {
+  height: 30px;
+}
+
 /* COLOURS */
 
 h2,
@@ -129,7 +134,7 @@ h3, h4, h5, h6 {
 
 .offers-banner {
     background-color: #ff7b54;
-    color:#292f36;    
+    color:#292f36;      
 }
 
 .capture-services,

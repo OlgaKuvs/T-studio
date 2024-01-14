@@ -30,13 +30,16 @@ def edit_profile(request):
             messages.success(request,                        
                         'Your profile has been updated',
                         extra_tags='flag')
+        else:
+            messages.error(request, 'Update failed. Please ensure the form is valid.')
         return redirect('profile:profile')
-    form = ProfileForm(instance=profile)
-    context = {
-        'form': form
-    }
-    template = 'profiles/edit_profile.html'
-    return render(request, template, context)
+    else:
+        form = ProfileForm(instance=profile)
+        context = {
+            'form': form
+        }
+        template = 'profiles/edit_profile.html'
+        return render(request, template, context)
 
 
 @login_required
