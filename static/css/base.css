@@ -54,6 +54,15 @@ body {
   color: #ff7b54;   
 }
 
+.btn-grey {
+  border: 2px solid #292f36;   
+  background: #fff;
+}
+
+.btn-grey:hover {
+  color: #ff7b54;   
+}
+
 .update-item,
 .delete-item {
     cursor: pointer;

@@ -9,7 +9,7 @@ from django.db.models import Avg
 
 from .models import Product, Category, Review
 from checkout.models import Order
-from .forms import ReviewForm
+from .forms import ReviewForm, ProductForm
 
 
 class ProductListView(ListView):
@@ -81,7 +81,37 @@ def product_detail(request, product_id):
     return render(request, "products/product_detail.html", context)
 
 
+def add_product(request):
+    """ Add a product to the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('core'))
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save()
+            messages.success(request, 
+                            'Successfully added product!',
+                            extra_tags='flag')
+            return redirect(reverse('products:product_detail', args=[product.id]))
+        else:
+            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+    else:
+        form = ProductForm()
+   
+    template = 'products/add_product.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
+
+
 class ReviewView(SuccessMessageMixin, CreateView):
+    """A Class Based View to get product review from
+    the user and redirect him to order history page
+    """
     model = Review
     form_class = ReviewForm
     template_name = 'products/review_product.html'    
