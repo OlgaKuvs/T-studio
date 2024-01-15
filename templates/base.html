@@ -94,12 +94,17 @@
                                 </p>
                             </div>
                         </a>
-                        <div class="dropdown-menu border-0" aria-labelledby="user-options">                           
-                                <a href="{% url 'products:add_product' %}" class="dropdown-item icons-colour">Product Management</a>                                
-                                <a href="{% url 'profile:profile' %}" class="dropdown-item icons-colour">My Profile</a>
-                                <a href="{% url 'account_logout' %}" class="dropdown-item icons-colour">Logout</a>
+                        <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                            {% if request.user.is_authenticated %}
+                                {% if request.user.is_superuser %}                           
+                                    <a href="{% url 'products:add_product' %}" class="dropdown-item icons-colour">Product Management</a>
+                                {% endif %}                                
+                                    <a href="{% url 'profile:profile' %}" class="dropdown-item icons-colour">My Profile</a>
+                                    <a href="{% url 'account_logout' %}" class="dropdown-item icons-colour">Logout</a>
+                            {% else %}
                                 <a href="{% url 'account_signup' %}" class="dropdown-item icons-colour">Register</a>
                                 <a href="{% url 'account_login' %}" class="dropdown-item icons-colour">Login</a>
+                            {% endif %}
                         </div>
                     </li>
                 </ul>
