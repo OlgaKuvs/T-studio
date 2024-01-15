@@ -56,6 +56,12 @@
                     <small class="text-muted mt-1 ">Color: <strong>random</strong></small><br>
                     <small class="text-muted">5 types of needles: <strong>iron, copper, nickel, zinc, silver</strong></small>
                 </p>
+                {% if request.user.is_superuser %}
+                <p>
+                    <a class='btn btn-basic' href="{% url 'products:edit_product' product.id %}"><small>Edit</small></a> 
+                    <a class="btn btn-basic text-danger ml-3" href="{% url 'products:delete_product' product.id %}"><small>Delete</small></a>             
+                </p>
+                {% endif %}   
                 <form class="form" action="{% url 'add_to_cart' product.id %}" method="POST">
                     {% csrf_token %}
                     <div class="form-row">  

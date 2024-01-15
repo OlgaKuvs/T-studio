@@ -6,6 +6,7 @@ from django.urls import reverse_lazy, reverse
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import Avg
+from django.http import HttpResponse
 
 from .models import Product, Category, Review
 from checkout.models import Order
@@ -119,7 +120,9 @@ def edit_product(request, product_id):
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Successfully updated product!')
+            messages.success(request, 
+                            'Successfully updated product!',
+                            extra_tags='flag')
             return redirect(reverse('products:product_detail', args=[product.id]))
         else:
             messages.error(request, 'Failed to update product. Please ensure the form is valid.')
@@ -132,9 +135,35 @@ def edit_product(request, product_id):
         'form': form,
         'product': product,
     }
-
     return render(request, template, context)
 
+
+def delete_product(request, product_id):
+    """ Delete a product from the store """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('core'))  
+    product = get_object_or_404(Product, pk=product_id)
+    delete_product = request.GET.get('delete_product')
+    if product:
+        if delete_product:
+            product.delete()
+            messages.success(request, 'Product deleted!', extra_tags='flag')
+            return redirect('products:products')
+        else:
+            template = 'products/delete_product.html'
+            context = {
+                'product': product,            
+                'flag': True,                 
+            }
+            return render(request, template, context)
+    else:
+        messages.error(request, 
+                    'Sorry, product not exists.', 
+                    extra_tags='flag')
+        return redirect(reverse('products:products'))
+   
+    
 
 class ReviewView(SuccessMessageMixin, CreateView):
     """A Class Based View to get product review from
