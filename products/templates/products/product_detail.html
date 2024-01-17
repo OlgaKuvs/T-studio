@@ -98,31 +98,31 @@
             {% endautoescape %} 
         </div>
     </div>
-    {% if product.reviews.all %} 
-    <div class="row">
-        <div class="col-12 col-lg-8 offset-lg-2 mt-3">
-            <h4>Reviews</h4>
-            <hr>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12 col-lg-8 offset-lg-2">
-                {% for review in product.reviews.all %}
-                    <strong>
-                        {{ review.author }} -  
-                        {{ review.created_at }} 
-                    </strong><br>
-                    {{ review.comment }}
-                    <br>
-                    <p>Rate:
-                        {% if review.rate|add:'0' > 0 %} <span class="fa fa-star"></span>{% else %} <i class='fa fa-star-o text-muted'></i>{% endif %}
-                        {% if review.rate|add:'0' > 1 %} <span class="fa fa-star"></span>{% else %} <i class='fa fa-star-o text-muted'></i>{% endif %}
-                        {% if review.rate|add:'0' > 2 %} <span class="fa fa-star"></span>{% else %} <i class='fa fa-star-o text-muted'></i>{% endif %}
-                        {% if review.rate|add:'0' > 3 %} <span class="fa fa-star"></span>{% else %} <i class='fa fa-star-o text-muted'></i>{% endif %}
-                        {% if review.rate|add:'0' > 4 %} <span class="fa fa-star"></span>{% else %} <i class='fa fa-star-o text-muted'></i>{% endif %}
-                    </p>
-                <hr class="line-review">
-                {% endfor %}
+    {% if reviews %}
+        <div class="row">
+            <div class="col-12 col-lg-8 offset-lg-2 mt-3">
+                <h4>Reviews</h4>
+                <hr>
+            </div>
+        </div>           
+        <div class="row">
+            <div class="col-12 col-lg-8 offset-lg-2">
+            {% for review in reviews %}          
+                <strong>
+                    {{ review.author }} -  
+                    {{ review.created_at }} 
+                </strong><br>
+                {{ review.comment }}
+                <br>
+                <p>Rate:
+                    {% if review.rate|add:'0' > 0 %} <span class="fa fa-star"></span>{% else %} <i class='fa fa-star-o text-muted'></i>{% endif %}
+                    {% if review.rate|add:'0' > 1 %} <span class="fa fa-star"></span>{% else %} <i class='fa fa-star-o text-muted'></i>{% endif %}
+                    {% if review.rate|add:'0' > 2 %} <span class="fa fa-star"></span>{% else %} <i class='fa fa-star-o text-muted'></i>{% endif %}
+                    {% if review.rate|add:'0' > 3 %} <span class="fa fa-star"></span>{% else %} <i class='fa fa-star-o text-muted'></i>{% endif %}
+                    {% if review.rate|add:'0' > 4 %} <span class="fa fa-star"></span>{% else %} <i class='fa fa-star-o text-muted'></i>{% endif %}
+                </p>
+            <hr class="line-review">            
+            {% endfor %}           
     {% endif %} 
         </div>
     </div>

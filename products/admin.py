@@ -25,7 +25,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class ReviewAdmin(admin.ModelAdmin):
-     list_display = (
+    list_display = (
         'user',
         'product',
         'author',     
@@ -34,6 +34,7 @@ class ReviewAdmin(admin.ModelAdmin):
         'created_at',  
         'approved', 
     )
+    readonly_fields = ('user','created_at','approved',)
 
 
 admin.site.register(Product, ProductAdmin)

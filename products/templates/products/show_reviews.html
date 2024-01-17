@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+{% load cart_tools %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container text-center">
+        <div class="row">
+            <div class="col-12 my-auto">
+                <h3 class="top-products-link mt-3 mb-5">Review Approval</h3>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+<div class="container text-center mt-2"> 
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="order-history table-responsive">
+            {% if reviews %}
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th class="m-3">User</th>
+                            <th class="m-3">Author</th>                                        
+                            <th class="m-3">Product</th>
+                            <th class="m-3">Comment</th>
+                            <th class="m-3">Rate</th>
+                            <th class="m-3">Created</th>
+                            <th class="m-3"> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for review in reviews %}
+                            <tr>
+                                <td class="m-3">{{ review.user }} {{ review.id }} </td>
+                                <td class="m-3">{{ review.author }}</td>   
+                                <td class="p-3">{{ review.product }} {{review.product.id }}</td>   
+                                <td class="m-3">{{ review.comment }}</td>                                
+                                <td class="m-3">{{ review.rate }}</td>
+                                <td class="m-3">{{ review.created_at|date:'d M Y'}}</td>
+                                <td class="m-3">
+                                    <a class='btn btn-basic' href="{% url 'products:approve_review' review.product.id review.id %}">
+                                    <small>Approve</small></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <h5 class="top-products-link mt-3">No Reviews to approve</h5>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

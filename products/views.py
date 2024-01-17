@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy, reverse
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
@@ -15,25 +16,28 @@ from .forms import ReviewForm, ProductForm
 
 class ProductListView(ListView):
     """A Class Based View to show all products, including search queries,
-    to calculate and save to DB average product rating
-    """
+    to check average product rating and save it to DB if changed"""
     model = Product    
     template_name = 'products/products.html'
-    context_object_name = 'products'     
+    context_object_name = 'products'
 
-    for product in Product.objects.all():        
-        approved_reviews = Review.objects.filter(product_id=product.id,approved=True)       
-        avg = approved_reviews.aggregate(Avg('rate'))['rate__avg']                     
-        if avg is not None:
-            rounded_avg = 0.5 * round(avg/0.5)
-            product.rating = rounded_avg
-            product.save()    
+    def get(self, request, *args, **kwargs):
+        for product in Product.objects.all():        
+            approved_reviews = Review.objects.filter(product_id=product.id,approved=True)       
+            avg = approved_reviews.aggregate(Avg('rate'))['rate__avg']                     
+            if avg is not None:            
+                rounded_avg = 0.5 * round(avg/0.5)
+                if product.rating != rounded_avg:
+                    product.rating = rounded_avg
+                    product.save()
+            else:
+                product.rating = None
+                product.save()
+        response = super().get(request, *args, **kwargs)        
+        return response      
     
     def get_queryset(self):
-        queryset = super(ProductListView, self).get_queryset()
-        # category_id = self.kwargs.get('category_id')
-        # if category_id:
-        #     queryset = queryset.filter(category_id=category_id)           
+        queryset = super(ProductListView, self).get_queryset()                  
         q = self.request.GET.get('q') 
         if q:
             queryset = self.model.objects.filter(
@@ -43,11 +47,11 @@ class ProductListView(ListView):
         
     def get_context_data(self, object_list=None, **kwargs):
         context = super(ProductListView, self).get_context_data()
-        context['categories'] = Category.objects.all()
+        context['categories'] = Category.objects.all()       
         # context['category_id'] = self.kwargs.get('category_id')        
         context['q'] = self.request.GET.get('q')                               
         return context
-
+    
   
 def CategoryView(request, slug):
     """A view to get all product categories and
@@ -70,18 +74,19 @@ def CategoryView(request, slug):
     
 def product_detail(request, product_id):
     """A view to show individual product details"""
-
-    product = get_object_or_404(Product, pk=product_id)
-    # print(product)
+    product = get_object_or_404(Product, pk=product_id)   
     category = Category.objects.filter(product=product)
-    # print(category)
+    reviews = Review.objects.filter(
+            product_id=product.id,approved=True) 
     context = {
         "product": product,
-        "category": category,        
+        "category": category,
+        "reviews": reviews,         
     }
     return render(request, "products/product_detail.html", context)
 
 
+@login_required
 def add_product(request):
     """ Add a product to the store """
     if not request.user.is_superuser:
@@ -109,6 +114,7 @@ def add_product(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_product(request, product_id):
     """ Edit a product in the store """
     if not request.user.is_superuser:
@@ -138,6 +144,7 @@ def edit_product(request, product_id):
     return render(request, template, context)
 
 
+@login_required
 def delete_product(request, product_id):
     """ Delete a product from the store """
     if not request.user.is_superuser:
@@ -159,10 +166,8 @@ def delete_product(request, product_id):
             return render(request, template, context)
     else:
         messages.error(request, 
-                    'Sorry, product not exists.', 
-                    extra_tags='flag')
+                    'Sorry, product not exists.')
         return redirect(reverse('products:products'))
-   
     
 
 class ReviewView(SuccessMessageMixin, CreateView):
@@ -176,7 +181,7 @@ class ReviewView(SuccessMessageMixin, CreateView):
 
     def get_success_url(self):
         return reverse('profile:order_details', kwargs={
-                       'order_id': self.kwargs['order_id']})   
+                       'order_id': self.kwargs['order_id']})
    
     def form_valid(self, form):
         form.instance.user = self.request.user.userprofile
@@ -191,4 +196,45 @@ class ReviewView(SuccessMessageMixin, CreateView):
         context['product'] = get_object_or_404(Product, pk=self.kwargs['product_id'])
         context['order_id'] = get_object_or_404(Order, id=self.kwargs['order_id'])        
         return context
+    
 
+@login_required
+def show_reviews(request):
+    """ Display all not approved reviews to admin """
+    if not request.user.is_superuser:
+        messages.error(request, 
+                    'Sorry, only store owners can access this page.')
+        return redirect(reverse('core'))    
+    reviews = Review.objects.filter(approved=False)            
+    template = 'products/show_reviews.html'  
+    context = {
+        'reviews': reviews,        
+    }    
+    return render(request, template, context)
+
+
+@login_required
+def approve_review(request, product_id, review_id):
+    """ View to approve review by admin and 
+    to calculate average product rating"""
+    if not request.user.is_superuser:
+        messages.error(request, 
+                'Sorry, only store owners can access this page.')
+        return redirect(reverse('core'))    
+    r_to_approve = Review.objects.get(product_id=product_id,id=review_id)
+    r_to_approve.approved = True
+    r_to_approve.save()
+    """ Calculate and save to DB average product rating"""
+    product = Product.objects.get(pk=product_id)           
+    approved_reviews = Review.objects.filter(product_id=product_id,approved=True)       
+    avg = approved_reviews.aggregate(Avg('rate'))['rate__avg'] 
+    rounded_avg = 0.5 * round(avg/0.5)
+    product.rating = rounded_avg
+    product.save()
+    return redirect('products:show_reviews')
+       
+    
+
+
+
+ 
