@@ -174,16 +174,25 @@ def checkout_success(request, order_number):
             if user_profile_form.is_valid():
                 user_profile_form.save()
             
-            address = UserAddress.objects.create(
+            if not UserAddress.objects.filter(
                 username = profile,                              
                 profile_street_address1 = order.street_address1,
                 profile_street_address2 = order.street_address2,
                 profile_city = order.city,
                 profile_county = order.county,
-                profile_postcode = order.postcode,
-                profile_country = order.country,
-                is_default = False
-            )
+                profile_postcode = order.postcode,                
+                ).exists():            
+            
+                address = UserAddress.objects.create(
+                    username = profile,                              
+                    profile_street_address1 = order.street_address1,
+                    profile_street_address2 = order.street_address2,
+                    profile_city = order.city,
+                    profile_county = order.county,
+                    profile_postcode = order.postcode,
+                    profile_country = order.country,
+                    is_default = False
+                )
 
     messages.success(request, f'Order successfully processed! \
     Your order number is {order_number}. A confirmation \
