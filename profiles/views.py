@@ -66,9 +66,8 @@ def add_address(request):
     if request.method == 'POST':
         form = AddressForm(request.POST) 
         if form.is_valid():
-            """ Check if user wants to save 
-            this shipping address as default or
-            if user has no addresses yet """ 
+            # Check if user wants to save this shipping address
+            #  as default or if user has no addresses yet 
             if form.cleaned_data[
                 'is_default'] == True or not all_addresses.exists():
                 is_default = True               
@@ -142,8 +141,8 @@ def edit_address(request, id):
     if request.method == 'POST':
         form = AddressForm(request.POST, instance=address)
         if form.is_valid():
-            """ Check if user wants to save 
-            this shipping address as default """ 
+            # Check if user wants to save 
+            # this shipping address as default 
             if form.cleaned_data[
                 'is_default'] == True:
                 address.is_default = True               

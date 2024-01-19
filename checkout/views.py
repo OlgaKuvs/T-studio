@@ -110,26 +110,33 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY,       
         )
-         # Attempt to prefill the form with any info
+        # Attempt to prefill the form with any info
         # the user maintains in their profile
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
-                address = UserAddress.objects.get(username=profile, is_default=True)                
+                address = UserAddress.objects.filter(
+                    username=profile, is_default=True).first()                
                 full_name = UserProfile.objects.annotate(full_name=Concat(
                     'first_name', Value(' '), 'last_name')).get(
                     user=request.user).full_name
-                order_form = OrderForm(initial={
-                    'full_name': full_name, 
-                    'email': request.user.email,
-                    'phone_number': profile.phone_number,
-                    'country': address.profile_country,
-                    'postcode': address.profile_postcode,
-                    'city': address.profile_city,
-                    'street_address1': address.profile_street_address1,
-                    'street_address2': address.profile_street_address2,
-                    'county': address.profile_county,
-                })
+                if address:
+                    order_form = OrderForm(initial={
+                        'full_name': full_name, 
+                        'email': request.user.email,
+                        'phone_number': profile.phone_number,
+                        'country': address.profile_country,
+                        'postcode': address.profile_postcode,
+                        'city': address.profile_city,
+                        'street_address1': address.profile_street_address1,
+                        'street_address2': address.profile_street_address2,
+                        'county': address.profile_county,
+                    })
+                else:
+                    order_form = OrderForm(initial={                        
+                        'email': request.user.email,                       
+                    })
+
             except UserProfile.DoesNotExist:
                 order_form = OrderForm()
         else:
@@ -198,6 +205,7 @@ def checkout_success(request, order_number):
     Your order number is {order_number}. A confirmation \
     email will be sent to {order.email}.')
 
+    # Send confirmation e-mail
     cust_email = order.email
     subject = render_to_string(
         'checkout/confirmation_emails/confirmation_email_subject.txt',

@@ -15,13 +15,13 @@
 
 {% block content %}   
     <div class="container mt-2">
-        <div class="row">
-            <div class="col">
+        <div class="row text-center">
+            <div class="col-12">
                 <hr>                
                 <p>Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong>.</p>
             </div>
         </div>
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-12 col-lg-7">
                 <div class="order-confirmation-wrapper p-2 border mb-3">
                     <div class="row">
@@ -47,7 +47,7 @@
                             <p class="mb-0">{{ order.date }}</p>
                         </div>
                     </div>
-
+                    <hr>
                     <div class="row">
                         <div class="col">
                             <small class="text-muted">Order Details:</small>
@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     {% endfor %}
-
+                    <hr>
                     <div class="row">
                         <div class="col">
                             <small class="text-muted">Delivering To:</small>
@@ -142,6 +142,7 @@
                             <p class="mb-0">{{ order.phone_number }}</p>
                         </div>
                     </div>
+                    <hr>
                     <div class="row">
                         <div class="col">
                             <small class="text-muted">Billing Info:</small>
