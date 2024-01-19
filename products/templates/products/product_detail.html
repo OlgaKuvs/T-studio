@@ -54,7 +54,9 @@
                 {% endif %}
                 <p><br>
                     <small class="text-muted mt-1 ">Color: <strong>random</strong></small><br>
+                {% if product.id != 13 %}
                     <small class="text-muted">5 types of needles: <strong>iron, copper, nickel, zinc, silver</strong></small>
+                {% endif %}
                 </p>
                 {% if request.user.is_superuser %}
                 <p>

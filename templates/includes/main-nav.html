@@ -18,7 +18,7 @@
             </div>
         </li>
         <li class="nav-item dropdown bg-header">
-            <a class="text_upper font-weight-bold nav-link mr-5 text-black dropdown-toggle" href="#" id="shop-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="text_upper font-weight-bold nav-link mr-5 dropdown-toggle" href="#" id="shop-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Shop
             </a>
             <div class="dropdown-menu dropdown-main-menu border-0 mt-0 rounded-0" aria-labelledby="shop-link">
@@ -29,15 +29,10 @@
                 <a href="{% url 'products:category' 'Massagers' %}" class="dropdown-item text_upper">Massagers</a>
                 <a href="{% url 'products:products' %}" class="dropdown-item text_upper">All products</a>                  
             </div>
-        </li>
+        </li>        
         <li class="nav-item d-block">
-            <a class="text_upper font-weight-bold nav-link mr-5" href="#" id="">
-                Articles
-            </a>
-        </li>
-        <li class="nav-item d-block">
-            <a class="text_upper font-weight-bold nav-link mr-5" href="#" id="">
-                About us
+            <a class="text_upper font-weight-bold nav-link mr-5" href="{% url 'contact' %}" id="">
+                Contact us
             </a>
         </li>
     </ul>
