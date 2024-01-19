@@ -54,14 +54,14 @@ body {
   color: #ff7b54;   
 }
 
-.btn-grey {
-  border: 2px solid #939b62;  
+.btn-cancel {
+  border: 2px solid #939b62 !important;  
   background: #fff;
   color: #292f36; 
 }
 
-.btn-grey:hover {
-  color: #939b62;    
+.btn-cancel:hover {
+  color: #939b62 !important;     
 }
 
 .update-item,

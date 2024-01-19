@@ -5,7 +5,7 @@
 <div class="container header-container">
     <div class="row text-center">
         <div class="col-12 mt-2 my-auto">
-            <h3><a class="top-products-link" href="{% url 'products:products' %}">Products</a>{% if category_products %}  | {{ slug }}{% endif %}</h3> 
+            <h3><a class="top-products-link" href="{% url 'products:products' %}">Applicators</a>{% if category_products %}  | {{ slug }}{% endif %}</h3> 
             {% for category in categories %}                         
                 <a class="category-badge text-decoration-none" href="{% url 'products:category' category.name %}">
                     <span class="p-2 badge badge-category ">{{ category.friendly_name }}</span>
@@ -127,7 +127,7 @@
                                 <div class="col">
                                     <p class="lead mb-0 text-left font-weight-bold">€{{ product.price }}</p>
                                     {% if product.category %}
-                                    <p class="small mt-1 mb-0">
+                                    <p class="mt-1 mb-0">
                                         <a class="text-muted"
                                             href="{% url 'products:category' product.category.name %}">
                                             <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}

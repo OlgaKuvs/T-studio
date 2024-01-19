@@ -23,7 +23,7 @@
     <div class="row justify-content-center">
         <div class="col-12 col-md-6">
             <a href="{% url 'products:delete_product' product.id %}?delete_product=true" class="btn btn-basic">Delete</a>
-            <a href="{% url 'products:product_detail' product.id %}" class="btn btn-grey ml-3">Cancel</a>
+            <a href="{% url 'products:product_detail' product.id %}" class="btn btn-cancel ml-3">Cancel</a>
         </div>
     </div>
 </div>
