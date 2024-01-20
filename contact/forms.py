@@ -7,6 +7,9 @@ class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
         fields = '__all__'
+        widgets = {
+            'message': forms.Textarea(attrs={'rows': 5, 'cols': 90, 'maxlength': 500})
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
