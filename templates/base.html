@@ -41,28 +41,28 @@
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner offers-banner">
               <div class="carousel-item active">
-                <span class="offer-therapy d-flex justify-content-center text-uppercase d-block w-100">The first group yoga class is &nbsp; <strong>FREE!</strong></span>          
+                <span class="offer-therapy w-100">The first group yoga class is &nbsp; <strong>FREE!</strong></span>          
               </div>
               <div class="carousel-item">
-                <span class="offer-therapy d-flex justify-content-center text-uppercase d-block w-100"><strong>30% OFF</strong>&nbsp; first therapy!</span> 
+                <span class="offer-therapy w-100"><strong>30% OFF</strong>&nbsp; first therapy!</span> 
               </div>
             </div>
         </div>
-        <div id="topnav" class="row bg-logo pt-lg-2 d-lg-flex">
+        <div id="topnav" class="row bg-logo pt-2 d-lg-flex">
             <div class="col-12 col-lg-3 my-auto py-1 py-lg-0 text-left d-none d-lg-block">
-                <a href="{% url 'core' %}" class="nav-link logo-link">
-                    <h2 class="logo-font my-0 logo-colour"><strong>T-STUDIO</strong></h2>
+                <a href="{% url 'core' %}">
+                    <img class='logo-img' src="{{ MEDIA_URL }}logo-t-studio.png" alt="Logo T-STUDIO">
                 </a>
             </div>
-            <div class="col-12 col-lg-6 py-2 py-lg-3 d-none d-lg-block">
-                <h3 class="logo-font my-0 text-center" id="slogan">HEALTHY BODY, MIND AND SPIRIT</h3>
+            <div class="col-12 col-lg-6 py-2 py-lg-3 d-none d-lg-block text-center">
+                <h3 class="logo-font text-center" id="slogan">HEALTHY BODY, MIND AND SPIRIT</h3>
             </div>
             <div class="col-12 col-lg-3 py-lg-0">
                 <ul class="list-inline list-unstyled my-0">
                     <li class="list-inline-item d-lg-none">
                         <div class="text-left"> 
-                            <a href="{% url 'core' %}" class="nav-link logo-link">
-                                <h2 class="logo-font my-0 logo-colour"><strong>T-STUDIO</strong></h2>
+                            <a href="{% url 'core' %}">
+                                <img class='logo-img' src="{{ MEDIA_URL }}logo-t-studio.png" alt="Logo T-STUDIO">
                             </a>
                         </div>
                     </li>

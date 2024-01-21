@@ -9,12 +9,7 @@ body {
   font-family: 'Lato';
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-}
-
-
-.header-container {
-  margin-top: 150px; 
+  height: calc(100vh - 200px);
 }
 
 .product-container {
@@ -54,10 +49,10 @@ body {
   color: #ff7b54;   
 }
 
-.btn-cancel {
+.btn-cancel {  
+  background-color: #fff !important; 
   border: 2px solid #939b62 !important;  
-  background: #fff;
-  color: #292f36; 
+  color: #292f36;   
 }
 
 .btn-cancel:hover {
@@ -101,7 +96,7 @@ h3, h4, h5, h6 {
 
 .bg-header,
 .dropdown-main-menu {    
-    background: #ffd56f !important;
+  background: #d3815b !important; 
 }
 
 .logo-colour {
@@ -118,8 +113,7 @@ h3, h4, h5, h6 {
 }
 
 .bg-dropdown a:hover,
-.bg-logo,
-.bg-header {
+.bg-logo {
     background-color: #fff;
 }
 
@@ -133,7 +127,7 @@ h3, h4, h5, h6 {
 }
 
 .offers-banner {
-    background-color: #ff7b54;
+    background-color: #d3815b;
     color:#292f36;      
 }
 
@@ -162,14 +156,31 @@ header {
     padding: 0 !important;
 }
 
+.header-container {
+  padding-top: 200px; 
+}
+
 .logo-link {
     width: -moz-fit-content;
     width: fit-content; 
     font-family: 'Merriweather', serif;  
 }
 
+.logo-font {
+  text-transform: uppercase;
+}
+
+.logo-img {
+  margin-left: 20px;
+  padding-bottom: 8px;
+}
+
 .navbar {
     padding: 0 !important;
+}
+
+.navbar-collapse {
+  background-color: #d3815b;
 }
 
 .nav-link {
@@ -185,6 +196,14 @@ header {
     white-space: nowrap;
     color: #939b62;
     font-family: 'Merriweather', serif;
+    text-align: center; 
+}
+
+.offer-therapy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
 }
 
 .cart,
@@ -203,8 +222,8 @@ header {
 /* FOOTER */
 
 .footer-container {
-    background-color: #ffd56f;
-    padding: 15px;    
+  background: linear-gradient(90deg, #d3815b, #b9b59d); 
+  padding: 15px;    
 }
 
 .footer-content > ul > li {

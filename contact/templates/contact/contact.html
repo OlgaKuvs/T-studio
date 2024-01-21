@@ -11,7 +11,7 @@
     <div class="container header-container">
         <div class="row">
             <div class="col text-center mt-3">
-                <h4 class="mt-3 map-text">Contact Us<br>                
+                <h4>Contact Us</h4>                
                 <hr>
             </div>
         </div>
@@ -27,7 +27,7 @@
                 {{ form | crispy }}
                 <div class="text-right">                    
                     <button class="btn btn-basic" type="submit">Submit form</button>
-                    <a class="btn btn-cancel ml-3" href="{% url 'contact' %}">Cancel</a>
+                    <a type="button" class="btn btn-cancel ml-3" href="{% url 'contact' %}">Cancel</a>
                 </div>
             </form>
         </div>            

@@ -19,7 +19,7 @@ def contact(request):
             message = form.cleaned_data['message']
             subject = 'New Contact Us Form Submission'
             body = f'''Name: {name}\nEmail: {email}
-            \nPhone:{phone}\nMessage: {message}'''
+            Phone:{phone}\nMessage: {message}'''
             send_mail(
                 subject,
                 body,
