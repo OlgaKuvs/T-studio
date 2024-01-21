@@ -50,9 +50,8 @@
                 <form method="POST" action="" class="form mb-2">
                     {% csrf_token %}
                     {{ form | crispy }}
-                    <div class="text-right">                    
-                        <button class="btn btn-basic" type="submit">Send</button>
-                        <a type="button" class="btn btn-cancel ml-3" href="{% url 'contact' %}">Cancel</a>
+                    <div class="text-left">                    
+                        <button class="btn btn-basic" type="submit">Submit</button>                       
                     </div>
                 </form>
                 

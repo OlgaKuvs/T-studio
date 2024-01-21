@@ -153,20 +153,63 @@
                     <div class="col-md-4 col-sm-12">
                         <div class="footer-content">                    
                             <ul>
-                            <li class="mt-5">Contact Us</li>
-                            <li class="mt-2">Refund money</li>
-                            <li class="mt-2">Delivery information</li>
-                            <li class="mt-2">FAQ</li>
+                                <li class="mt-md-5"><a class="nav-link" href="{% url 'contact' %}">Contact Us</a></li>
+                                <li><a class="nav-link" href="#">Refund money</a></li>
+                                <li><a class="nav-link" href="#">Delivery information</a></li>
+                                <li><a class="nav-link" href="#">FAQ</a></li>
                             </ul>
+                            <hr class="d-block d-md-none">
                         </div>
-                    </div>
+                    </div>                    
                     <div class="col-md-4 col-sm-12">
-                       
+                        <div id="mc_embed_shell">
+                            <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">                           
+                            <div id="mc_embed_signup">
+                                <form
+                                    action="https://inbox.us8.list-manage.com/subscribe/post?u=faa5f0ae36fedb4e8f36433be&amp;id=3f33bb9cc2&amp;f_id=001c77e0f0"
+                                    method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
+                                    target="_blank">
+                                    <div id="mc_embed_signup_scroll">
+                                        <h2>Subscribe</h2><span>to get extra offers and discounts</span>                                                                              
+                                        <div class="mc-field-group"><label for="mce-EMAIL">Email Address <span
+                                                    class="asterisk asterisk-black">*</span></label>
+                                        <input type="email" name="EMAIL" class="required email w-100"
+                                                id="mce-EMAIL" required="" value=""></div>
+                                        <div id="mce-responses" class="clear foot">
+                                            <div class="response" id="mce-error-response" style="display: none;"></div>
+                                            <div class="response" id="mce-success-response" style="display: none;"></div>
+                                        </div>
+                                        <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                                            /* real people should not fill this in and expect good things - do not remove this or risk form bot
+                                            signups */
+                                            <input type="text" name="b_faa5f0ae36fedb4e8f36433be_3f33bb9cc2" tabindex="-1" value="">
+                                        </div>
+                                        <div class="optionalParent">
+                                            <div class="clear foot">
+                                                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button"
+                                                    value="Subscribe">
+                                                {% comment %}
+                                                <p style="margin: 0px auto;"><a href="http://eepurl.com/iEEleM"
+                                                        title="Mailchimp - email marketing made easy and fun"><span
+                                                            style="display: inline-block; background-color: transparent; border-radius: 4px;"><img
+                                                                class="refferal_badge"
+                                                                src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-dark.svg"
+                                                                alt="Intuit Mailchimp"
+                                                                style="width: 220px; height: 40px; display: flex; padding: 2px 0px; justify-content: center; align-items: center;"></span></a>
+                                                </p>
+                                                {% endcomment %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <hr class="d-block d-md-none">
+                        </div>
                     </div>
                     <div class="col-md-4 col-sm-12">
                     <div class="footer-content">
                         <ul>                       
-                            <li class="mt-5">Unit 1, T-Studio Homeworld,</li>
+                            <li class="mt-md-5">Unit 1, T-Studio Homeworld,</li>
                             <li>Oranmore Business Park</li>
                             <li>Carrowmoneash</li>
                             <li>Oranmore, Co. Galway</li>
@@ -174,6 +217,9 @@
                             <li>E-mail: tstudio.ie@gmail.com</li>
                             <li>Mob. 087 1762608</li> 
                         </ul>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+
                     </div>
                 </div>                 
             </div>         
@@ -188,6 +234,26 @@
         //     $('.toast').toast('hide');
         // }, "7000");   
     </script>
+
+<script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+<script type="text/javascript">
+    (function($) {
+        window.fnames = new Array(); window.ftypes = new Array();
+    fnames[0]='EMAIL';
+    ftypes[0]='email';
+    fnames[1]='FNAME';
+    ftypes[1]='text';
+    fnames[2]='LNAME';
+    ftypes[2]='text';
+    fnames[3]='ADDRESS';
+    ftypes[3]='address';
+    fnames[4]='PHONE';
+    ftypes[4]='phone';
+    fnames[5]='BIRTHDAY';
+    ftypes[5]='birthday';
+    }
+    (jQuery));var $mcj = jQuery.noConflict(true);</script>                     
+                     
     {% endblock %}
 
  </body>

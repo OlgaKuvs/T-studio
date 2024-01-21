@@ -30,7 +30,7 @@ body {
   align-content: center;  
 }
 
-.text_upper {
+.text-upper {
     text-transform: uppercase;
 }
 
@@ -119,6 +119,10 @@ h3, h4, h5, h6 {
 .nav-link,
 .dropdown-item {
   color: #292f36 !important;
+}
+
+.nav-link:hover {
+  color: #e7e7e7 !important;
 }
 
 .bg-dropdown a:hover,
@@ -246,6 +250,10 @@ header {
   height: 225px;
 }
 
+.contact-main {
+  display: flex;
+  justify-content: center;    
+}
 
 /* FOOTER */
 
@@ -319,6 +327,31 @@ header {
   border-radius: 0;
 }
 
+/* Mailchimp */
+
+#mc_embed_signup {
+  background: transparent; 
+  clear: left; 
+  width: 100%;
+}
+
+#mc-embedded-subscribe {  
+  background: #fff !important;
+  color: #292f36 !important;
+  /* border: 2px solid #d3815b !important; */
+  box-shadow: 2px 2px 4px #636c72;
+  border-radius: 0.25rem; 
+}
+
+#mc-embedded-subscribe:hover {
+  color: #ff7b54 !important;  
+  box-shadow: inset 1px 1px 1px #636c72;
+  transition: 0.5s !important;
+}
+
+.asterisk-black {
+  color: #292f36 !important;
+}
 
 /* Media */
 
@@ -327,11 +360,6 @@ header {
   .update-form,
   .form-control {
     min-width: 100% !important;
-  }
-
-  .contact-main {
-    display: flex;
-    justify-content: center;
   }
 
   .map-size {
@@ -354,6 +382,7 @@ header {
   }
  
 }
+
 
 /* Carousel */
 
