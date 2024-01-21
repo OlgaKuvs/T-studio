@@ -29,13 +29,15 @@
                 {% endif %}
             {% endif %}            
         </div>
-        <div class="col-9 offset-1 mb-2 d-lg-flex d-none justify-content-end">
+    </div>
+    <div class="row">
+        <div class="col-lg-9 offset-1 mb-2 d-flex justify-content-end">
             <div class="search-block">
                 <form method="GET" action="{% url 'products:products' %}">
                     <div class="input-group w-100">
-                        <input class="form-control border border-black rounded-0" type="text" name="q" placeholder="Search our store">
+                        <input class="form-custom border border-grey" type="text" name="q" placeholder="Search our store">
                         <div class="input-group-append">
-                            <button class="form-control btn-orange" type="submit">
+                            <button class="form-custom btn-orange" type="submit">
                                 <span class="icon">
                                     <i class="fas fa-search"></i>
                                 </span>
@@ -45,28 +47,7 @@
                 </form>
             </div>
         </div>
-        <div class="col-9 offset-1 mb-2 d-flex justify-content-end search-box">
-            <a class="text-black nav-link d-block d-lg-none" href="#" id="mobile-search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <div class="text-center">
-                    <div><i class="fas fa-search fa-lg"></i></div>                    
-                </div>
-            </a>
-            <div class="dropdown-menu border-0 w-100 p-3 rounded-0 my-0 mx-auto" aria-labelledby="mobile-search">
-                <form class="form d-flex justify-content-end" method="GET" action="{% url 'products:products' %}">
-                    <div class="input-group w-50">
-                        <input class="form-control border border-black rounded-0" type="text" name="q" placeholder="Search our store">
-                        <div class="input-group-append">
-                            <button class="form-control btn btn-orange" type="submit">
-                                <span class="icon">
-                                    <i class="fas fa-search"></i>
-                                </span>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div> 
-    </div>
+    </div>   
     <div class="row justify-content-center">
         <div class="product-container h-100 col-10 mb-4">
             <div class="row product-row">
