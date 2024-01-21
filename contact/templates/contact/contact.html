@@ -19,18 +19,45 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-6">
-            <form method="POST" action="" class="form mb-2">
-                {% csrf_token %}
-                {{ form | crispy }}
-                <div class="text-right">                    
-                    <button class="btn btn-basic" type="submit">Submit form</button>
-                    <a type="button" class="btn btn-cancel ml-3" href="{% url 'contact' %}">Cancel</a>
+<div class="container main">
+    <div class="row">
+        <div class="col-12 col-md-6 contact-main">
+            <div class="mt-3">
+                <h5>Our address:</h5>
+                <div>
+                    <ul class="contact-list">                       
+                        <li>Unit 1, T-Studio Homeworld,</li>
+                        <li>Oranmore Business Park</li>
+                        <li>Carrowmoneash</li>
+                        <li>Oranmore, Co. Galway</li>
+                        <li>H91 X4F5<br><br></li>                       
+                        <li>E-mail: tstudio.ie@gmail.com</li>
+                        <li>Mob. 087 1762608</li> 
+                    </ul>
                 </div>
-            </form>
-        </div>            
+                <div>
+                    <h5>Our location:</h5>
+                    <div class="footer-content google-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38168.83627818987!2d-9.026838266000743!3d53.279641470693775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x485b91774f63465b%3A0xda92239c3e7f5f9b!2sHolistic%20and%20Sport%20Massage.%20Hatha%20Yoga!5e0!3m2!1sru!2sie!4v1701265111115!5m2!1sru!2sie" 
+                        class="map-size" frameborder="0" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade" title="Google maps"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 contact-main">
+            <div class="mb-3 mt-3">
+                <h5>Contact form:</h5>
+                <form method="POST" action="" class="form mb-2">
+                    {% csrf_token %}
+                    {{ form | crispy }}
+                    <div class="text-right">                    
+                        <button class="btn btn-basic" type="submit">Send</button>
+                        <a type="button" class="btn btn-cancel ml-3" href="{% url 'contact' %}">Cancel</a>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
     </div>
 </div>
 

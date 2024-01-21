@@ -116,6 +116,11 @@ h3, h4, h5, h6 {
     color:#ff7b54;
 }
 
+.nav-link,
+.dropdown-item {
+  color: #292f36 !important;
+}
+
 .bg-dropdown a:hover,
 .bg-logo {
     background-color: #fff;
@@ -198,11 +203,6 @@ header {
     padding: 0.15rem;
 }
 
-.nav-link,
-.dropdown-item {
-  color: #292f36 !important;
-}
-
 .navbar-shop {
     padding: 10px !important;
 }
@@ -232,6 +232,18 @@ header {
   height: 150px;   
   overflow-x: hidden;
   overflow-y: auto;  
+}
+
+/* CONTACT US */
+
+.contact-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.map-size {
+  width: 300px;  
+  height: 225px;
 }
 
 
@@ -316,6 +328,18 @@ header {
   .form-control {
     min-width: 100% !important;
   }
+
+  .contact-main {
+    display: flex;
+    justify-content: center;
+  }
+
+  .map-size {
+    width: 250px;  
+    height: 190px;
+  }
+
+
 }
 
 @media only screen and (max-width: 992px){
