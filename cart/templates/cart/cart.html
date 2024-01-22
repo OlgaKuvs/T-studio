@@ -16,78 +16,108 @@
 <div class="container mb-2 mt-2"> 
     <div class="row">
         <div class="col">
-            {% if cart_items %}           
-                <div class="table-responsive d-block">
-                    <table class="table table-sm table-borderless">
-                        <thead class="text-black">
-                            <tr>
-                                <th scope="col">Product Info</th>
-                                <th scope="col"></th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Qty</th>
-                                <th scope="col">Subtotal</th>
-                            </tr>
-                        </thead>
-
-                        {% for item in cart_items %}
-                            <tr>
-                                <td class="p-3 w-25">
-                                    {% if item.product.image %}
-                                    <img class="img-fluid rounded" src="{{ item.product.image.url }}" alt="{{ item.product.name }}" width="100" height="100">
-                                    {% else %}
-                                    <img class="img-fluid rounded" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
-                                    {% endif %}
-                                </td>
-                                <td class="py-3">
-                                    <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                                </td>
-                                <td class="py-3">
-                                    <p class="my-0">€{{ item.product.price }}</p>
-                                </td>
-                                <td class="py-3 w-25">
-                                    <form class="form update-form w-50" method="POST" action="{% url 'adjust_cart' item.item_id %}">
-                                        {% csrf_token %}
-                                        <div class="form-group">
-                                            <div class="input-group input-group-{{ item.item_id }}">            
-                                                <input class="form-control form-control-sm qty_input id_qty_{{ item.item_id }}" type="number"
-                                                    name="quantity" value="{{ item.quantity }}" min="1" max="99"
-                                                    data-item_id="{{ item.item_id }}" id="item_quantity"> 
-                                            </div>
-                                        </div>
-                                    </form>
-                                    <a class="update-item text-info mr-3" data-item="{{ item.item_id }}"><small>Update</small></a>
-                                    <a class="delete-item text-danger" id="delete_{{ item.item_id }}"><small>Remove</small></a>
-                                </td>
-                                <td class="py-3">
-                                    <p class="my-0">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                        <tr>
-                            <td colspan="5" class="pt-5 text-right">
-                                <h6 class="text-black"><strong>Cart Total: €{{ total|floatformat:2 }}</strong></h6>
-                                <h6 class="text-black"><strong>Shipping costs: €{{ shipping_cost }}</strong></h6>
-                                <h4 class="mt-4 text-black"><strong>Grand Total: €{{ grand_total|floatformat:2 }}</strong></h4>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" class="text-right">
-                                <a href="{% url 'products:products' %}" class="btn btn-basic mt-2 mr-2">
-                                    <span class="icon">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="text-uppercase">Keep Shopping</span>
-                                </a>
-                                <a href="{% url 'checkout' %}" class="btn btn-basic mt-2">
-                                    <span class="text-uppercase">Secure Checkout</span>
-                                    <span class="icon">
-                                        <i class="fas fa-lock"></i>
-                                    </span>
-                                </a>
-                            </td>
-                        </tr>
-                    </table>
+            {% if cart_items %}
+            <div class="d-block d-sm-none text-center">                
+                {% for item in cart_items %}
+                    <div class="row">
+                        <div class="col-12 col-sm-6 mb-2">
+                            {% include "cart/product-image.html" %}
+                        </div>
+                        <div class="col-12 col-sm-6 mb-2">
+                            {% include "cart/product-info.html" %}
+                        </div>
+                        <div class="col-12 col-sm-6 mb-2"> 
+                            <p class="my-0">Subtotal: €{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                        </div>                      
+                        <div class="col-12 col-sm-6 offset-sm-4">
+                            {% include "cart/quantity-form.html" %}
+                        </div>
+                    </div>
+                    <div class="row"><div class="col"><hr></div></div>
+                {% endfor %}
+                <div class="row">
+                    <div class="col text-right">
+                        {% include "cart/cart-total.html" %}
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="col">
+                        {% include "cart/checkout-buttons.html" %}                       
+                    </div>
+                </div>               
+            </div>
+
+            <div class="table-responsive d-none d-sm-block">
+                <table class="table table-sm table-borderless">
+                    <thead class="text-black">
+                        <tr>
+                            <th scope="col">Product Info</th>
+                            <th scope="col"></th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Qty</th>
+                            <th scope="col">Subtotal</th>
+                        </tr>
+                    </thead>
+
+                    {% for item in cart_items %}
+                        <tr>
+                            <td class="p-3 w-25">
+                                {% if item.product.image %}
+                                <img class="img-fluid rounded" src="{{ item.product.image.url }}" alt="{{ item.product.name }}" width="100" height="100">
+                                {% else %}
+                                <img class="img-fluid rounded" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
+                                {% endif %}
+                            </td>
+                            <td class="py-3">
+                                <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+                            </td>
+                            <td class="py-3">
+                                <p class="my-0">€{{ item.product.price }}</p>
+                            </td>
+                            <td class="py-3 w-25">
+                                <form class="form update-form w-50" method="POST" action="{% url 'adjust_cart' item.item_id %}">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <div class="input-group input-group-{{ item.item_id }}">            
+                                            <input class="form-control form-control-sm qty_input id_qty_{{ item.item_id }}" type="number"
+                                                name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                                data-item_id="{{ item.item_id }}" id="item_quantity"> 
+                                        </div>
+                                    </div>
+                                </form>
+                                <a class="update-item text-info mr-3" data-item="{{ item.item_id }}"><small>Update</small></a>
+                                <a class="delete-item text-danger" id="delete_{{ item.item_id }}"><small>Remove</small></a>
+                            </td>
+                            <td class="py-3">
+                                <p class="my-0">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="5" class="pt-5 text-right">
+                            <h6 class="text-black"><strong>Cart Total: €{{ total|floatformat:2 }}</strong></h6>
+                            <h6 class="text-black"><strong>Shipping costs: €{{ shipping_cost }}</strong></h6>
+                            <h4 class="mt-4 text-black"><strong>Grand Total: €{{ grand_total|floatformat:2 }}</strong></h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" class="text-right">
+                            <a href="{% url 'products:products' %}" class="btn btn-basic btn-order btn-left mt-2">
+                                <span class="icon">
+                                    <i class="fas fa-chevron-left"></i>
+                                </span>
+                                <span class="text-uppercase">Keep Shopping</span>
+                            </a>
+                            <a href="{% url 'checkout' %}" class="btn btn-basic btn-order btn-right mt-2">
+                                <span class="text-uppercase">Secure Checkout</span>
+                                <span class="icon">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
             {% else %}                        
                 <p class="lead mb-5">Your cart is empty.</p>
                 <a href="{% url 'products:products' %}" class="btn btn-basic">

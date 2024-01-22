@@ -46,6 +46,10 @@ body {
   color: #ff7b54;   
 }
 
+.btn-left {
+  margin-right: 15px;
+}
+
 .btn-cancel {  
   background-color: #fff !important; 
   border: 2px solid #939b62 !important;  
@@ -372,6 +376,10 @@ header {
   .btn-right {
     margin-top: 16px;
   }
+
+  .btn-left {
+    margin-right: 0;
+  }
   
   .submit-button {
     display: flex;
@@ -384,10 +392,27 @@ header {
 
 @media only screen and (max-width: 576px) {
 
+  body {
+    font-size: 0.9rem;
+  }
+
   .img-box {
     display: none;
   }
 
+  .btn-basic {
+    font-size: 0.85rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  h4 {
+    font-size: 1.2rem;
+  }
+
+ 
 }
 
 @media only screen and (max-width: 767px) {
@@ -416,5 +441,7 @@ header {
 
   .nav-item {
     padding-left: 10px;
-  } 
+  }
+
+ 
 }
