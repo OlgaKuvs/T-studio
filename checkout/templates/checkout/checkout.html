@@ -11,6 +11,7 @@
         <div class="row text-center">
             <div class="col-12 mt-2 my-auto">
                 <h3 class="top-products-link">Checkout</h3>
+                <hr>
             </div>
         </div>
     </div>
@@ -25,13 +26,13 @@
                 <div class="col-7 offset-2">
                     <p class="mb-1 mt-0 small text-muted">Item</p>
                 </div>
-                <div class="col-3 text-right">
+                <div class="col-3 offset-xs-2 offset-sm-0 text-right">
                     <p class="mb-1 mt-0 small text-muted">Subtotal</p>
                 </div>
             </div>
             {% for item in cart_items %}
                 <div class="row">
-                    <div class="col-2 mb-1">
+                    <div class="col-2 mb-1 img-box">
                         <a href="{% url 'products:product_detail' item.product.id %}">
                             {% if item.product.image %}
                                 <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}">
@@ -44,8 +45,8 @@
                         <p class="my-0"><strong>{{ item.product.name }}</strong></p>                        
                         <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
                     </div>
-                    <div class="col-3 text-right">
-                        <p class="my-0 small text-muted">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                    <div class="col-xs-5 col-sm-3 text-right">
+                        <p class="my-0 small text-muted ">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
                     </div>
                 </div>
             {% endfor %}
@@ -105,13 +106,13 @@
                 </fieldset>
 
                 <div class="submit-button text-right mt-5 mb-2">                    
-                    <a href="{% url 'view_cart' %}" class="btn btn-basic mr-3">
+                    <a href="{% url 'view_cart' %}" class="btn btn-basic mr-3 btn-order">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
                         </span>
                         <span class="text-uppercase">Adjust Cart</span>
                     </a>
-                    <button id="submit-button" class="btn btn-basic">
+                    <button id="submit-button" class="btn btn-basic btn-order btn-right">
                         <span class="text-uppercase">Complete Order</span>
                         <span class="icon">
                             <i class="fas fa-lock"></i>

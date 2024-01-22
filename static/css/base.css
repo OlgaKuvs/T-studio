@@ -1,5 +1,6 @@
 html {
-    height: 100%;
+    position: relative;
+    min-height: 100%;
     margin: 0;
 }
 
@@ -9,7 +10,8 @@ body {
   font-family: 'Lato';
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 200px);
+  min-height: 100vh;
+  /* height: calc(100vh - 200px);   */
 }
 
 .product-container {
@@ -20,10 +22,6 @@ body {
   background: transparent !important;
 }
 
-.btn-orange {
-  border-radius: 0.25rem; 
-}
-
 .product-row, 
 .product-container {
   justify-content: center;
@@ -32,10 +30,6 @@ body {
 
 .text-upper {
     text-transform: uppercase;
-}
-
-.form-custom {
-  border-radius: .25rem;
 }
 
 .products-link:hover,
@@ -79,6 +73,10 @@ body {
 .bg-header,
 .offers-banner {
   height: 30px;
+}
+
+.profile-main {
+  padding-left: 15px;
 }
 
 /* COLOURS */
@@ -138,7 +136,12 @@ h3, h4, h5, h6 {
 .btn-orange {
   background-color: #ff7b54;
   border: none;
+  border-radius: 0 0.25rem 0.25rem 0;
   color:#292f36;
+}
+
+.form-custom {
+  border-radius: 0.25rem 0 0 0.25rem;
 }
 
 .offers-banner {
@@ -259,7 +262,10 @@ header {
 
 .footer-container {
   background: linear-gradient(90deg, #d3815b, #b9b59d); 
-  padding: 15px;    
+  padding: 15px;
+  position: sticky;
+  bottom: 0 !important;
+  width: 100%;
 }
 
 .footer-content > ul > li {
@@ -355,7 +361,36 @@ header {
 
 /* Media */
 
-@media (min-width: 320px) and (max-width: 767px) {
+@media only screen and (max-width: 400px) {  
+
+  .btn-order {
+    margin-left: 40px;
+    width: 70%;
+    text-align: center;
+  }
+
+  .btn-right {
+    margin-top: 16px;
+  }
+  
+  .submit-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  
+}
+
+@media only screen and (max-width: 576px) {
+
+  .img-box {
+    display: none;
+  }
+
+}
+
+@media only screen and (max-width: 767px) {
 
   .update-form,
   .form-control {
@@ -366,6 +401,8 @@ header {
     width: 250px;  
     height: 190px;
   }
+
+  
 
 
 }

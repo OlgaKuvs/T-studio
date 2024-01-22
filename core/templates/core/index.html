@@ -15,7 +15,7 @@
 
 {% block content %}
 <div class="container main text-center">
-    <h3 class="py-3">Our Services</h3>
+    <h3 class="py-3">T-STUDIO Services</h3>
         <div class="container py-3">
         <div class="p-1 m-n3 overflow-hidden">
             <div id="carousel-multiple" class="carousel slide carousel-multiple" data-ride="carousel"
@@ -48,7 +48,7 @@
                 </div>
                 <div class="carousel-item col-sm-6 col-md-4 col-lg-3 col-xl-2">
                     <div class="w-100">
-                    <a href="#">
+                    <a href="{% url 'products:products' %}">
                         <img class='img-fluid rounded' src="{{ MEDIA_URL }}applicator.jpg" alt="Mechanical therapy">
                         <p class="capture-services">Mechanical therapy</p>
                     </a>
@@ -100,12 +100,14 @@
         </div>
         </div>
         <h3 class="py-3">About Us</h3>
-        <p class="text-left">We are two specialists in natural and holistic methods of treatment.</p>
-        <p class="text-left"><strong>Dmitrij Tkachenko</strong>, has been practicing since 1995.<br>
-        Degrees: Medical Doctor (Ukraine), Medical Scientist (B.Sc, GMITIreland).<br>                
-        Certificates and Diplomas: Medical Massage and Rehab Exercises, Dynamic Electrical Stimulation, Needle Applicator Devices.
-        </p>
-        <h3 class="py-3">Holistic and Sports Massage</h3> 
+        <hr>
+        <p class="text-left">
+        <strong>T-STUDIO in Ireland</strong> is our personal journey into the world of yoga and massage, 
+        including the wonderful range of treatments we offer to our clients, as well as unique needle applicators
+         that awaken the human body's self-defense mechanisms, stimulate metabolism and provide a strengthened immune system, affecting nerve endings.</p>
+        <p class="text-left">We are two specialists in natural and holistic methods of treatment. We love what we do and it gives us great joy to see 
+        the positive changes taking place in the lives and health of many of our clients.</p>        
+        <h4 class="py-3">Holistic and Sports Massage</h4> 
         <p class="text-left">Massage with appropriate base and essential oils is the first method of treatment. Manipulations and releasing techniques may be used. 
         Needle applicators are used very often to stimulate blood circulation and reach the deep relaxation stage. 
         For chronic pain, muscle weakness, and /or functional nerve disorders, electrical stimulation is added to the scope of therapies. 
@@ -117,7 +119,11 @@
         lasting from 5 minutes to 2.5 hours. Massage is an effective and powerful, yet absolutely natural, method of treating diseases and alleviating 
         symptoms affecting muscles, tendons, ligaments, joints and some internal organs. Usually a series of sessions is required to achieve a stable result.
         </p>
-        <h3 class="py-3">Hatha Yoga</h3>
+        <p class="text-left">The Holistic and Sports Massage provided by <strong>Dmitrij Tkachenko</strong>, has been practicing since 1995.<br>
+            Degrees: Medical Doctor (Ukraine), Medical Scientist (B.Sc, GMITIreland).<br>                
+            Certificates and Diplomas: Medical Massage and Rehab Exercises, Dynamic Electrical Stimulation, Needle Applicator Devices.
+            </p>
+        <h4 class="py-3">Hatha Yoga</h4>
         <p class="text-left">
         <strong>Yulia Tkachenko</strong>, has been personally practicing since 2012, teaching and healing with yoga since 2014.<br>
         Master Degree in Education.<br>
