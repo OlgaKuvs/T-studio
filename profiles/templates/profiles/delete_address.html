@@ -6,14 +6,14 @@
 {% endblock %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row text-center">
-            <div class="col-12 mt-2 my-auto py-2">
-                <h3 class="top-products-link">My Profile</h3>
-                <hr> 
-            </div>
+<div class="container header-container">
+    <div class="row text-center">
+        <div class="col-12 mt-2 my-auto py-2">
+            <h3 class="top-products-link">My Profile</h3>
+            <hr> 
         </div>
-    </div>    
+    </div>
+</div>    
 {% endblock %}
 
 {% block content %}
@@ -21,23 +21,30 @@
     <div class="row">        
         {% include 'includes/profile-nav.html' %}   
         <div class="col-12 col-md-6 profile-main">
-            <h4 class="profile-header mb-3">Are you sure you want to delete this address?</h4>
-            <div class="col p-2">                                    
-                <p>{{ address.profile_street_address1 }}</p>
-                {% if address.profile.street_address2 %}
-                    <p class="text-left">{{ address.profile.street_address2 }}</p>
-                {% endif %}
-                <p>{{ address.profile_city }}</p>
-                <p>{{ address.profile_county }}</p>
-                {% if address.profile.postcode %}
-                    <p> {{ address.profile_postcode }}</p>
-                {% endif %}
-                {% if address.profile_country == 'IE' %}
-                    <p>Ireland</p>
-                {% endif %} 
-                </div>        
-                <a href="{% url 'profile:delete_address' address.id %}?delete_address=true"  class="btn btn-basic">Delete address</a>
-                <span type="button" class="btn btn-cancel ml-3" onclick="window.history.back()">Cancel</span>
+            <div class="container">                
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="profile-header mb-3">Are you sure you want to delete this address?</h4>
+                        <div class="col p-2 text-left">                                    
+                            <p>{{ address.profile_street_address1 }}</p>
+                            {% if address.profile.street_address2 %}
+                                <p class="text-left">{{ address.profile.street_address2 }}</p>
+                            {% endif %}
+                            <p>{{ address.profile_city }}</p>
+                            <p>{{ address.profile_county }}</p>
+                            {% if address.profile.postcode %}
+                                <p> {{ address.profile_postcode }}</p>
+                            {% endif %}
+                            {% if address.profile_country == 'IE' %}
+                                <p>Ireland</p>
+                            {% endif %} 
+                            </div>        
+                            <a href="{% url 'profile:delete_address' address.id %}?delete_address=true"  class="btn btn-basic">Delete address</a>
+                            <span type="button" class="btn btn-cancel ml-3" onclick="window.history.back()">Cancel</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

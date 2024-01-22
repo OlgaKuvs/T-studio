@@ -81,5 +81,13 @@
     padding: 0 !important;  
 }
 
+.profile-line {
+    margin-top: 5px !important;
+}
+
+.personal-info {
+    text-align: left;
+}
+
 }
 

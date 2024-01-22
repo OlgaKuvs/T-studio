@@ -87,7 +87,8 @@ body {
 
 h2,
 .text-black {
-    color: #292f36; 
+    color: #292f36;
+    font-family: 'Merriweather'; 
 }
 
 h3, h4, h5, h6 {
@@ -96,7 +97,7 @@ h3, h4, h5, h6 {
 }
 
 .text-black {
-    color: #000 !important;
+    color: #292f36 !important;
 }
 
 .bg-header,
@@ -412,6 +413,14 @@ header {
     font-size: 1.2rem;
   }
 
+  h5 {
+    font-size: 1.1rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+  }
+ 
  
 }
 
@@ -425,9 +434,7 @@ header {
   .map-size {
     width: 250px;  
     height: 190px;
-  }
-
-  
+  } 
 
 
 }
