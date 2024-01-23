@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col">
+            <h3 class="top-products-link text-center">Thai Massage</h3>
+            <hr>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container main">
+    <div class="row">
+        <div class="col-12 offset-md-3">
+            <div class="image-container w-50 d-none d-md-block">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="img-fluid w-100" src="{{ MEDIA_URL }}thai_massage_1.jpg" alt="Thai Massage, Back">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="img-fluid w-100" src="{{ MEDIA_URL }}thai_massage_2.jpg" alt="Thai Massage, Shoulder">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="img-fluid w-100" src="{{ MEDIA_URL }}thai_massage_3.jpg" alt="Thai Massage, Hands">
+                        </div>
+                    </div>
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                        </a>                    
+                </div>
+            </div>
+            <div class="image-container w-100 d-md-none">
+                <div id="carouselExampleControls1" class="carousel slide" data-ride="carousel" data-interval="false">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="img-fluid w-100" src="{{ MEDIA_URL }}thai_massage_1.jpg" alt="Thai Massage, Back">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="img-fluid w-100" src="{{ MEDIA_URL }}thai_massage_2.jpg" alt="Thai Massage, Shoulder">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="img-fluid w-100" src="{{ MEDIA_URL }}thai_massage_3.jpg" alt="Thai Massage, Hands">
+                        </div>
+                    </div>
+                        <a class="carousel-control-prev" href="#carouselExampleControls1" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls1" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                        </a>                    
+                </div>
+            </div>
+        </div>
+    </div>   
+    <div class="row"> 
+        <div class="col-12">
+            <div class="product-details-container mb-3 mt-3">
+                <p class="text-left">In our <strong>T-studio</strong> you have the opportunity to experience a session or a course of <strong>Thai massage</strong>. 
+                    We use the technique of Northern Thailand, which differs from the quite popular Southern technique. 
+                    The practitioner utilizes the weight of their own body, thus adjusting the pressure on the patient's body zones. 
+                    Additionally, unlike the Southern style, not only finger techniques are applied, but there is also an absence of force. 
+                    The master employs a gentle and soft approach to the client through this <strong>powerful healing methodology</strong>.
+                </p>
+                <p class="text-left">Thai massage is primarily used for therapeutic purposes. Through Thai massage man can address various issues in the body, 
+                    from musculoskeletal problems to internal organs and neurological conditions. This unique procedure has an impact on the entire organism. 
+                    However, besides its <strong>therapeutic effects</strong>, this type of massage is used as <strong>a means of relaxation</strong> and 
+                    for developing the physiological functions of the human body, contributing to a more effective 
+                    practice of yoga and other physical activities.
+                </p>
+                <p class="text-left">The Thai massage technique has a <strong>significant positive effect</strong> on the nervous system, calming it by activating the parasympathetic nervous system. 
+                    During the session the master works with both the physical body and its energy, allowing for a finer adjustment and assisting in initiating natural 
+                    health recovery programs.
+                </p>
+                <p class="text-left">Thai massage is a unique way to maintain health and high performance. After a session <strong>overall physical and psychological well-being improves, 
+                    immunity is boosted, capillary blood circulation normalizes, lymphatic drainage is enhanced and consequently, 
+                    the elimination of toxins from the body occurs.</strong>
+                </p>
+                <p class="text-left">The client remains clothedduring the massage, but it is necessary to be dressed comfortably, preferably in clothing made of natural fabrics 
+                    without a slippery effect. Thai massage does not involve the use of oils or any accessories. 
+                    In our studio Thai massage sessions are conducted by <strong>Yulia Tkachenko</strong>, a certified practitioner who continues her education 
+                    at the <strong>METTA School of Thai Massage in Chiang Mai</strong>.
+                </p>
+            </div>            
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

@@ -26,7 +26,7 @@
                     <div class="w-100">
                     <a href="#">
                         <img class='img-fluid rounded' src="{{ MEDIA_URL }}yoga_session_1.jpg" alt="Yoga">
-                        <p class="capture-services">Individual Hatha Yoga classes</p>
+                        <p class="capture-services"><strong>Individual Hatha Yoga classes</strong></p>
                     </a>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                     <div class="w-100">
                     <a href="#">
                         <img class='img-fluid rounded' src="{{ MEDIA_URL }}group_yoga.jpg" alt="Group Yoga">
-                        <p class="capture-services">Group Yoga classes</p>
+                        <p class="capture-services"><strong>Group Yoga classes</strong></p>
                     </a>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                     <div class="w-100">
                     <a href="#">
                         <img class='img-fluid rounded' src="{{ MEDIA_URL }}massage.jpg" alt="Classical/Swedish massage">
-                        <p class="capture-services">Classical/Swedish massage</p>
+                        <p class="capture-services"><strong>Classical/Swedish massage</strong></p>
                     </a>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                     <div class="w-100">
                     <a href="{% url 'products:products' %}">
                         <img class='img-fluid rounded' src="{{ MEDIA_URL }}applicator.jpg" alt="Mechanical therapy">
-                        <p class="capture-services">Mechanical therapy</p>
+                        <p class="capture-services"><strong>Mechanical therapy</strong></p>
                     </a>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                     <div class="w-100">
                     <a href="#">
                         <img class='img-fluid rounded' src="{{ MEDIA_URL }}joint_manipulations.jpg" alt="Joint manipulations">
-                        <p class="capture-services">Joint manipulations</p>
+                        <p class="capture-services"><strong>Joint manipulations</strong></p>
                     </a>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
                     <div class="w-100">
                     <a href="#">
                         <img class='img-fluid rounded' src="{{ MEDIA_URL }}electro_stimulation.jpg" alt="Electrical Dynamic Stimulation">
-                        <p class="capture-services">Electrical Dynamic Stimulation</p>
+                        <p class="capture-services"><strong>Electrical Dynamic Stimulation</strong></p>
                     </a>
                     </div>
                 </div>
@@ -74,15 +74,15 @@
                     <div class="w-100">
                         <a href="#">
                             <img class='img-fluid rounded' src="{{ MEDIA_URL }}yoga_session_2.jpg" alt="Yoga">
-                            <p class="capture-services">Yoga Therapy</p>
+                            <p class="capture-services"><strong>Yoga Therapy</strong></p>
                         </a>
                         </div>                          
                 </div>
                 <div class="carousel-item col-sm-6 col-md-4 col-lg-3 col-xl-2">
                     <div class="w-100">
-                        <a href="#">
-                            <img class='img-fluid rounded' src="{{ MEDIA_URL }}baby_massage.jpg" alt="Baby Massage">
-                            <p class="capture-services">Baby Massage</p>
+                        <a href="{% url 'thai_massage' %}">
+                            <img class='img-fluid rounded' src="{{ MEDIA_URL }}thai_massage.jpg" alt="Thai Massage">
+                            <p class="capture-services"><strong>Thai Massage</strong></p>
                         </a>
                         </div>                          
                 </div>
@@ -157,6 +157,9 @@
             }
         });
     });
+    $("#carousel-multiple").carousel({
+    interval: 5000 
+    })
 </script>
 
 {% endblock %}

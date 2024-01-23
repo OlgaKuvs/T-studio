@@ -83,6 +83,10 @@ body {
   padding-left: 15px;
 }
 
+.capture-services {
+  margin-top: 10px;
+}
+
 /* COLOURS */
 
 h2,
@@ -157,6 +161,12 @@ h3, h4, h5, h6 {
 .capture-services,
 .badge-category:hover {
     color:#292f36; 
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #ff7b54 !important;
+    
 }
 
 .badge-category {
