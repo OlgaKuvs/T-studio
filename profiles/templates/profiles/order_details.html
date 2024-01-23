@@ -36,7 +36,28 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <div class="order-details table-responsive">
+                        <div class="d-block d-sm-none text-center">                
+                            {% for item in order.lineitems.all %}
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 mb-2">
+                                        {% include "profiles/product-image.html" %}
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-2">
+                                        {% include "profiles/product-info.html" %}
+                                    </div>
+                                    <div class="col-12 col-sm-6 mb-2"> 
+                                        <p class="my-0">Subtotal: €{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                                    </div>
+                                </div>
+                                <div class="row"><div class="col"><hr></div></div>
+                            {% endfor %}
+                            <div class="row">
+                                <div class="col text-right">
+                                    {% include "profiles/order-total.html" %}
+                                </div>
+                            </div>                                       
+                        </div>
+                        <div class="order-details table-responsive d-none d-sm-block">
                             <table class="table table-sm order-table">
                                 <thead>
                                     <tr>

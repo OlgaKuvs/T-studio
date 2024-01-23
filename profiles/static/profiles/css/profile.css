@@ -4,10 +4,6 @@
     text-align: left;
 }
 
-.profile-main {
-    text-align: center;   
-}
-
 .profile-links {
     color: #292f36; 
     text-decoration: none;
@@ -22,6 +18,10 @@
 .profile-header {
     color:#939b62;
     font-weight: 600;
+}
+
+.personal-info {
+    text-align: left;
 }
 
 #add-address-form .form-control {
@@ -67,7 +67,31 @@
 
 /* Media */
 
-@media (max-width: 767px) {
+@media only screen and (max-width: 991px) {
+    .main {
+        text-align: center;
+        margin: 0 auto;
+    }
+      
+    /* .row-profile {
+        display: inline-block;
+        vertical-align: middle;
+        float: none;
+    } */
+}
+
+
+
+@media (min-width: 768px) and (max-width: 991px) { 
+
+    .profile-details { 
+        border-right: hidden;
+    }
+  
+
+}
+
+@media (max-width: 991px) {
 
 .profile-details { 
     border-right: hidden;
@@ -85,9 +109,7 @@
     margin-top: 5px !important;
 }
 
-.personal-info {
-    text-align: left;
-}
+
 
 }
 
