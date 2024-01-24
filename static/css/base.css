@@ -403,10 +403,6 @@ header {
 
 @media only screen and (max-width: 576px) {
 
-  body {
-    font-size: 0.9rem;
-  }
-
   .img-box {
     display: none;
   }

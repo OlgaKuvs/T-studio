@@ -15,7 +15,8 @@
 
 {% block content %}
 <div class="container main text-center">
-    <h3 class="py-3">T-STUDIO Services</h3>
+    <h3 class="mt-3 top-products-link">T-STUDIO Services</h3>
+    <hr>
         <div class="container py-3">
         <div class="p-1 m-n3 overflow-hidden">
             <div id="carousel-multiple" class="carousel slide carousel-multiple" data-ride="carousel"
@@ -48,9 +49,17 @@
                 </div>
                 <div class="carousel-item col-sm-6 col-md-4 col-lg-3 col-xl-2">
                     <div class="w-100">
+                        <a href="{% url 'thai_massage' %}">
+                            <img class='img-fluid rounded' src="{{ MEDIA_URL }}thai_massage.jpg" alt="Thai Massage">
+                            <p class="capture-services"><strong>Thai Massage</strong></p>
+                        </a>
+                    </div>                          
+                </div>
+                <div class="carousel-item col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                    <div class="w-100">
                     <a href="{% url 'products:products' %}">
                         <img class='img-fluid rounded' src="{{ MEDIA_URL }}applicator.jpg" alt="Mechanical therapy">
-                        <p class="capture-services"><strong>Mechanical therapy</strong></p>
+                        <p class="capture-services"><strong>Mechanical Therapy</strong></p>
                     </a>
                     </div>
                 </div>
@@ -58,15 +67,15 @@
                     <div class="w-100">
                     <a href="#">
                         <img class='img-fluid rounded' src="{{ MEDIA_URL }}joint_manipulations.jpg" alt="Joint manipulations">
-                        <p class="capture-services"><strong>Joint manipulations</strong></p>
+                        <p class="capture-services"><strong>Joint Manipulations</strong></p>
                     </a>
                     </div>
                 </div>
                 <div class="carousel-item col-sm-6 col-md-4 col-lg-3 col-xl-2">
                     <div class="w-100">
-                    <a href="#">
+                    <a href="{% url 'ed_stimulation' %}">
                         <img class='img-fluid rounded' src="{{ MEDIA_URL }}electro_stimulation.jpg" alt="Electrical Dynamic Stimulation">
-                        <p class="capture-services"><strong>Electrical Dynamic Stimulation</strong></p>
+                        <p class="capture-services"><strong>Electrical Stimulation</strong></p>
                     </a>
                     </div>
                 </div>
@@ -77,16 +86,8 @@
                             <p class="capture-services"><strong>Yoga Therapy</strong></p>
                         </a>
                         </div>                          
-                </div>
-                <div class="carousel-item col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                    <div class="w-100">
-                        <a href="{% url 'thai_massage' %}">
-                            <img class='img-fluid rounded' src="{{ MEDIA_URL }}thai_massage.jpg" alt="Thai Massage">
-                            <p class="capture-services"><strong>Thai Massage</strong></p>
-                        </a>
-                        </div>                          
-                </div>
-                </div>
+                </div>               
+            </div>
                 <a class="carousel-control-prev w-auto px-5 px-xl-4" href="#carousel-multiple" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
@@ -99,7 +100,7 @@
             </div>
         </div>
         </div>
-        <h3 class="py-3">About Us</h3>
+        <h3 class="mt-3">About Us</h3>
         <hr>
         <p class="text-left">
         <strong>T-STUDIO in Ireland</strong> is our personal journey into the world of yoga and massage, 
