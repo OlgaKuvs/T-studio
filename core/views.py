@@ -8,7 +8,7 @@ def index(request):
 
 
 def thai_massage(request):
-    """ A view to return the thai_massage page """
+    """ A view to return the thai massage page """
     return render(request, 'core/thai_massage.html')
 
 
@@ -25,3 +25,8 @@ def mech_therapy(request):
 def yoga_therapy(request):
     """ A view to return the yoga therapy page """
     return render(request, 'core/yoga_therapy.html')
+
+
+def baby_massage(request):
+    """ A view to return the baby massage page """
+    return render(request, 'core/baby_massage.html')

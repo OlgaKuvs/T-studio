@@ -7,7 +7,7 @@ html {
 body {
   color: #292f36; 
   background-color: #f8f9fa;
-  font-family: 'Lato';
+  font-family: 'Lato', Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -109,12 +109,12 @@ hr {
 h2,
 .text-black {
     color: #292f36;
-    font-family: 'Merriweather'; 
+    font-family: 'Merriweather', Arial, Helvetica, sans-serif; 
 }
 
 h3, h4, h5, h6 {
     color: #ff7b54;
-    font-family: 'Merriweather';
+    font-family: 'Merriweather', Arial, Helvetica, sans-serif; 
 }
 
 /* COLOURS */
