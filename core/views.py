@@ -30,3 +30,8 @@ def yoga_therapy(request):
 def baby_massage(request):
     """ A view to return the baby massage page """
     return render(request, 'core/baby_massage.html')
+
+
+def massage(request):
+    """ A view to return the classic massage page """
+    return render(request, 'core/massage.html')
