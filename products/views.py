@@ -37,7 +37,8 @@ class ProductListView(ListView):
         return response      
     
     def get_queryset(self):
-        queryset = super(ProductListView, self).get_queryset()                  
+        queryset = super(ProductListView, self).get_queryset(
+                   ).order_by('name')                  
         q = self.request.GET.get('q') 
         if q:
             queryset = self.model.objects.filter(
@@ -47,8 +48,7 @@ class ProductListView(ListView):
         
     def get_context_data(self, object_list=None, **kwargs):
         context = super(ProductListView, self).get_context_data()
-        context['categories'] = Category.objects.all()       
-        # context['category_id'] = self.kwargs.get('category_id')        
+        context['categories'] = Category.objects.all()
         context['q'] = self.request.GET.get('q')                               
         return context
     
@@ -59,7 +59,8 @@ def CategoryView(request, slug):
     """
     try:
         current_category = Category.objects.get(name=slug)
-        category_products = Product.objects.filter(category=current_category)
+        category_products = Product.objects.filter(
+            category=current_category).order_by('name')    
         all_categories = Category.objects.all()
         context = {
         'category_products': category_products,
@@ -226,7 +227,8 @@ def approve_review(request, product_id, review_id):
     r_to_approve.save()
     """ Calculate and save to DB average product rating"""
     product = Product.objects.get(pk=product_id)           
-    approved_reviews = Review.objects.filter(product_id=product_id,approved=True)       
+    approved_reviews = Review.objects.filter(
+        product_id=product_id,approved=True)       
     avg = approved_reviews.aggregate(Avg('rate'))['rate__avg'] 
     rounded_avg = 0.5 * round(avg/0.5)
     product.rating = rounded_avg

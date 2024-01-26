@@ -20,11 +20,11 @@
 <div class="container main text-center">
     <div class="row">        
         {% include 'includes/profile-nav.html' %}  
-        <div class="col-12 col-lg-6 profile-main">
+        <div class="col-12 col-lg-8 profile-main">
             <div class="container">                
                 <div class="row">
-                    <div class="col-12">
-                        <h4 class="profile-header mb-3">Shipping Addresses</h4>                        
+                    <div class="col-12 ">
+                        <h4 class="profile-header mb-3 text-center">Shipping Addresses</h4>                        
                     </div>
                     <div class="col-12 profile-main mb-3">
                         <a href="{% url 'profile:add_address' %}" class="btn btn-basic mt-2 ml-3">Add new address</a>                         
@@ -32,10 +32,9 @@
                 </div>               
                 <div class="row">   
                     {% for address in addresses %} 
-                    <div class="col-12 col-md-6 mt-2 mb-2">                              
+                    <div class="col-12 col-md-6 col-lg-4 mt-2 mb-2">                              
                         <div class="card h-100 border border-grey">
-                            <div class="row card-body">
-                                <div class="col p-2">                                    
+                            <div class="card-body">                                                                   
                                     <p class="text-left">{{ address.profile_street_address1 | capfirst }}</p>
                                     {% if address.profile_street_address2 != None %}
                                         <p class="text-left">{{ address.profile_street_address2 | capfirst  }}</p>
@@ -47,17 +46,15 @@
                                     {% endif %}
                                     {% if address.profile_country == 'IE' %}
                                         <p class="text-left">Ireland</p>
-                                    {% endif %}                                   
-                                    <div class="text-left">                                      
-                                    {% if address.is_default %}
-                                    <h6 class="text-left mt-3 text-uppercase">Default address</h6>
-                                    {% else %}
-                                    <a href="{% url 'profile:edit_address' address.id %}" class="btn btn-basic text-small mt-2">Edit</a>
-                                    <a href="{% url 'profile:delete_address' address.id %}" class="btn btn-basic text-small mt-2 ml-2">Delete</a>
-                                    {% endif %}                                    
-                                        
-                                    </div>                        
-                                </div>
+                                    {% endif %}
+                            </div>                                  
+                            <div class="card-footer">                                      
+                                {% if address.is_default %}
+                                <h6 class="text-left mt-3 text-uppercase">Default address</h6>
+                                {% else %}
+                                <a href="{% url 'profile:edit_address' address.id %}" class="btn btn-basic text-small mt-2 card-link">Edit</a>
+                                <a href="{% url 'profile:delete_address' address.id %}" class="btn btn-basic text-small mt-2 ml-2">Delete</a>
+                                {% endif %}         
                             </div>
                         </div>                
                     </div>

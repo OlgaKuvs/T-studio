@@ -25,10 +25,10 @@
                 <div class="row">
                     <div class="col-12">
                         <h4 class="profile-header mb-3">Are you sure you want to delete this address?</h4>
-                        <div class="text-left pl-md-5">                                    
+                        <div>                                    
                             <p>{{ address.profile_street_address1 }}</p>
                             {% if address.profile.street_address2 %}
-                                <p class="text-left">{{ address.profile.street_address2 }}</p>
+                                <p>{{ address.profile.street_address2 }}</p>
                             {% endif %}
                             <p>{{ address.profile_city }}</p>
                             <p>{{ address.profile_county }}</p>

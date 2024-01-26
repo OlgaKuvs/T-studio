@@ -18,5 +18,10 @@ def el_stimulation(request):
 
 
 def mech_therapy(request):
-    """ A view to return the electro dinamical stimulation page """
+    """ A view to return the mechanical stimulation page """
     return render(request, 'core/mech_therapy.html')
+
+
+def yoga_therapy(request):
+    """ A view to return the yoga therapy page """
+    return render(request, 'core/yoga_therapy.html')

@@ -65,6 +65,18 @@
     margin-bottom: 0;
 }
 
+.address-container {
+    position: relative;
+    border: 1px solid blue;
+}
+
+.address-buttons {
+    position: absolute;
+    bottom: 0;    
+    border: 1px solid red;
+}
+
+
 /* Media */
 
 @media only screen and (max-width: 991px) {

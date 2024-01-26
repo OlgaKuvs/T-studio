@@ -39,14 +39,17 @@
                         <div class="d-block d-sm-none text-center">                
                             {% for item in order.lineitems.all %}
                                 <div class="row">
-                                    <div class="col-12 col-sm-6 mb-2">
+                                    <div class="col-12 mb-2">
                                         {% include "profiles/product-image.html" %}
                                     </div>
-                                    <div class="col-12 col-sm-6 mb-2">
+                                    <div class="col-12 mb-2">
                                         {% include "profiles/product-info.html" %}
                                     </div>
-                                    <div class="col-12 col-sm-6 mb-2"> 
+                                    <div class="col-12 mb-2"> 
                                         <p class="my-0">Subtotal: €{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                                    </div>
+                                    <div class="col-12 mb-2"> 
+                                        <a href="{% url 'products:review_product' item.product.id order.id %}" class="btn btn-basic text-small">Leave a Review</a>
                                     </div>
                                 </div>
                                 <div class="row"><div class="col"><hr></div></div>

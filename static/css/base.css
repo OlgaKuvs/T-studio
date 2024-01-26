@@ -14,6 +14,9 @@ body {
   /* height: calc(100vh - 200px);   */
 }
 
+hr {
+  margin-top: 4px;
+}
 .product-container {
   max-width: 70% !important;
 }
@@ -44,6 +47,7 @@ body {
 
 .top-products-link {
   font-weight: 600;
+  margin-bottom: 0;
 }
 
 .arrow-back:hover {
@@ -425,7 +429,8 @@ header {
     display: none;
   }
 
-  .btn-basic {
+  .btn-basic,
+  .btn-cancel {
     font-size: 0.85rem;
   }
 
@@ -477,10 +482,6 @@ header {
 
   .nav-item {
     padding-left: 10px;
-  }
-
-  .header-container {
-    padding-top: 220px; 
-  }
+  } 
 
 }
