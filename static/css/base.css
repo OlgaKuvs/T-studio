@@ -34,30 +34,7 @@ body {
 
 .products-link:hover,
 .top-products-link:hover {  
-  text-decoration: none;
-}
-
-.btn-basic {
-  border: 2px solid #ff7b54;  
-  background: #fff;
-}
-
-.btn-basic:hover {
-  color: #ff7b54;   
-}
-
-.btn-left {
-  margin-right: 15px;
-}
-
-.btn-cancel {  
-  background-color: #fff !important; 
-  border: 2px solid #939b62 !important;  
-  color: #292f36;   
-}
-
-.btn-cancel:hover {
-  color: #939b62 !important;     
+  text-decoration: none;  
 }
 
 .update-item,
@@ -87,7 +64,43 @@ body {
   margin-top: 10px;
 }
 
-/* COLOURS */
+.form-custom {
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+/* BUTTONS */
+
+.btn-basic {
+  border: 2px solid #ff7b54;  
+  background: #fff;
+}
+
+.btn-basic:hover {
+  color: #ff7b54;   
+}
+
+.btn-left {
+  margin-right: 15px;
+}
+
+.btn-cancel {  
+  background-color: #fff !important; 
+  border: 2px solid #939b62 !important;  
+  color: #292f36;   
+}
+
+.btn-cancel:hover {
+  color: #939b62 !important;     
+}
+
+.btn-orange {
+  background-color: #ff7b54;
+  border: none;
+  border-radius: 0 0.25rem 0.25rem 0;
+  color:#292f36;
+}
+
+/* HEADINGS */
 
 h2,
 .text-black {
@@ -99,6 +112,8 @@ h3, h4, h5, h6 {
     color: #ff7b54;
     font-family: 'Merriweather';
 }
+
+/* COLOURS */
 
 .text-black {
     color: #292f36 !important;
@@ -128,6 +143,10 @@ h3, h4, h5, h6 {
   color: #292f36 !important;
 }
 
+.dropdown-item:active {
+  background-color: #e7e7e7 !important;  
+}
+
 .nav-link:hover {
   color: #e7e7e7 !important;
 }
@@ -137,21 +156,10 @@ h3, h4, h5, h6 {
     background-color: #fff;
 }
 
-.bg-nav-shop,
+/* .bg-nav-shop,
 .bg-shop-header {
   background-color: #ffb26b;
-}
-
-.btn-orange {
-  background-color: #ff7b54;
-  border: none;
-  border-radius: 0 0.25rem 0.25rem 0;
-  color:#292f36;
-}
-
-.form-custom {
-  border-radius: 0.25rem 0 0 0.25rem;
-}
+} */
 
 .offers-banner {
     background-color: #d3815b;
@@ -180,6 +188,16 @@ h3, h4, h5, h6 {
 .top-products-link,
 .top-products-link:hover  {
   color: #ff7b54; 
+}
+
+.text-link {
+  color: #ff7b54;
+  text-decoration: underline;
+}
+
+.text-link:hover,
+.text-link:active {
+  color: #939b62;  
 }
 
 
@@ -426,8 +444,12 @@ header {
   h6 {
     font-size: 1rem;
   }
+
+  .header-container {
+    padding-top: 200px; 
+  }
  
- 
+  
 }
 
 @media only screen and (max-width: 767px) {
@@ -442,6 +464,7 @@ header {
     height: 190px;
   } 
 
+ 
 
 }
 
@@ -456,5 +479,8 @@ header {
     padding-left: 10px;
   }
 
- 
+  .header-container {
+    padding-top: 220px; 
+  }
+
 }

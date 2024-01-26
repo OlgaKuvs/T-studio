@@ -12,6 +12,11 @@ def thai_massage(request):
     return render(request, 'core/thai_massage.html')
 
 
-def ed_stimulation(request):
+def el_stimulation(request):
     """ A view to return the electro dinamical stimulation page """
-    return render(request, 'core/ed_stimulation.html')
+    return render(request, 'core/el_stimulation.html')
+
+
+def mech_therapy(request):
+    """ A view to return the electro dinamical stimulation page """
+    return render(request, 'core/mech_therapy.html')

@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col">
+            <h3 class="top-products-link text-center">Mechanical Therapy</h3>
+            <hr>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container main">
+    <div class="row">
+        <div class="col-12 offset-md-3">
+            <div class="image-container w-50 d-none d-md-block">
+                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="img-fluid w-100" src="{{ MEDIA_URL }}mechanical_therapy_1.jpg" alt="Mechanical Therapy, inversion table">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="img-fluid w-100" src="{{ MEDIA_URL }}mechanical_therapy_2.jpg" alt="Mechanical Therapy, needle mat">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="img-fluid w-100" src="{{ MEDIA_URL }}mechanical_therapy_3.jpg" alt="Mechanical Therapy, needle mat">
+                        </div>
+                    </div>
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                        </a>                    
+                </div>
+            </div>
+            <div class="image-container w-100 d-md-none">
+                <div id="carouselExampleControls1" class="carousel slide" data-ride="carousel" data-interval="false">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="img-fluid w-100" src="{{ MEDIA_URL }}mechanical_therapy_1.jpg" alt="Mechanical Therapy, inversion table">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="img-fluid w-100" src="{{ MEDIA_URL }}mechanical_therapy_2.jpg" alt="Mechanical Therapy, needle mat">
+                        </div>
+                        <div class="carousel-item">
+                            <img class="img-fluid w-100" src="{{ MEDIA_URL }}mechanical_therapy_3.jpg" alt="Mechanical Therapy, needle mat">
+                        </div>
+                    </div>
+                        <a class="carousel-control-prev" href="#carouselExampleControls1" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls1" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                        </a>                    
+                </div>
+            </div>
+        </div>
+    </div>   
+    <div class="row"> 
+        <div class="col-12">
+            <div class="product-details-container mb-3 mt-3">
+                <p>In our arsenal of mechanotherapy, the following mechanical methods of therapeutic impact on the human body are available:                    
+                </p>
+                <ul>
+                    <li>
+                        Application of <a class="text-link" href="{% url 'products:products' %}">needle applicators</a>  
+                    </li>
+                    <li>
+                        Joint traction of the legs and spine on an inversion table
+                    </li>                    
+                </ul>
+                <p class="text-left">Joint traction of the legs and spine on an <strong>Inversion Table</strong>. An inversion table is a free-standing, 
+                    stable structure on the floor with a rotating surface on axes, allowing the fixation of the legs around the ankles. 
+                    When turning, the head ends up below the level of the legs, and the rotation can reach almost a vertical position. 
+                    The tilt angle is adjusted by the therapist, and the procedure duration is based on the patient's well-being.
+                </p>
+                <p class="text-left">Traction occurs under the influence of gravity. The intensity of traction is determined by the angle of inclination, 
+                    the duration, and the degree of muscle relaxation of the patient. Sensations during the procedure vary from pleasant 
+                    to discomfort due to foot compression in the fixator or a feeling of pressure in the head due to the unusual inverted position.
+                </p>
+                <p class="text-left">The duration of the procedure is 5-10 minutes, and the number of sessions can go up to 15. 
+                    It has indications and contraindications. For effective self-use at home, a brief instruction is required.
+                </p>
+                <p class="text-left">The traction is available for purchase for regular home procedures online. 
+                    For more information on this topic, refer to the scientific article
+                    <a class="text-link" href="https://www.webmd.com/back-pain/what-are-inversion-tables" target="_blank" rel="noopener">at the following link.</a>
+                </p>
+                <p class="text-left"><a class="text-link" href="{% url 'products:products' %}"><strong>Multi-needle applicators</strong></a> that contribute to more progressive recovery and health enhancement. 
+                    The applicator needles are made of 5 different metals and are designed to impact the human skin. 
+                    The base is crafted from natural medical rubber.
+                </p>
+                <p class="text-left"><a class="text-link" href="{% url 'products:products' %}"><strong>Applicators</strong></a> are produced in various modifications, such as pads, rollers, applicative belts, applicative tapes, 
+                    and are an original, powerful device with numerous health-improving therapeutic possibilities.
+                </p>
+                <p class="text-left"><strong>Application therapy</strong> has a pronounced <strong>analgesic and antispasmodic effect</strong>. It improves blood circulation, 
+                    lymphatic flow, microcirculation, reduces tissue swelling, activates tissue mechanisms of immune defence, increases 
+                    the levels of endogenous opioid peptides and anti-stress hormones in the blood, lowers the sensitivity of pain receptors, 
+                    has a positive psychoemotional impact, and, as a result, stimulates general adaptive mechanisms in humans. 
+                    When the applicator needles come into contact with the skin, they stimulate the production of hormones and other substances 
+                    that alter the metabolism of the individual, activating their "inner doctor."               
+                </p>
+                <p class="text-left"><a class="text-link" href="{% url 'products:products' %}"><strong>Applicators</strong></a> can be used by adults and children aged 12 and above. 
+                    The duration of a therapeutic session varies from 15 to 30 minutes in each specific case. 
+                    You will go through three phases based on your sensations: 2-3 minutes of discomfort of varying intensity, 
+                    a neutral phase, and relaxation. Positive emotions and the beneficial effect greatly compensate for the short 
+                    unpleasant sensations at the beginning of the session.           
+                </p>
+            </div>            
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
