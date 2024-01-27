@@ -35,3 +35,13 @@ def baby_massage(request):
 def massage(request):
     """ A view to return the classic massage page """
     return render(request, 'core/massage.html')
+
+
+def j_manipulations(request):
+    """ A view to return the joint manipulations page """
+    return render(request, 'core/j_manipulations.html')
+
+
+def yoga(request):
+    """ A view to return the yoga page """
+    return render(request, 'core/yoga.html')

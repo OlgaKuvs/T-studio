@@ -123,8 +123,8 @@
                                     {% endif %}
                                     {% if request.user.is_superuser %}
                                         <p>
-                                            <a class='btn btn-basic' href="{% url 'products:edit_product' product.id %}"><small>Edit</small></a> 
-                                            <a class="btn btn-basic text-danger ml-3" href="{% url 'products:delete_product' product.id %}"><small>Delete</small></a>
+                                            <a class='btn btn-basic mt-3' href="{% url 'products:edit_product' product.id %}"><small>Edit</small></a> 
+                                            <a class="btn btn-basic text-danger ml-3 mt-3" href="{% url 'products:delete_product' product.id %}"><small>Delete</small></a>
                                         </p>
                                     {% endif %}                                    
                                 </div>
