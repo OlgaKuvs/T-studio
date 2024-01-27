@@ -55,7 +55,7 @@
                             <th scope="col"></th>
                             <th scope="col">Price</th>
                             <th scope="col">Qty</th>
-                            <th scope="col">Subtotal</th>
+                            <th scope="col" class="text-right">Subtotal</th>
                         </tr>
                     </thead>
 
@@ -88,13 +88,13 @@
                                 <a class="update-item text-info mr-3" data-item="{{ item.item_id }}"><small>Update</small></a>
                                 <a class="delete-item text-danger" id="delete_{{ item.item_id }}"><small>Remove</small></a>
                             </td>
-                            <td class="py-3">
+                            <td class="py-3 text-right" >
                                 <p class="my-0">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
                             </td>
                         </tr>
                     {% endfor %}
                     <tr>
-                        <td colspan="5" class="pt-5 text-right">
+                        <td colspan="5" class="pt-5 text-right w-50">
                             <h6 class="text-black"><strong>Cart Total: €{{ total|floatformat:2 }}</strong></h6>
                             <h6 class="text-black"><strong>Shipping costs: €{{ shipping_cost }}</strong></h6>
                             <h4 class="mt-4 text-black"><strong>Grand Total: €{{ grand_total|floatformat:2 }}</strong></h4>
