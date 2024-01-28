@@ -134,7 +134,9 @@ def checkout(request):
                     })
                 else:
                     order_form = OrderForm(initial={                        
-                        'email': request.user.email,                       
+                        'email': request.user.email,
+                        'phone_number': profile.phone_number,
+                        'full_name': full_name,                      
                     })
 
             except UserProfile.DoesNotExist:
