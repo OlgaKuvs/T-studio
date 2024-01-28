@@ -185,7 +185,8 @@ def orders(request):
 
 
 @login_required
-def order_details(request, order_id):    
+def order_details(request, order_id):
+    """ Display the order details"""       
     order = get_object_or_404(Order, id=order_id)  
     template = 'profiles/order_details.html'
     context = {

@@ -19,6 +19,10 @@
             <div class="col-12">
                 <hr>                
                 <p>Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong>.</p>
+                {% if save_info %}
+                <p>You can leave your review on <a class="text-link" href="{% url 'profile:orders' %}"><strong>profile page</strong></a> 
+                    by opening your order history.</p>
+                {% endif %}
             </div>
         </div>
         <div class="row justify-content-center">
@@ -35,7 +39,7 @@
                             <p class="mb-0 text-black font-weight-bold">Order Number</p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
-                            <p class="mb-0">{{ order.order_number }}</p>
+                            <p class="mb-0 order-number">{{ order.order_number }}</p>
                         </div>
                     </div>
 
