@@ -188,7 +188,13 @@ def checkout_success(request, order_number):
                 profile_city = order.city,
                 profile_county = order.county,
                 profile_postcode = order.postcode,                
-                ).exists():            
+                ).exists():
+
+                if UserAddress.objects.filter(
+                    username = profile, is_default = True).exists():
+                    is_default = False
+                else:
+                    is_default = True            
             
                 address = UserAddress.objects.create(
                     username = profile,                              
@@ -198,7 +204,7 @@ def checkout_success(request, order_number):
                     profile_county = order.county,
                     profile_postcode = order.postcode,
                     profile_country = order.country,
-                    is_default = False
+                    is_default = is_default
                 )
 
     messages.success(request, f'Order successfully processed! \
