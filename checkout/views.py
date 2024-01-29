@@ -57,13 +57,7 @@ def checkout(request):
             'street_address2': request.POST['street_address2'],
             'county': request.POST['county'],
         }
-        order_form = OrderForm(form_data)
-        full_name = request.POST['full_name']
-        name_parts = full_name.split()
-        if len(name_parts) < 2:
-            messages.error(request, "Please enter your full name " 
-                           "with both first and last names.")
-            return redirect(reverse('checkout'))
+        order_form = OrderForm(form_data)        
              
         if order_form.is_valid():
             order = order_form.save(commit=False)
@@ -102,16 +96,7 @@ def checkout(request):
                             "There's nothing in your cart at the moment")
             return redirect(reverse('products:products'))
         
-        current_cart = cart_contents(request)
-        total = current_cart['grand_total']
-        stripe_total = round(total * 100)
-        stripe.api_key = stripe_secret_key
-        intent = stripe.PaymentIntent.create(
-            amount=stripe_total,
-            currency=settings.STRIPE_CURRENCY,       
-        )
-        # Attempt to prefill the form with any info
-        # the user maintains in their profile
+       
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
@@ -148,6 +133,15 @@ def checkout(request):
         messages.warning(request, ('Stripe public key is missing. '
                                   'Did you forget to set it in '
                                   'your environment?'))
+
+    current_cart = cart_contents(request)
+    total = current_cart['grand_total']
+    stripe_total = round(total * 100)
+    stripe.api_key = stripe_secret_key
+    intent = stripe.PaymentIntent.create(
+        amount=stripe_total,
+        currency=settings.STRIPE_CURRENCY,       
+    )
         
     template = 'checkout/checkout.html'
     context = {

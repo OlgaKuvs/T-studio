@@ -13,23 +13,11 @@ class OrderForm(forms.ModelForm):
                   'county',)
         
     def clean_full_name(self):
-        full_name = self.cleaned_data.get('full_name')
-        print("BBB", full_name)      
+        full_name = self.cleaned_data.get('full_name')           
         name_parts = full_name.split()
         if len(name_parts) < 2:
             raise ValidationError("Please enter your full name")
-        return full_name 
-    
-    
-    # def clean(self):
-    #     cleaned_data = super().clean()
-    #     full_name = cleaned_data.get('full_name')
-    #     print("AAA", full_name) 
-    #     name_parts = full_name.split()
-    #     if len(name_parts) < 2:
-    #         raise ValidationError("Please enter your full name " 
-    #                        "with both first and last names.")
-    #     return False
+        return full_name   
 
 
     def __init__(self, *args, **kwargs):
