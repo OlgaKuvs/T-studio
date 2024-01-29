@@ -2,10 +2,18 @@ import uuid
 from django.db import models
 from django.db.models import Sum
 from django.core.validators import RegexValidator
+from django.core.exceptions import ValidationError
 
 from products.models import Product
 from cart.models import Shipping
 from profiles.models import UserProfile
+
+def clean_full_name(value):
+    # full_name = cleaned_data.get('full_name')           
+    # name_parts = full_name.split()
+    if len(value.split()) < 2:
+        raise ValidationError("Please enter your full name")
+    return value
 
 
 class Order(models.Model):
@@ -43,14 +51,13 @@ class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
                                     null=True, blank=True, related_name='orders')    
-    full_name = models.CharField(max_length=50, null=False, blank=False)
+    full_name = models.CharField(validators =[clean_full_name], max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
     phone_regex = RegexValidator(
         regex=r'^\+?1?\d{9,15}$', 
         message="Phone number must be entered in the format:"
                 "'+999999999'. Up to 15 digits allowed.")
-    phone_number = models.CharField(validators=[phone_regex], max_length=17)
-    # phone_number = models.CharField(max_length=20, null=False, blank=False)
+    phone_number = models.CharField(validators=[phone_regex], max_length=17, null=False, blank=False)   
     country = models.CharField(max_length=50, default='IE', null=False, blank=False)
     postcode = models.CharField(max_length=20, null=True, blank=True)
     city = models.CharField(max_length=40, null=False, blank=False)
