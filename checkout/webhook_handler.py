@@ -18,34 +18,25 @@ class StripeWH_Handler:
     """Handle Stripe webhooks"""
 
     def __init__(self, request):
-        self.request = request  
+        self.request = request    
 
-    # email = EmailMessage(
-    #     'Subject here',
-    #     'Here is the message.',
-    #     'from@example.com',
-    #     ['to@example.com'],
-    #     headers={'Reply-To': 'another@example.com'},
-    # )
-    # email.send(fail_silently=False) 
-
-    def _send_confirmation_email(self, order):
-        """Send the user a confirmation email"""
-        cust_email = order.email
-        subject = render_to_string(
-            'checkout/confirmation_emails/confirmation_email_subject.txt',
-            {'order': order})
-        body = render_to_string(
-            'checkout/confirmation_emails/confirmation_email_body.txt',
-            {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
+    # def _send_confirmation_email(self, order):
+    #     """Send the user a confirmation email"""
+    #     cust_email = order.email
+    #     subject = render_to_string(
+    #         'checkout/confirmation_emails/confirmation_email_subject.txt',
+    #         {'order': order})
+    #     body = render_to_string(
+    #         'checkout/confirmation_emails/confirmation_email_body.txt',
+    #         {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
         
-        send_mail(
-            subject,
-            body,
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            to=[cust_email],
-            fail_silently=False,
-        )
+    #     send_mail(
+    #         subject,
+    #         body,
+    #         from_email=settings.DEFAULT_FROM_EMAIL,
+    #         to=[cust_email],
+    #         fail_silently=False,
+    #     )
 
     def handle_event(self, event):
         """

@@ -8,9 +8,7 @@ from products.models import Product
 from cart.models import Shipping
 from profiles.models import UserProfile
 
-def clean_full_name(value):
-    # full_name = cleaned_data.get('full_name')           
-    # name_parts = full_name.split()
+def clean_full_name(value):  
     if len(value.split()) < 2:
         raise ValidationError("Please enter your full name")
     return value
@@ -54,9 +52,9 @@ class Order(models.Model):
     full_name = models.CharField(validators =[clean_full_name], max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
     phone_regex = RegexValidator(
-        regex=r'^\+?1?\d{9,15}$', 
-        message="Phone number must be entered in the format:"
-                "'+999999999'. Up to 15 digits allowed.")
+        regex=r'^(\+\d{1,3})?,?\s?\d{7,15}$', 
+        message="Please enter a correct phone number. "
+                "Up to 15 digits without spaces allowed.")  
     phone_number = models.CharField(validators=[phone_regex], max_length=17, null=False, blank=False)   
     country = models.CharField(max_length=50, default='IE', null=False, blank=False)
     postcode = models.CharField(max_length=20, null=True, blank=True)

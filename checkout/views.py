@@ -1,6 +1,7 @@
 from django.shortcuts import (render,
     redirect, reverse, get_object_or_404,
     HttpResponse)
+from django.http import HttpResponseRedirect
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -39,10 +40,11 @@ def cache_checkout_data(request):
         return HttpResponse(content=e, status=400)
     
 
-def checkout(request):
-    stripe_public_key = settings.STRIPE_PUBLIC_KEY
-    stripe_secret_key = settings.STRIPE_SECRET_KEY
-
+def pre_checkout(request): 
+    """
+    If 'POST', all user's data is collected and passed
+    to the checkout function with Stripe payment field 
+    """
     if request.method == 'POST':
         cart = request.session.get('cart', {})               
 
@@ -55,7 +57,110 @@ def checkout(request):
             'city': request.POST['city'],
             'street_address1': request.POST['street_address1'],
             'street_address2': request.POST['street_address2'],
-            'county': request.POST['county'],
+            'county': request.POST['county'],            
+        }
+        order_form = OrderForm(form_data)         
+             
+        if order_form.is_valid():
+            request.session['save_info'] = 'save-info' in request.POST            
+            request.session['full_name'] = order_form.cleaned_data['full_name']
+            request.session['email'] = order_form.cleaned_data['email']
+            request.session['phone_number'] = order_form.cleaned_data['phone_number']
+            request.session['country'] = order_form.cleaned_data['country']
+            request.session['postcode'] = order_form.cleaned_data['postcode']
+            request.session['city'] = order_form.cleaned_data['city']
+            request.session['street_address1'] = order_form.cleaned_data['street_address1']
+            request.session['street_address2'] = order_form.cleaned_data['street_address2']
+            request.session['county'] = order_form.cleaned_data['county'] 
+
+            return HttpResponseRedirect(reverse('checkout'))
+        else:
+            messages.error(request, 'There was an error with your form. \
+                Please double check your information.')
+    else:
+        cart = request.session.get('cart', {})
+        if not cart:
+            messages.error(request,
+                            "There's nothing in your cart at the moment")
+            return redirect(reverse('products:products'))
+        """
+        If the user returns from the checkout page, the form is pre-populated
+        with data from the session
+        """
+        back = request.GET.get('back')
+        if back == 'true':
+            form_data = {
+                'full_name': request.session.get('full_name'),
+                'email': request.session.get('email'),
+                'phone_number': request.session.get('phone_number'),
+                'country': request.session.get('country'),
+                'postcode': request.session.get('postcode'),
+                'city': request.session.get('city'),
+                'street_address1': request.session.get('street_address1'),
+                'street_address2': request.session.get('street_address2'),
+                'county': request.session.get('county'),
+            }
+            order_form = OrderForm(form_data)  
+        elif request.user.is_authenticated:
+                """
+                For logged in user the form is pre-populated 
+                with data from the db
+                """
+                try:
+                    profile = UserProfile.objects.get(user=request.user)
+                    address = UserAddress.objects.filter(
+                        username=profile, is_default=True).first()                
+                    full_name = UserProfile.objects.annotate(full_name=Concat(
+                        'first_name', Value(' '), 'last_name')).get(
+                        user=request.user).full_name
+                    if address:
+                        order_form = OrderForm(initial={
+                            'full_name': full_name, 
+                            'email': request.user.email,
+                            'phone_number': profile.phone_number,
+                            'country': address.profile_country,
+                            'postcode': address.profile_postcode,
+                            'city': address.profile_city,
+                            'street_address1': address.profile_street_address1,
+                            'street_address2': address.profile_street_address2,
+                            'county': address.profile_county,
+                        })
+                    else:
+                        order_form = OrderForm(initial={                        
+                            'email': request.user.email,
+                            'phone_number': profile.phone_number,
+                            'full_name': full_name,                      
+                        })
+
+                except UserProfile.DoesNotExist:
+                    order_form = OrderForm()
+        else:
+            order_form = OrderForm()        
+        
+    template = 'checkout/pre_checkout.html'
+    context = {
+        'order_form': order_form,            
+    }
+    return render(request, template, context)
+
+
+def checkout(request):
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY   
+
+    if request.method == 'POST':
+        cart = request.session.get('cart', {})
+
+        form_data = {
+            'full_name': request.session.get('full_name'),
+            'email': request.session.get('email'),
+            'phone_number': request.session.get('phone_number'),
+            'country': request.session.get('country'),
+            'postcode': request.session.get('postcode'),
+            'city': request.session.get('city'),
+            'street_address1': request.session.get('street_address1'),
+            'street_address2': request.session.get('street_address2'),
+            'county': request.session.get('county'),
         }
         order_form = OrderForm(form_data)        
              
@@ -91,43 +196,23 @@ def checkout(request):
             
     else:
         cart = request.session.get('cart', {})
+        
+        form_data = {
+            'full_name': request.session.get('full_name'),
+            'email': request.session.get('email'),
+            'phone_number': request.session.get('phone_number'),
+            'country': request.session.get('country'),
+            'postcode': request.session.get('postcode'),
+            'city': request.session.get('city'),
+            'street_address1': request.session.get('street_address1'),
+            'street_address2': request.session.get('street_address2'),
+            'county': request.session.get('county'),
+        }
+        order_form = OrderForm(form_data)    
         if not cart:
             messages.error(request,
                             "There's nothing in your cart at the moment")
-            return redirect(reverse('products:products'))
-        
-       
-        if request.user.is_authenticated:
-            try:
-                profile = UserProfile.objects.get(user=request.user)
-                address = UserAddress.objects.filter(
-                    username=profile, is_default=True).first()                
-                full_name = UserProfile.objects.annotate(full_name=Concat(
-                    'first_name', Value(' '), 'last_name')).get(
-                    user=request.user).full_name
-                if address:
-                    order_form = OrderForm(initial={
-                        'full_name': full_name, 
-                        'email': request.user.email,
-                        'phone_number': profile.phone_number,
-                        'country': address.profile_country,
-                        'postcode': address.profile_postcode,
-                        'city': address.profile_city,
-                        'street_address1': address.profile_street_address1,
-                        'street_address2': address.profile_street_address2,
-                        'county': address.profile_county,
-                    })
-                else:
-                    order_form = OrderForm(initial={                        
-                        'email': request.user.email,
-                        'phone_number': profile.phone_number,
-                        'full_name': full_name,                      
-                    })
-
-            except UserProfile.DoesNotExist:
-                order_form = OrderForm()
-        else:
-            order_form = OrderForm()
+            return redirect(reverse('products:products')) 
 
     if not stripe_public_key:
         messages.warning(request, ('Stripe public key is missing. '
@@ -226,6 +311,16 @@ def checkout_success(request, order_number):
     
     if 'cart' in request.session:
         del request.session['cart']
+
+    del request.session['full_name']
+    del request.session['email']
+    del request.session['phone_number']
+    del request.session['country']
+    del request.session['postcode']
+    del request.session['city']
+    del request.session['street_address1']
+    del request.session['street_address2']
+    del request.session['county'] 
 
     template = 'checkout/checkout_success.html'
     context = {

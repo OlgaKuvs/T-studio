@@ -22,15 +22,16 @@
         </li>
         <li class="nav-item dropdown">
             <a class="text-upper font-weight-bold nav-link mr-5 dropdown-toggle" href="#" id="shop-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Applicators
+                Store
             </a>
             <div class="dropdown-menu dropdown-main-menu border-0 mt-0 rounded-0" aria-labelledby="shop-link">
+                <a href="{% url 'products:products' %}" class="dropdown-item text-upper">All applicators</a> 
                 <a href="{% url 'products:category' 'Mats' %}" class="dropdown-item text-upper">Mats</a>
                 <a href="{% url 'products:category' 'Rollers' %}" class="dropdown-item text-upper">Rollers</a>
                 <a href="{% url 'products:category' 'Bands' %}" class="dropdown-item text-upper">Bands</a>
                 <a href="{% url 'products:category' 'Belts' %}" class="dropdown-item text-upper">Belts</a>
                 <a href="{% url 'products:category' 'Massagers' %}" class="dropdown-item text-upper">Massagers</a>
-                <a href="{% url 'products:products' %}" class="dropdown-item text-upper">All products</a>                  
+                                 
             </div>
         </li>        
         <li class="nav-item d-block">

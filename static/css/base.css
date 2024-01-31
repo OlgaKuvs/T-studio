@@ -295,21 +295,6 @@ header {
   justify-content: center;    
 }
 
-/* FOOTER */
-
-.footer-container {
-  background: linear-gradient(90deg, #d3815b, #b9b59d); 
-  padding: 15px;
-  position: sticky;
-  bottom: 0 !important;
-  width: 100%;
-}
-
-.footer-content > ul > li {
-    list-style: none;    
-}
-
-
 /* bootstrap toasts */
 
 .message-container {
@@ -370,6 +355,24 @@ header {
   border-radius: 0;
 }
 
+/* FOOTER */
+
+.footer-container {
+  background: linear-gradient(90deg, #d3815b, #b9b59d); 
+  padding: 15px;
+  position: sticky;
+  bottom: 0 !important;
+  width: 100%;
+}
+
+.footer-content > ul > li {
+    list-style: none;    
+}
+
+.contact-footer {
+  padding: 0 !important;
+}
+
 /* Mailchimp */
 
 #mc_embed_signup {
@@ -420,6 +423,10 @@ header {
     justify-content: center;
   }
 
+  .message-container {   
+    right: 10px;
+    max-width: 280px !important;  
+  }
   
 }
 
@@ -457,6 +464,9 @@ header {
   .order-number {
     font-size: 0.8rem !important;
    }
+
+   
+  
 }
 
 @media only screen and (max-width: 767px) {
@@ -484,6 +494,10 @@ header {
 
   .nav-item {
     padding-left: 10px;
-  } 
+  }
+
+  .header-container {
+    padding-top: 210px !important; 
+}
 
 }

@@ -10,7 +10,7 @@
     <div class="container header-container">
         <div class="row text-center">
             <div class="col-12 mt-2 my-auto">
-                <h3 class="top-products-link">Checkout, Step 2</h3>
+                <h3 class="top-products-link">Checkout, Step 1</h3>
                 <hr>
             </div>
         </div>
@@ -20,7 +20,7 @@
 {% block content %}
 <div class="container mt-2"> 
     <div class="row">
-        <div class="col-12 col-lg-6 order-last mb-5">
+        <div class="col-12 col-lg-6 order-lg-last mb-5">
             <p class="text-muted">Order Summary ({{ product_count }})</p>
             <div class="row">
                 <div class="col-7 offset-2">
@@ -64,69 +64,87 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-6">           
-            <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+        <div class="col-12 col-lg-6">
+            <p class="text-muted">Please fill out the form below to complete your order<br>
+                <strong>(for the Republic of Ireland only!)</strong></p>
+            <form action="{% url 'pre_checkout' %}" method="POST">
                 {% csrf_token %}
-                <fieldset class="d-none">                   
+                <fieldset class="rounded px-3 mb-3">
+                    <legend class="fieldset-label small w-auto"><h4>Details</h4></legend>
+                    {% if order_form.full_name.errors %}
+                    {{ order_form.full_name.errors }}
+                    {% endif %}
                     {{ order_form.full_name | as_crispy_field }}
                     {{ order_form.email | as_crispy_field }}
+                </fieldset>
+                <fieldset class="rounded px-3 mb-3">
+                    <legend class="fieldset-label small w-auto"><h4>Shipping</h4></legend>
                     {{ order_form.phone_number | as_crispy_field }}
                     {{ order_form.street_address1 | as_crispy_field }}
                     {{ order_form.street_address2 | as_crispy_field }}
                     {{ order_form.city | as_crispy_field }}
                     {{ order_form.county | as_crispy_field }}
                     {{ order_form.postcode | as_crispy_field }}
-                    {{ order_form.country | as_crispy_field }}                   
+                    {{ order_form.country | as_crispy_field }}
+                    <div class="form-check form-check-inline float-right mr-0">
+                        {% if user.is_authenticated %}
+                            <label class="form-check-label" for="id-save-info">Save this shipping information to my profile</label>
+                            <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
+                        {% else %}
+                            <label class="form-check-label" for="id-save-info">
+                                <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
+                                <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
+                            </label>
+                        {% endif %}
+                    </div>
                 </fieldset>
-                <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked hidden>
+                {% comment %}
                 <fieldset class="px-3">
-                    <legend class="fieldset-label small px-2 w-auto payment-label"><h4>Payment</h4></legend>
+                    <legend class="fieldset-label small px-2 w-auto payment-label">Payment</legend>
                     <!-- A Stripe card element will go here -->
                     <div class="mb-3" id="card-element"></div>
                     <!-- Used to display form errors -->
                     <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                     <!-- Pass the client secret to the view so we can get the payment intent id -->
                     <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                </fieldset>
+                {% endcomment %}
+
+                <div class="submit-button text-right mt-5 mb-2">                    
+                    <a href="{% url 'view_cart' %}" class="btn btn-basic mr-3 btn-order">
+                        <span class="icon">
+                            <i class="fas fa-chevron-left"></i>
+                        </span>
+                        <span class="text-uppercase">Adjust Cart</span>
+                    </a>
+                    <button type="submit" name="pre-submit" class="btn btn-basic btn-order btn-right">
+                        <span class="text-uppercase">Next</span>
+                        <span class="icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+                    </button>
+                        {% comment %}
+                        <span class="icon">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                        {% endcomment %}
+                    
+                    {% comment %}
                     <p class="small text-danger my-0">
                         <span class="icon">
                             <i class="fas fa-exclamation-circle"></i>
                         </span>
                         <span>Your card will be charged <strong>€{{ grand_total|floatformat:2 }}</strong></span>
                     </p>
-                </fieldset>
-
-                <div class="submit-button text-right mt-5 mb-2 mr-3">                    
-                    <a href="{% url 'pre_checkout' %}?back=true" class="btn btn-basic mr-3 btn-order">
-                        <span class="icon">
-                            <i class="fas fa-chevron-left"></i>
-                        </span>
-                        <span class="text-uppercase">Back</span>
-                    </a>
-                    <button type="submit" id="submit-button" class="btn btn-basic btn-order btn-right">
-                        <span class="text-uppercase">Complete Order</span>
-                        <span class="icon">
-                            <i class="fas fa-lock"></i>
-                        </span>
-                    </button>                   
+                    {% endcomment %}
                 </div>
             </form>           
         </div>
     </div>
 </div>
-<div id="loading-overlay">
-    <h1 class="text-light logo-font loading-spinner">
-        <span class="icon">
-            <i class="fas fa-3x fa-sync-alt fa-spin"></i>
-        </span>
-    </h1>
-</div>
+
 
 {% endblock %}
 
-{% block postloadjs %}
-    {{ block.super }}
-    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-    {{ client_secret|json_script:"id_client_secret" }}
-    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
-{% endblock %}
 
+   

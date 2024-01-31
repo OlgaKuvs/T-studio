@@ -4,8 +4,8 @@
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
-            <div class="col text-center mt-3">
-                <h4>Contact Us</h4>                
+            <div class="col">
+                <h3 class="top-products-link text-center">Contact Us</h3>                
                 <hr>
             </div>
         </div>
@@ -17,7 +17,7 @@
     <div class="row">
         <div class="col-12 col-md-6 contact-main">
             <div class="mt-3">
-                <h5>Our address:</h5>
+                <h4>Our address:</h4>
                 <div>
                     <ul class="contact-list">                       
                         <li>Unit 1, T-Studio Homeworld,</li>
@@ -30,7 +30,7 @@
                     </ul>
                 </div>
                 <div>
-                    <h5>Our location:</h5>
+                    <h4>Our location:</h4>
                     <div class="footer-content google-map">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38168.83627818987!2d-9.026838266000743!3d53.279641470693775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x485b91774f63465b%3A0xda92239c3e7f5f9b!2sHolistic%20and%20Sport%20Massage.%20Hatha%20Yoga!5e0!3m2!1sru!2sie!4v1701265111115!5m2!1sru!2sie" 
                         class="map-size" frameborder="0" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade" title="Google maps"></iframe>
@@ -40,7 +40,7 @@
         </div>
         <div class="col-12 col-md-6 contact-main">
             <div class="mb-3 mt-3">
-                <h5>Contact form:</h5>
+                <h4>Contact form:</h4>
                 <form method="POST" action="" class="form mb-2">
                     {% csrf_token %}
                     {{ form | crispy }}

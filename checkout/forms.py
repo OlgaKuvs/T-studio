@@ -10,15 +10,7 @@ class OrderForm(forms.ModelForm):
         fields = ('full_name', 'email', 'phone_number',
                   'street_address1', 'street_address2',
                   'city', 'postcode', 'country',
-                  'county',)
-        
-    # def clean_full_name(self):
-    #     # Verification of full_name field
-    #     full_name = self.cleaned_data.get('full_name')           
-    #     name_parts = full_name.split()
-    #     if len(name_parts) < 2:
-    #         raise ValidationError("Please enter your full name")
-    #     return full_name 
+                  'county',)   
 
     def __init__(self, *args, **kwargs):
         """
