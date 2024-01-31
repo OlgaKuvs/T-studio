@@ -73,7 +73,7 @@ def pre_checkout(request):
             request.session['street_address1'] = order_form.cleaned_data['street_address1']
             request.session['street_address2'] = order_form.cleaned_data['street_address2']
             request.session['county'] = order_form.cleaned_data['county'] 
-
+            print("AAA", request.session['save_info'] )
             return HttpResponseRedirect(reverse('checkout'))
         else:
             messages.error(request, 'There was an error with your form. \
@@ -152,6 +152,7 @@ def checkout(request):
     if request.method == 'POST':
         cart = request.session.get('cart', {})
         save_info = request.session.get('save_info')
+        print("BBB", save_info)
 
         form_data = {
             'full_name': request.session.get('full_name'),
@@ -167,6 +168,7 @@ def checkout(request):
         order_form = OrderForm(form_data)        
              
         if order_form.is_valid():
+            print("CCC", save_info)
             order = order_form.save(commit=False)
             pid = request.POST.get('client_secret').split('_secret')[0]
             order.stripe_pid = pid
@@ -197,7 +199,8 @@ def checkout(request):
             
     else:
         cart = request.session.get('cart', {})
-        save_info = request.session.get('save_info')      
+        save_info = request.session.get('save_info') 
+        print("DDD", save_info)     
         
         form_data = {
             'full_name': request.session.get('full_name'),
@@ -237,6 +240,7 @@ def checkout(request):
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,       
     }
+    print("FFF", save_info) 
     return render(request, template, context)
 
 
@@ -246,15 +250,18 @@ def checkout_success(request, order_number):
     """
     save_info = request.session.get('save_info')   
     order = get_object_or_404(Order, order_number=order_number)
+    print("KKK", save_info) 
 
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)          
         # Attach the user's profile to the order
         order.user_profile = profile
         order.save()
+        print("LLL", save_info) 
                
         # Save the user's info
         if save_info:
+            print("MMM", save_info) 
             first_name, last_name = order.full_name.split(' ', 1)
             profile_data = {
                 'first_name': first_name,
@@ -310,7 +317,7 @@ def checkout_success(request, order_number):
         [cust_email],
     )
     email.send(fail_silently=False)
-    
+    print("XXX", save_info) 
     if 'cart' in request.session:
         del request.session['cart']  
 
@@ -330,5 +337,5 @@ def checkout_success(request, order_number):
         'order': order,
         'save_info': save_info,
     }
-
+    print("YYY", save_info) 
     return render(request, template, context)

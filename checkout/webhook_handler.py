@@ -35,7 +35,7 @@ class StripeWH_Handler:
         intent = event.data.object
         pid = intent.id
         cart = intent.metadata.cart
-        save_info = intent.metadata.save_info       
+        # save_info = intent.metadata.save_info       
 
         # Get the Charge object
         stripe_charge = stripe.Charge.retrieve(
@@ -50,42 +50,41 @@ class StripeWH_Handler:
         for field, value in shipping_details.address.items():
             if value == "":
                 shipping_details.address[field] = None
-
-        # Update profile information if save_info was checked
+       
         profile = None
         username = intent.metadata.username
         if username != 'AnonymousUser':
             profile = UserProfile.objects.get(user__username=username)           
-            if save_info:
-                profile.phone_number = shipping_details.phone                
-                profile.save()
+            # if save_info:
+            #     profile.phone_number = shipping_details.phone                
+            #     profile.save()
 
-                if not UserAddress.objects.filter(
-                    username = profile,                              
-                    profile_street_address1 = shipping_details.address.line1,
-                    profile_street_address2 = shipping_details.address.line2,
-                    profile_city = shipping_details.address.city,
-                    profile_county = shipping_details.address.state,
-                    profile_postcode = shipping_details.address.postal_code,
-                    profile_country = shipping_details.address.country,               
-                    ).exists():
+            #     if not UserAddress.objects.filter(
+            #         username = profile,                              
+            #         profile_street_address1 = shipping_details.address.line1,
+            #         profile_street_address2 = shipping_details.address.line2,
+            #         profile_city = shipping_details.address.city,
+            #         profile_county = shipping_details.address.state,
+            #         profile_postcode = shipping_details.address.postal_code,
+            #         profile_country = shipping_details.address.country,               
+            #         ).exists():
 
-                    if UserAddress.objects.filter(
-                        username = profile, is_default = True).exists():
-                        is_default = False
-                    else:
-                        is_default = True 
+            #         if UserAddress.objects.filter(
+            #             username = profile, is_default = True).exists():
+            #             is_default = False
+            #         else:
+            #             is_default = True 
                         
-                    address = UserAddress.objects.create(
-                        username = profile,                              
-                        profile_street_address1 = shipping_details.address.line1,
-                        profile_street_address2 = shipping_details.address.line2,
-                        profile_city = shipping_details.address.city,
-                        profile_county = shipping_details.address.state,
-                        profile_postcode = shipping_details.address.postal_code,
-                        profile_country = shipping_details.address.country,
-                        is_default = is_default
-                    )
+            #         address = UserAddress.objects.create(
+            #             username = profile,                              
+            #             profile_street_address1 = shipping_details.address.line1,
+            #             profile_street_address2 = shipping_details.address.line2,
+            #             profile_city = shipping_details.address.city,
+            #             profile_county = shipping_details.address.state,
+            #             profile_postcode = shipping_details.address.postal_code,
+            #             profile_country = shipping_details.address.country,
+            #             is_default = is_default
+            #         )
 
         order_exists = False
         attempt = 1
