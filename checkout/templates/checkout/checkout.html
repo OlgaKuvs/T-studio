@@ -79,6 +79,12 @@
                     {{ order_form.country | as_crispy_field }}                   
                 </fieldset>              
                 <fieldset class="px-3">
+                    {% if save_info %}
+                    <p class="d-none">
+                        <label class="form-check-label" for="id-save-info">Save</label>
+                        <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
+                    </p>
+                    {% endif %}
                     <legend class="fieldset-label small px-2 w-auto payment-label"><h4>Payment</h4></legend>
                     <!-- A Stripe card element will go here -->
                     <div class="mb-3" id="card-element"></div>

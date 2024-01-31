@@ -58,17 +58,34 @@ class StripeWH_Handler:
             profile = UserProfile.objects.get(user__username=username)           
             if save_info:
                 profile.phone_number = shipping_details.phone                
-                profile.save() 
-                address = UserAddress.objects.create(
+                profile.save()
+
+                if not UserAddress.objects.filter(
                     username = profile,                              
                     profile_street_address1 = shipping_details.address.line1,
                     profile_street_address2 = shipping_details.address.line2,
                     profile_city = shipping_details.address.city,
                     profile_county = shipping_details.address.state,
                     profile_postcode = shipping_details.address.postal_code,
-                    profile_country = shipping_details.address.country,
-                    is_default = False
-                )
+                    profile_country = shipping_details.address.country,               
+                    ).exists():
+
+                    if UserAddress.objects.filter(
+                        username = profile, is_default = True).exists():
+                        is_default = False
+                    else:
+                        is_default = True 
+                        
+                    address = UserAddress.objects.create(
+                        username = profile,                              
+                        profile_street_address1 = shipping_details.address.line1,
+                        profile_street_address2 = shipping_details.address.line2,
+                        profile_city = shipping_details.address.city,
+                        profile_county = shipping_details.address.state,
+                        profile_postcode = shipping_details.address.postal_code,
+                        profile_country = shipping_details.address.country,
+                        is_default = is_default
+                    )
 
         order_exists = False
         attempt = 1
@@ -93,8 +110,7 @@ class StripeWH_Handler:
             except Order.DoesNotExist:
                 attempt += 1
                 time.sleep(1)
-        if order_exists:
-            self._send_confirmation_email(order)
+        if order_exists:            
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',
                 status=200)
@@ -128,8 +144,7 @@ class StripeWH_Handler:
                     order.delete()
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]} | ERROR: {e}',
-                    status=500)
-        self._send_confirmation_email(order) 
+                    status=500)        
         return HttpResponse(
             content=f'Webhook received: {event["type"]} |  SUCCESS: Created order in webhook',
             status=200)
