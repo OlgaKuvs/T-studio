@@ -19,10 +19,8 @@
             <div class="col-12">
                 <hr>                
                 <p>Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong>.</p>
-                {% if save_info %}
                 <p>You can leave your review on <a class="text-link" href="{% url 'profile:orders' %}"><strong>profile page</strong></a> 
-                    by opening your order history.</p>
-                {% endif %}
+                    by opening your order history.</p>              
             </div>
         </div>
         <div class="row justify-content-center">

@@ -10,6 +10,7 @@ from django.db.models import Value
 from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
+from django.utils.safestring import mark_safe
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
@@ -62,7 +63,7 @@ def pre_checkout(request):
         order_form = OrderForm(form_data)         
              
         if order_form.is_valid():
-            request.session['save_info'] = 'save-info' in request.POST            
+            request.session['save_info'] = 'save-info' in request.POST
             request.session['full_name'] = order_form.cleaned_data['full_name']
             request.session['email'] = order_form.cleaned_data['email']
             request.session['phone_number'] = order_form.cleaned_data['phone_number']
@@ -150,6 +151,7 @@ def checkout(request):
 
     if request.method == 'POST':
         cart = request.session.get('cart', {})
+        save_info = request.session.get('save_info')
 
         form_data = {
             'full_name': request.session.get('full_name'),
@@ -186,9 +188,8 @@ def checkout(request):
                         "Please call us for assistance!")
                     )
                     order.delete()
-                    return redirect(reverse('view_cart'))
-
-            request.session['save_info'] = 'save-info' in request.POST
+                    return redirect(reverse('view_cart'))            
+           
             return redirect(reverse('checkout_success', args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
@@ -196,6 +197,7 @@ def checkout(request):
             
     else:
         cart = request.session.get('cart', {})
+        save_info = request.session.get('save_info')      
         
         form_data = {
             'full_name': request.session.get('full_name'),
@@ -208,7 +210,7 @@ def checkout(request):
             'street_address2': request.session.get('street_address2'),
             'county': request.session.get('county'),
         }
-        order_form = OrderForm(form_data)    
+        order_form = OrderForm(form_data)          
         if not cart:
             messages.error(request,
                             "There's nothing in your cart at the moment")
@@ -231,6 +233,7 @@ def checkout(request):
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
+        'save_info': save_info,
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,       
     }
@@ -241,7 +244,7 @@ def checkout_success(request, order_number):
     """
     Handle successful checkouts
     """
-    save_info = request.session.get('save_info')
+    save_info = request.session.get('save_info')   
     order = get_object_or_404(Order, order_number=order_number)
 
     if request.user.is_authenticated:
@@ -260,8 +263,7 @@ def checkout_success(request, order_number):
             }
             user_profile_form = ProfileForm(profile_data, instance=profile)
             if user_profile_form.is_valid():
-                user_profile_form.save()
-            
+                user_profile_form.save()          
             if not UserAddress.objects.filter(
                 username = profile,                              
                 profile_street_address1 = order.street_address1,
@@ -288,9 +290,9 @@ def checkout_success(request, order_number):
                     is_default = is_default
                 )
 
-    messages.success(request, f'Order successfully processed! \
-    Your order number is {order_number}. A confirmation \
-    email will be sent to {order.email}.')
+    messages.success(request, mark_safe(f'Order successfully processed! \
+    Your order number is <small>{order_number}</small>. A confirmation \
+    email will be sent to {order.email}.'))
 
     # Send confirmation e-mail
     cust_email = order.email
@@ -310,7 +312,7 @@ def checkout_success(request, order_number):
     email.send(fail_silently=False)
     
     if 'cart' in request.session:
-        del request.session['cart']
+        del request.session['cart']  
 
     del request.session['full_name']
     del request.session['email']
@@ -320,7 +322,8 @@ def checkout_success(request, order_number):
     del request.session['city']
     del request.session['street_address1']
     del request.session['street_address2']
-    del request.session['county'] 
+    del request.session['county']
+    del request.session['save_info'] 
 
     template = 'checkout/checkout_success.html'
     context = {
