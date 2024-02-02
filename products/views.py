@@ -195,7 +195,9 @@ class ReviewView(SuccessMessageMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['product'] = get_object_or_404(Product, pk=self.kwargs['product_id'])
-        context['order_id'] = get_object_or_404(Order, id=self.kwargs['order_id'])        
+        context['order_id'] = get_object_or_404(Order, 
+                                user_profile=self.request.user.userprofile,
+                                id=self.kwargs['order_id'])
         return context
     
 
