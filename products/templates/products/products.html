@@ -37,7 +37,7 @@
                     <div class="input-group w-100">
                         <input class="border border-grey form-custom" type="text" name="q" placeholder="Search our store">
                         <div class="input-group-append">
-                            <button class="btn-orange" type="submit">
+                            <button title="search" class="btn-orange" type="submit">
                                 <span class="icon">
                                     <i class="fas fa-search"></i>
                                 </span>
@@ -100,7 +100,7 @@
                                 <img class="card-img-top product-image" src="{% static 'images/noimage.png' %}" alt="{{product.product_name}}">
                             {% endif %}                                              
                             <div class="card-body pb-0">
-                                <h5 class="mb-0 font-weight-bold products-link">{{ product.name }}</h5>
+                                <h4 class="mb-0 font-weight-bold products-link">{{ product.name }}</h4>
                             </div>
                         </a> 
                         <div class="card-footer bg-white pt-0 border-0 text-left">

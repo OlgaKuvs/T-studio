@@ -238,6 +238,10 @@ header {
   background-color: #d3815b;
 }
 
+.navbar-toggler {
+  padding: 0.15rem 0.75rem !important;
+}
+
 #topnav {
   display: flex;  
   align-items: center;
