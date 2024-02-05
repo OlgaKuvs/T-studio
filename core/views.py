@@ -45,3 +45,8 @@ def j_manipulations(request):
 def yoga(request):
     """ A view to return the yoga page """
     return render(request, 'core/yoga.html')
+
+
+def privacy_policy(request):
+    """ A view to return the privacy_policy page """
+    return render(request, 'core/privacy_policy.html')
