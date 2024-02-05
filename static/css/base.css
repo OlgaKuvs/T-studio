@@ -5,7 +5,7 @@ html {
 }
 
 body {
-  color: #292f36; 
+  color: #292f36;
   background-color: #f8f9fa;
   font-family: 'Lato', Arial, Helvetica, sans-serif;
   display: flex;
@@ -25,10 +25,10 @@ hr {
   background: transparent !important;
 }
 
-.product-row, 
+.product-row,
 .product-container {
   justify-content: center;
-  align-content: center;  
+  align-content: center;
 }
 
 .text-upper {
@@ -36,8 +36,8 @@ hr {
 }
 
 .products-link:hover,
-.top-products-link:hover {  
-  text-decoration: none;  
+.top-products-link:hover {
+  text-decoration: none;
 }
 
 .update-item,
@@ -75,26 +75,26 @@ hr {
 /* BUTTONS */
 
 .btn-basic {
-  border: 2px solid #ff7b54;  
+  border: 2px solid #ff7b54;
   background: #fff;
 }
 
 .btn-basic:hover {
-  color: #ff7b54;   
+  color: #ff7b54;
 }
 
 .btn-left {
   margin-right: 15px;
 }
 
-.btn-cancel {  
-  background-color: #fff !important; 
-  border: 2px solid #939b62 !important;  
-  color: #292f36;   
+.btn-cancel {
+  background-color: #fff !important;
+  border: 2px solid #939b62 !important;
+  color: #292f36;
 }
 
 .btn-cancel:hover {
-  color: #939b62 !important;     
+  color: #939b62 !important;
 }
 
 .btn-orange {
@@ -109,12 +109,12 @@ hr {
 h2,
 .text-black {
     color: #292f36;
-    font-family: 'Merriweather', Arial, Helvetica, sans-serif; 
+    font-family: 'Merriweather', Arial, Helvetica, sans-serif;
 }
 
 h3, h4, h5, h6 {
     color: #ff7b54;
-    font-family: 'Merriweather', Arial, Helvetica, sans-serif; 
+    font-family: 'Merriweather', Arial, Helvetica, sans-serif;
 }
 
 /* COLOURS */
@@ -124,8 +124,8 @@ h3, h4, h5, h6 {
 }
 
 .bg-header,
-.dropdown-main-menu {    
-  background: #d3815b !important; 
+.dropdown-main-menu {
+  background: #d3815b !important;
   /* background: #d77952 !important;  */
 }
 
@@ -135,7 +135,7 @@ h3, h4, h5, h6 {
 
 .icons-colour,
 .map-text {
-    color:#292f36;  
+    color:#292f36;
 }
 
 .icons-colour:hover {
@@ -148,7 +148,7 @@ h3, h4, h5, h6 {
 }
 
 .dropdown-item:active {
-  background-color: #e7e7e7 !important;  
+  background-color: #e7e7e7 !important;
 }
 
 .nav-link:hover {
@@ -167,18 +167,18 @@ h3, h4, h5, h6 {
 
 .offers-banner {
     background-color: #d3815b;
-    color:#292f36;      
+    color:#292f36;
 }
 
 .capture-services,
 .badge-category:hover {
-    color:#292f36; 
+    color:#292f36;
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     background-color: #ff7b54 !important;
-    
+
 }
 
 .badge-category {
@@ -186,12 +186,12 @@ h3, h4, h5, h6 {
 }
 
 .products-link:hover {
-  color: #939b62;  
+  color: #939b62;
 }
 
 .top-products-link,
 .top-products-link:hover  {
-  color: #ff7b54; 
+  color: #ff7b54;
 }
 
 .text-link {
@@ -201,7 +201,7 @@ h3, h4, h5, h6 {
 
 .text-link:hover,
 .text-link:active {
-  color: #939b62;  
+  color: #939b62;
 }
 
 
@@ -212,13 +212,13 @@ header {
 }
 
 .header-container {
-  padding-top: 200px; 
+  padding-top: 200px;
 }
 
 .logo-link {
     width: -moz-fit-content;
-    width: fit-content; 
-    font-family: 'Merriweather', serif;  
+    width: fit-content;
+    font-family: 'Merriweather', serif;
 }
 
 .logo-font {
@@ -243,7 +243,7 @@ header {
 }
 
 #topnav {
-  display: flex;  
+  display: flex;
   align-items: center;
 }
 
@@ -254,13 +254,13 @@ header {
 .navbar-shop {
     padding: 10px !important;
 }
-  
+
 #slogan {
     letter-spacing: 2px;
     white-space: nowrap;
     color: #939b62;
     font-family: 'Merriweather', serif;
-    text-align: center; 
+    text-align: center;
 }
 
 .offer-therapy {
@@ -277,9 +277,9 @@ header {
 }
 
 .cart-notification-wrapper {
-  height: 150px;   
+  height: 150px;
   overflow-x: hidden;
-  overflow-y: auto;  
+  overflow-y: auto;
 }
 
 /* CONTACT US */
@@ -290,19 +290,19 @@ header {
 }
 
 .map-size {
-  width: 300px;  
+  width: 300px;
   height: 225px;
 }
 
 .contact-main {
   display: flex;
-  justify-content: center;    
+  justify-content: center;
 }
 
 /* bootstrap toasts */
 
 .message-container {
-  position: fixed; 
+  position: fixed;
   background-color: #f8f9fa;
   top: 120px;
   right: 30px;
@@ -320,7 +320,7 @@ header {
 /* Allauth form formatting */
 
 .allauth-form-inner-content p {
-  margin-top: 1.5rem;  
+  margin-top: 1.5rem;
   color: #636c72 !important;
 }
 
@@ -354,7 +354,7 @@ header {
   border-color: #ff7b54;
 }
 
-.custom-checkbox .custom-control-input:checked~.custom-control-label::before { 
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
   border-color: #ff7b54;
   border-radius: 0;
 }
@@ -362,7 +362,7 @@ header {
 /* FOOTER */
 
 .footer-container {
-  background: linear-gradient(90deg, #d3815b, #b9b59d); 
+  background: linear-gradient(90deg, #d3815b, #b9b59d);
   padding: 15px;
   position: sticky;
   bottom: 0 !important;
@@ -370,7 +370,7 @@ header {
 }
 
 .footer-content > ul > li {
-    list-style: none;    
+    list-style: none;
 }
 
 .link-footer {
@@ -379,28 +379,28 @@ header {
 
 .footer-social-icon {
   display: inline-block;
-  margin-left: 10px !important;  
+  margin-left: 10px !important;
 }
 
 
 /* Mailchimp */
 
 #mc_embed_signup {
-  background: transparent; 
-  clear: left; 
+  background: transparent;
+  clear: left;
   width: 100%;
 }
 
-#mc-embedded-subscribe {  
+#mc-embedded-subscribe {
   background: #fff !important;
   color: #292f36 !important;
   /* border: 2px solid #d3815b !important; */
   box-shadow: 2px 2px 4px #636c72;
-  border-radius: 0.25rem; 
+  border-radius: 0.25rem;
 }
 
 #mc-embedded-subscribe:hover {
-  color: #ff7b54 !important;  
+  color: #ff7b54 !important;
   box-shadow: inset 1px 1px 1px #636c72;
   transition: 0.5s !important;
 }
@@ -415,7 +415,7 @@ header {
 
 /* Media */
 
-@media only screen and (max-width: 400px) {  
+@media only screen and (max-width: 400px) {
 
   .btn-order {
     margin-left: 40px;
@@ -430,18 +430,18 @@ header {
   .btn-left {
     margin-right: 0;
   }
-  
+
   .submit-button {
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 
-  .message-container {   
+  .message-container {
     right: 10px;
-    max-width: 290px !important;  
+    max-width: 290px !important;
   }
-  
+
 }
 
 @media only screen and (max-width: 576px) {
@@ -472,15 +472,14 @@ header {
   }
 
   .header-container {
-    padding-top: 200px; 
+    padding-top: 200px;
   }
- 
+
   .order-number {
     font-size: 0.8rem !important;
-   }
+  }
 
-   
-  
+
 }
 
 @media only screen and (max-width: 767px) {
@@ -491,11 +490,11 @@ header {
   }
 
   .map-size {
-    width: 250px;  
+    width: 250px;
     height: 190px;
-  } 
+  }
 
- 
+
 
 }
 
@@ -503,7 +502,7 @@ header {
 
   .bg-header,
   .offers-banner {
-    height: 40px !important;  
+    height: 40px !important;
   }
 
   .nav-item {
@@ -511,7 +510,11 @@ header {
   }
 
   .header-container {
-    padding-top: 210px !important; 
+    padding-top: 210px !important;
 }
+
+/* .header-mobile {
+  position: static !important;
+} */
 
 }

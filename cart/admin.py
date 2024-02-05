@@ -4,7 +4,7 @@ from .models import Shipping
 class ShippingAdmin(admin.ModelAdmin):
     list_display = (
         'order_weight',
-        'postal_rates',        
+        'postal_rates',
     )
 
 admin.site.register(Shipping, ShippingAdmin)
