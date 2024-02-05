@@ -373,9 +373,15 @@ header {
     list-style: none;    
 }
 
-.contact-footer {
+.link-footer {
   padding: 0 !important;
 }
+
+.footer-social-icon {
+  display: inline-block;
+  margin-left: 10px !important;  
+}
+
 
 /* Mailchimp */
 
@@ -401,6 +407,10 @@ header {
 
 .asterisk-black {
   color: #292f36 !important;
+}
+
+.mc-form {
+  margin-bottom: 0 !important;
 }
 
 /* Media */
