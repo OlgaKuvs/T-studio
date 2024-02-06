@@ -1,4 +1,3 @@
-from decimal import Decimal
 from django.shortcuts import get_object_or_404
 from products.models import Product
 from .models import Shipping
@@ -33,7 +32,6 @@ def cart_contents(request):
     for r in all_rates:
         if r.order_weight > total_weight + 100:
             parcel_weight = r.order_weight
-            # print("PPP", parcel_weight)
             break
 
     shipping_cost = Shipping.objects.filter(order_weight=parcel_weight)\

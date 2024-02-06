@@ -7,6 +7,20 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="author" content="T-Studio">
+        <meta name="description"
+        content="T-STUDIO in Oranmore, Ireland provides Medical massage, Sports massage, Thai massage,
+        Yoga, Yoga Therapy, Manual Therapy, Joint Manipulations, sells unique Needle Applicators.">
+        <meta name="keywords"
+        content="Hatha Yoga, Medical Massage, Holistic Massage, Sports Massage, Thai Massage, Therapeutic Massage, Baby Massage,
+        Applicators, Needle Applicators, Muscle Relaxation, Joint Manipulations, Electrical Stimulation, Yoga Therapy, Pain relief,
+        Muscle Relaxation, Manual Therapy, Yoga near me, Massage near me, Stretching and Twisting, Health Enhancement, Aromatherapy,
+        Analgesic and Antispasmodic effect, Improve blood circulation, Mental well-being, Regeneration of damaged tissues,
+        Warmed and relaxed muscles, Healthy body, mind and spirit, Joint traction, Managing chronic pain">
+        <meta property="og:title" content="T-STUDIO | HEALTHY BODY, MIND AND SPIRIT">
+        <meta property="og:description" content="T-STUDIO in Oranmore, Ireland provides Medical massage, Sports massage, Thai massage,
+        Yoga, Yoga Therapy, Manual Therapy, Joint Manipulations, sells unique Needle Applicators.">
+        <meta property="og:url" content="{{ request.build_absolute_uri }}">
     {% endblock %}
 
     {% block extra_meta %}
@@ -16,7 +30,10 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato&family=Merriweather&display=swap">
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
+         <!--Favicon-->
         <link rel="shortcut icon" type="image/png" href="{{ MEDIA_URL }}favicon-32x32.png">
+        <!--Mailchimp Css-->
+        <link  rel="stylesheet" href="//cdn-images.mailchimp.com/embedcode/classic-061523.css">
     {% endblock %}
 
     {% block extra_css %}
@@ -35,10 +52,10 @@
     {% endblock %}
 
 
-    <title>T-studio{% block extra_title %}{% endblock %}</title>
+    <title>T-STUDIO | HEALTHY BODY, MIND AND SPIRIT</title>
   </head>
   <body>
-    <header class="container-fluid fixed-top header-mobile">
+    <header class="container-fluid fixed-top" id="header-responsive">
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner offers-banner">
               <div class="carousel-item active">
@@ -169,7 +186,6 @@
                     </div>
                     <div class="col-md-4 col-sm-12 mt-md-4">
                         <div id="mc_embed_shell">
-                            <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
                             <div id="mc_embed_signup">
                                 <form
                                     action="https://inbox.us8.list-manage.com/subscribe/post?u=faa5f0ae36fedb4e8f36433be&amp;id=3f33bb9cc2&amp;f_id=001c77e0f0"
@@ -244,32 +260,29 @@
     <!-- End Footer -->
 
     {% block postloadjs %}
-    <script type="text/javascript">
-            $('.toast').toast('show');
-        // setTimeout(() => {
-        //     $('.toast').toast('hide');
-        // }, "7000");
-    </script>
+        <script type="text/javascript">
+                $('.toast').toast('show');
+        </script>
 
-<script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
-<script type="text/javascript">
-    (function($) {
-        window.fnames = new Array(); window.ftypes = new Array();
-    fnames[0]='EMAIL';
-    ftypes[0]='email';
-    fnames[1]='FNAME';
-    ftypes[1]='text';
-    fnames[2]='LNAME';
-    ftypes[2]='text';
-    fnames[3]='ADDRESS';
-    ftypes[3]='address';
-    fnames[4]='PHONE';
-    ftypes[4]='phone';
-    fnames[5]='BIRTHDAY';
-    ftypes[5]='birthday';
-    }
-    (jQuery));var $mcj = jQuery.noConflict(true);</script>
-
+        <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+        <script type="text/javascript">
+            (function($) {
+                window.fnames = new Array(); window.ftypes = new Array();
+            fnames[0]='EMAIL';
+            ftypes[0]='email';
+            fnames[1]='FNAME';
+            ftypes[1]='text';
+            fnames[2]='LNAME';
+            ftypes[2]='text';
+            fnames[3]='ADDRESS';
+            ftypes[3]='address';
+            fnames[4]='PHONE';
+            ftypes[4]='phone';
+            fnames[5]='BIRTHDAY';
+            ftypes[5]='birthday';
+            }
+            (jQuery));var $mcj = jQuery.noConflict(true);
+        </script>
     {% endblock %}
 
  </body>

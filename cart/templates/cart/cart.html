@@ -13,11 +13,11 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mb-2 mt-2"> 
+<div class="container mb-2 mt-2">
     <div class="row">
         <div class="col">
             {% if cart_items %}
-            <div class="d-block d-sm-none text-center">                
+            <div class="d-block d-sm-none text-center">
                 {% for item in cart_items %}
                     <div class="row">
                         <div class="col-12 col-sm-6 mb-2">
@@ -26,14 +26,18 @@
                         <div class="col-12 col-sm-6 mb-2">
                             {% include "cart/product-info.html" %}
                         </div>
-                        <div class="col-12 col-sm-6 mb-2"> 
+                        <div class="col-12 col-sm-6 mb-2">
                             <p class="my-0">Subtotal: €{{ item.product.price | calc_subtotal:item.quantity }}</p>
-                        </div>                      
+                        </div>
                         <div class="col-12 col-sm-6 offset-sm-4">
                             {% include "cart/quantity-form.html" %}
                         </div>
                     </div>
-                    <div class="row"><div class="col"><hr></div></div>
+                    <div class="row">
+                        <div class="col">
+                            <hr>
+                        </div>
+                    </div>
                 {% endfor %}
                 <div class="row">
                     <div class="col text-right">
@@ -42,9 +46,9 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        {% include "cart/checkout-buttons.html" %}                       
+                        {% include "cart/checkout-buttons.html" %}
                     </div>
-                </div>               
+                </div>
             </div>
 
             <div class="table-responsive d-none d-sm-block">
@@ -78,10 +82,10 @@
                                 <form class="form update-form w-50" method="POST" action="{% url 'adjust_cart' item.item_id %}">
                                     {% csrf_token %}
                                     <div class="form-group">
-                                        <div class="input-group input-group-{{ item.item_id }}">            
-                                            <input class="form-control form-control-sm qty_input id_qty_{{ item.item_id }}" type="number"
+                                        <div class="input-group input-group-{{ item.item_id }}">
+                                            <input title="quantity" class="form-control form-control-sm qty_input id_qty_{{ item.item_id }}" type="number"
                                             name="quantity" value="{{ item.quantity }}" min="1" max="99"
-                                            data-item_id="{{ item.item_id }}" id="item_quantity"> 
+                                            data-item_id="{{ item.item_id }}" id="item_quantity">
                                         </div>
                                     </div>
                                 </form>
@@ -102,13 +106,13 @@
                     </tr>
                     <tr>
                         <td colspan="5" class="text-right">
-                            <a href="{% url 'products:products' %}" class="btn btn-basic btn-order btn-left mt-2">
+                            <a href="{% url 'products:products' %}" class="btn btn-basic btn-left mt-2">
                                 <span class="icon">
                                     <i class="fas fa-chevron-left"></i>
                                 </span>
                                 <span class="text-uppercase">Keep Shopping</span>
                             </a>
-                            <a href="{% url 'pre_checkout' %}" class="btn btn-basic btn-order btn-right mt-2">
+                            <a href="{% url 'pre_checkout' %}" class="btn btn-basic btn-right mt-2">
                                 <span class="text-uppercase">Secure Checkout</span>
                                 <span class="icon">
                                     <i class="fas fa-lock"></i>
@@ -119,7 +123,7 @@
                 </table>
             </div>
             {% else %}
-            <div class="text-center">                       
+            <div class="text-center">
                 <p class="lead mb-5">Your cart is empty.</p>
                 <a href="{% url 'products:products' %}" class="btn btn-basic">
                     <span class="icon">
@@ -128,7 +132,7 @@
                     <span class="text-uppercase">Keep Shopping</span>
                 </a>
             </div>
-            {% endif %}          
+            {% endif %}
         </div>
     </div>
 </div>
@@ -139,7 +143,7 @@
 {{ block.super }}
 
 <script type="text/javascript">
-    
+
     // Update quantity on click
     $('.update-item').click(function(e) {
         var form = $(this).prev('.update-form');
@@ -149,7 +153,7 @@
     // Remove item and reload on click
     $('.delete-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('delete_')[1];        
+        var itemId = $(this).attr('id').split('delete_')[1];
         var url = `/cart/delete/${itemId}/`;
         var data = {'csrfmiddlewaretoken': csrfToken};
 
@@ -160,7 +164,7 @@
     })
 
 </script>
-   
+
 {% endblock %}
 
 

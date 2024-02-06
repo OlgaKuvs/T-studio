@@ -230,6 +230,10 @@ header {
   padding-bottom: 8px;
 }
 
+.badge-warning {
+  background: #d3815b !important;
+}
+
 .navbar {
     padding: 0 !important;
 }
@@ -437,6 +441,11 @@ header {
     justify-content: center;
   }
 
+  .btn-cart {
+    width: 70%;
+    text-align: center;
+  }
+
   .message-container {
     right: 10px;
     max-width: 290px !important;
@@ -469,10 +478,6 @@ header {
 
   h6 {
     font-size: 1rem;
-  }
-
-  .header-container {
-    padding-top: 200px;
   }
 
   .order-number {
@@ -510,11 +515,9 @@ header {
   }
 
   .header-container {
-    padding-top: 210px !important;
+    padding-top: 220px !important;
 }
 
-/* .header-mobile {
-  position: static !important;
-} */
+
 
 }
