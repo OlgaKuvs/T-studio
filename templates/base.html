@@ -164,7 +164,7 @@
     {% endblock %}
 
      <!-- Footer -->
-     <div class="mt-auto">
+    <div class="mt-auto">
         <footer class="footer-container footer-custom sticky-bottom mt-5">
             <div class="container">
                 <div class="row footer-row">
@@ -250,22 +250,23 @@
                     </div>
                 </div>
             </div>
+        </div>
             <div class="row text-center mt-2">
                 <div class="col-12">
                     <span class="text-muted">© 2024 Copyright: T-STUDIO</span>
                 </div>
             </div>
         </footer>
-     </div>
+    </div>
     <!-- End Footer -->
 
     {% block postloadjs %}
-        <script type="text/javascript">
+        <script>
                 $('.toast').toast('show');
         </script>
 
-        <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
-        <script type="text/javascript">
+        <script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+        <script>
             (function($) {
                 window.fnames = new Array(); window.ftypes = new Array();
             fnames[0]='EMAIL';

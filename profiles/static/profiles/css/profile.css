@@ -5,14 +5,14 @@
 }
 
 .profile-links {
-    color: #292f36; 
+    color: #292f36;
     text-decoration: none;
     text-transform: uppercase;
 }
 
 .profile-links:hover {
-    color:#939b62; 
-    text-decoration: none;  
+    color:#939b62;
+    text-decoration: none;
 }
 
 .profile-header {
@@ -25,7 +25,7 @@
 }
 
 #add-address-form .form-control {
-    color: #292f36; 
+    color: #292f36;
 }
 
 #add-address-form input::placeholder {
@@ -34,11 +34,11 @@
 
 #id_profile_county,
 #id_profile_county option:not(:first-child) {
-    color: #292f36;     
+    color: #292f36;
 }
 
 #id_profile_country {
-    background: #f5f7fa;   
+    background: #f5f7fa;
 }
 
 #div_id_is_default {
@@ -50,12 +50,12 @@
 }
 
 .order-history {
-    max-height: 300px; 
-    overflow-y: auto;    
+    max-height: 300px;
+    overflow-y: auto;
 }
 
 .order-details {
-    max-height: 400px; 
+    max-height: 400px;
     overflow-y: auto;
     overflow-x: auto;
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -67,44 +67,34 @@
 
 /* Media */
 
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .profile-details {
+        border-right: hidden;
+    }
+}
+
 @media only screen and (max-width: 991px) {
+
     .main {
         text-align: center;
         margin: 0 auto;
     }
-      
-}
 
-
-
-@media (min-width: 768px) and (max-width: 991px) { 
-
-    .profile-details { 
+    .profile-details {
         border-right: hidden;
     }
-  
 
-}
+    .profile-header {
+        text-align: left !important;
+    }
 
-@media (max-width: 991px) {
+    .profile-main {
+        padding: 0 !important;
+    }
 
-.profile-details { 
-    border-right: hidden;
-}
-
-.profile-header {
-    text-align: left !important;
-}
-
-.profile-main {
-    padding: 0 !important;  
-}
-
-.profile-line {
-    margin-top: 5px !important;
-}
-
-
-
+    .profile-line {
+        margin-top: 5px !important;
+    }
 }
 

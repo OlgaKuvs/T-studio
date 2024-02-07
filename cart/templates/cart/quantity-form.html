@@ -3,10 +3,10 @@
     {% csrf_token %}
     <div class="form-group">
         <div class="d-flex justify-content-center">
-            <div class="input-group input-group-{{ item.item_id }} w-25">            
-                <input class="form-control form-control-sm qty_input id_qty_{{ item.item_id }}" type="number"
+            <div class="input-group input-group-{{ item.item_id }} w-25">
+                <input title="quantity" class="form-control form-control-sm qty_input id_qty_{{ item.item_id }}" type="number"
                     name="quantity" value="{{ item.quantity }}" min="1" max="99"
-                    data-item_id="{{ item.item_id }}" id="item_quantity"> 
+                    data-item_id="{{ item.item_id }}" id="item_quantity">
             </div>
         </div>
     </div>
