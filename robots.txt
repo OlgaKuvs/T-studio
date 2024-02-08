@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /profiles/
+Sitemap: https://t-studio-bbb312a89660.herokuapp.com/sitemap.xml
