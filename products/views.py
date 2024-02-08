@@ -16,12 +16,12 @@ from .forms import ReviewForm, ProductForm
 class ProductListView(ListView):
     """A Class Based View to show all products, including search queries,
     to check average product rating and save it to DB if changed"""
-    model = Product    
+    model = Product
     template_name = 'products/products.html'
     context_object_name = 'products'
 
     def get(self, request, *args, **kwargs):
-        for product in Product.objects.all():        
+        for product in Product.objects.all():
             approved_reviews = Review.objects.filter(
                 product_id=product.id, approved=True)
             avg = approved_reviews.aggregate(Avg('rate'))['rate__avg']
@@ -225,7 +225,7 @@ def show_reviews(request):
 
 @login_required
 def approve_review(request, product_id, review_id):
-    """ View to approve review by admin and  
+    """ View to approve review by admin and
     to calculate average product rating"""
     if not request.user.is_superuser:
         messages.error(request,

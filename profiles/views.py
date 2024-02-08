@@ -193,11 +193,3 @@ def order_details(request, order_id):
         'order': order,
     }
     return render(request, template, context)
-
-
-
-
-
-
-
-

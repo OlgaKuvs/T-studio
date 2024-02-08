@@ -9,6 +9,13 @@ class ProductForm(forms.ModelForm):
         model = Product
         exclude = ('rating',)
 
+        widgets = {
+            'price': forms.NumberInput(attrs={'min': 1, 'max': 1000}),
+            'discount': forms.NumberInput(attrs={'min': 1, 'max': 100}),
+            'weight': forms.NumberInput(attrs={'min': 1, 'max': 10000}),
+            'stock': forms.NumberInput(attrs={'min': 0, 'max': 10000}),
+        }
+
     image = forms.ImageField(label='Image', required=False,
                              widget=CustomClearableFileInput)
 
