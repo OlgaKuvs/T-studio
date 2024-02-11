@@ -6,7 +6,7 @@ from django.core.exceptions import ValidationError
 
 from products.models import Product
 from cart.models import Shipping
-from profiles.models import UserProfile
+from profiles.models import UserProfile, UserAddress
 
 
 def clean_full_name(value):
@@ -16,36 +16,6 @@ def clean_full_name(value):
 
 
 class Order(models.Model):
-
-    COUNTIES = [
-        ('', 'Choose a county*'),
-        ('carlow', 'Carlow'),
-        ('cavan', 'Cavan'),
-        ('clare', 'Clare'),
-        ('cork', 'Cork'),
-        ('donegal', 'Donegal'),
-        ('dublin', 'Dublin'),
-        ('galway', 'Galway'),
-        ('kerry', 'Kerry'),
-        ('kildare', 'Kildare'),
-        ('kilkenny', 'Kilkenny'),
-        ('laois', 'Laois'),
-        ('leitrim', 'Leitrim'),
-        ('limerick', 'Limerick'),
-        ('longford', 'Longford'),
-        ('louth', 'Louth'),
-        ('mayo', 'Mayo'),
-        ('meath', 'Meath'),
-        ('monaghan', 'Monaghan'),
-        ('offaly', 'Offaly'),
-        ('roscommon', 'Roscommon'),
-        ('sligo', 'Sligo'),
-        ('tipperary', 'Tipperary'),
-        ('waterford', 'Waterford'),
-        ('westmeath', 'Westmeath'),
-        ('wexford', 'Wexford'),
-        ('wicklow', 'Wicklow')
-    ]
 
     order_number = models.CharField(max_length=32, null=False, editable=False)
     user_profile = models.ForeignKey(
@@ -66,7 +36,7 @@ class Order(models.Model):
     city = models.CharField(max_length=40, null=False, blank=False)
     street_address1 = models.CharField(max_length=80, null=False, blank=False)
     street_address2 = models.CharField(max_length=80, null=True, blank=True)
-    county = models.CharField(max_length=80, choices=COUNTIES)
+    county = models.CharField(max_length=80, choices=UserAddress.COUNTIES)
     date = models.DateTimeField(auto_now_add=True)
     shipping_cost = models.DecimalField(
         max_digits=6, decimal_places=2, null=False, default=0)
@@ -147,4 +117,3 @@ class OrderLineItem(models.Model):
 
     def __str__(self):
         return f'SKU {self.product.sku} on order {self.order.order_number}'
-

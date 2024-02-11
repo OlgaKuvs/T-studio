@@ -11,7 +11,6 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  /* height: calc(100vh - 200px);   */
 }
 
 hr {
@@ -126,7 +125,6 @@ h3, h4, h5, h6 {
 .bg-header,
 .dropdown-main-menu {
   background: #d3815b !important;
-  /* background: #d77952 !important;  */
 }
 
 .logo-colour {
@@ -159,11 +157,6 @@ h3, h4, h5, h6 {
 .bg-logo {
     background-color: #fff;
 }
-
-/* .bg-nav-shop,
-.bg-shop-header {
-  background-color: #ffb26b;
-} */
 
 .offers-banner {
     background-color: #d3815b;
@@ -398,7 +391,6 @@ header {
 #mc-embedded-subscribe {
   background: #fff !important;
   color: #292f36 !important;
-  /* border: 2px solid #d3815b !important; */
   box-shadow: 2px 2px 4px #636c72;
   border-radius: 0.25rem;
 }
@@ -498,9 +490,6 @@ header {
     width: 250px;
     height: 190px;
   }
-
-
-
 }
 
 @media only screen and (max-width: 992px){
@@ -516,8 +505,5 @@ header {
 
   .header-container {
     padding-top: 220px !important;
-}
-
-
-
+  }
 }
