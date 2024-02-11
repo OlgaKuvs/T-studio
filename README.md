@@ -3,6 +3,7 @@
 ## Contents:
 
 - <a href="#ux">UX</a>
+    - <a href="#strategy">Strategy</a>
 
 
 ## <div id="ux">UX</div>
@@ -38,3 +39,14 @@ Our e-commerce site features informative content, guides, and tips to empower ou
 - Be able to contact the business owner if any questions arise.
 
 ---
+
+### <div id="strategy">Strategy</div>
+Determining the best approach meant studying the needs of the e-commerce site's potential users.  I found that the availability of information for unregistered users is important, including placing an order in the online store and securing payment for the order.
+
+Those wishing to register require simple registration with a verification code sent by email, convenient login, quick and convenient ordering in the store, secure payment and the ability to save data in a personal profile. It is also necessary to provide users the ability to create, read, update and delete their profile data (CRUD).
+
+Features of this site are the ability for a registered user to add shipping addresses and change the default address, the ability to add a review to each purchased product, and the availability for all users to view all reviews approved by admin on the `product_detail` page.
+
+For ease of administration, not only an interface has been created for adding and editing products in the online store, but also the ability for the admin to view new reviews and approve them.
+
+Another convenient function is the calculation of the cost of delivery of an order, based on the weight of each item and the delivery cost, which are stored in the database.
