@@ -7,10 +7,11 @@ class Contact(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField()
     phone_regex = RegexValidator(
-        regex=r'^\+?1?\d{9,15}$',
-        message="Phone number must be entered in the format:"
-                "'+999999999'. Up to 15 digits allowed.")
-    phone_number = models.CharField(validators=[phone_regex], max_length=17)
+        regex=r'^(\+\d{1,3})?,?\s?\d{7,15}$',
+        message="Please enter a correct phone number. "
+                "Up to 15 digits without spaces allowed.")
+    phone_number = models.CharField(
+        validators=[phone_regex], max_length=17, null=False, blank=False)
     message = models.TextField()
 
     def __str__(self):

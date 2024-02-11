@@ -1,12 +1,16 @@
-from django.shortcuts import render, redirect, reverse
-from .forms import ContactForm
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
+from django.db.models.functions import Concat
+from django.db.models import Value
+
+from .forms import ContactForm
+from profiles.models import UserProfile
 
 
 def contact(request):
-    """A view to return contact form and page"""
+    """A view to return contact form and contact us page"""
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -34,7 +38,18 @@ def contact(request):
             messages.error(request,
                            'Something went wrong. Please try again.')
     else:
-        form = ContactForm()
+        # Prefill contact form with user's data saved in db
+        if request.user.is_authenticated:
+            full_name = UserProfile.objects.annotate(full_name=Concat(
+                    'first_name', Value(' '), 'last_name')).get(
+                    user=request.user).full_name
+            user = get_object_or_404(UserProfile, user=request.user)
+            form = ContactForm()
+            form.fields['email'].initial = request.user.email
+            form.fields['name'].initial = full_name
+            form.fields['phone_number'].initial = user.phone_number
+        else:
+            form = ContactForm()
 
     template = 'contact/contact.html'
     context = {
