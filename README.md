@@ -1,39 +1,40 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# <div id="up">T-STUDIO</div>
 
-Welcome,
+## Contents:
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+- <a href="#ux">UX</a>
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
 
-## Codeanywhere Reminders
+## <div id="ux">UX</div>
+### Overview
+<a href="https://healing-massage-yoga.business.site/?utm_source=gmb&utm_medium=referral" target="_blank">T-Studio business is a real startup</a> dedicated to improving the well-being of our neighbors bringing a fresh perspective to the world of integrated services. Our offerings are designed with mind, body and spirit in mind, providing an environment for relaxation, rejuvenation and self-care. We are committed to providing our customers with a seamless online shopping experience, allowing them to explore and purchase our carefully selected selection of needle applicators from the comfort of their homes. Through our e-commerce site, we strive to make health accessible to everyone. By offering these innovative purchasing tools, we extend the benefits of our services beyond our physical location, making wellness accessible to our customers wherever they are.
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+Our e-commerce platform integrates seamlessly with our local services. Our customers can not only purchase needle applicators online but also receive information about our yoga and massage services, creating a holistic and comprehensive wellness experience. Our goal is to offer services targeted specifically to the local community. Our e-commerce site serves as a digital hub connecting our local customers to the wellness resources they are looking for. We take the time to understand everyone's unique needs, ensuring a personalized service. We are proud to be a part of the local community, committed to contributing positively to the well-being of our neighbors.
 
-`python3 -m http.server`
+Our e-commerce site features informative content, guides, and tips to empower our customers on their well-being journey.
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+#### Target audience
+- People who prefer to shop online and need relaxation
+- People who are looking for a non-invasive way to alleviate pain with needle applicators
+- People who need improved blood circulation can benefit from needle applicators
+- Local people who are looking to relax and reduce muscle tension
+- Local people who need to recover from injury
+- Local people who are looking for a natural way to improve their health and wellness with yoga classes
+- Local people who are seeking to improve their overall well-being and in need of an individual approach
+- Stressed parents who would like to get a break from the daily stresses of parenting with our massage therapy
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+#### Business Goals
+- To create a professional e-commerce site
+- To provide users with information on holistic well-being through service descriptions to build trust and brand loyalty
+- To provide an easy and secure means to purchase items
+- To increase the customer base of the existing business
+- To create a brand for the store and increase brand awareness
 
-`http_server`
-
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A button should appear to click: _Open Preview_ or _Open Browser_.
-
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+#### Customer Goals
+- To find information about products and services that meet their expectations to build trust and brand loyalty
+- To navigate easily and intuitively through the website with a clear purpose
+- To make a hassle-free purchase quickly, easily and securely
+- To view a list of reviews and ratings for each product to know how good this product is.
+- Be able to contact the business owner if any questions arise.
 
 ---
-
-Happy coding!
