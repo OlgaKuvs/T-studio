@@ -3,6 +3,8 @@
 ## Contents:
 - <a href="#ux">UX</a>
     - <a href="#strategy">Strategy</a>
+    - <a href="#db">Database structure</a>
+    - <a href="#design">Design</a>
 
 
 
@@ -137,6 +139,7 @@ Issues were used to create User Stories. I added the acceptance criteria and the
     - `phone_number` field was moved from `UserAddress` table to `UserProfile`(`User`) table
     - In the pre-planned database schema I forgot to include the `rate` field in the `Review` table. It was included in the real db version
     - In the `Contact` table the `reason` field was removed as unnecessary  <br />
+
     The database tables are arranged according to django apps as follows:
 
     - Products App: Product Model, Category Model, Review Model
@@ -144,3 +147,29 @@ Issues were used to create User Stories. I added the acceptance criteria and the
     - Checkout App: Order Model, OrderLineItem Model
     - Cart App: Shipping Model
     - Contact App: Contact Model
+
+### <div id="design">Design</div>
+
+The site design is intuitive and functional. Google fonts Lato (body) and 'Merriweather' (headers) have been used to customize the default Bootstrap fonts. Sans Serif was chosen as the backup font.
+The color scheme was chosen to match the colors of the logo and reflect both warmth and friendliness, as well as energy and innovation. Coral color of the headings should attract the attention of customers.<br />
+The following color palette was used from [Coolors](https://coolors.co/):
+
+![](documentation/color_palette.png)
+
+#### Wireframes
+
+> index.html
+
+![](documentation/wireframe_main.png)
+
+> products.html
+
+![](documentation/wireframe_shop.png)
+
+> product_detail.html
+
+![](documentation/wireframe_product_detail.png)
+
+<a href="#up">Back to Top of page</a>
+
+---
