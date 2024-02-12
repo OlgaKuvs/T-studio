@@ -1,9 +1,9 @@
 # <div id="up">T-STUDIO</div>
 
 ## Contents:
-
 - <a href="#ux">UX</a>
     - <a href="#strategy">Strategy</a>
+   
 
 
 ## <div id="ux">UX</div>
@@ -50,3 +50,78 @@ Features of this site are the ability for a registered user to add shipping addr
 For ease of administration, not only an interface has been created for adding and editing products in the online store, but also the ability for the admin to view new reviews and approve them.
 
 Another convenient function is the calculation of the cost of delivery of an order, based on the weight of each item and the delivery cost, which are stored in the database.
+
+#### Agile
+The Agile methodology was used to plan the project. Github was used as the tool to demonstrate this. Each user story was linked to an Epic and placed within one of three Iterations. Issues were used to create User Stories with custom templates ([Link to Kanban board](https://github.com/users/OlgaKuvs/projects/4/views/1)).
+
+##### User Stories
+Issues were used to create User Stories. I added the acceptance criteria and the tasks so I could track my work effectively. Once I completed a User Story I would move it from `in progress` to `done`.
+
+- Completed User Stories:<br />
+
+    <details>
+    <summary>EPIC: Navigation & Views<br /></summary>
+
+    * As a user, I can view a list of products so that I can decide if I wish to purchase anything.<br />
+    * As a user, I want to see detailed product information so that I can decide whether to make a purchase based on the price, description and option availability.<br />
+    * As a user, I can navigate the website easily and intuitively so I can explore the website freely.<br />
+    * As a user, I want to be able to browse products so that I can easily find what I'm looking for.<br />
+    </details>
+    <details>
+    <summary>EPIC: User Profile<br /></summary>
+
+    * As a user, I can create an account so that I can access my personal information and order history.<br />
+    * As a registered user, I can view my order history so that I know what I have already ordered.<br />
+    * As a registered user, I can edit my user information so that I can have the correct information.<br />
+    </details>
+    <details>
+    <summary>EPIC: Shopping<br /></summary>
+
+    * As a customer, I can add items to a cart so that I can navigate to other products without losing my order.<br />
+    * As a customer, I can remove items from my cart to change my selections or not place an order.<br />
+    * As a customer, I can receive a message on the changes I make to my cart so that I know if the items were added, deleted or updated successfully.<br />
+    * As a customer, I may receive an email notification that my order has been successfully placed so that I have order confirmation.<br />
+    * As a customer, I can complete the payment process quickly and easily so that keep the information secure and private.<br />
+    </details>
+    <details>
+    <summary>EPIC: Reviews<br /></summary>
+
+    * As a user, I can post reviews on items that I have purchased so that I can advise others if this product is worth purchasing.<br />
+    * As a customer, I can view a list of reviews for each product so that I can find out if customers are satisfied with the product.<br />
+    * As a customer, I can view each product rating to know how good this product is.<br />
+    </details>
+    <details>
+    <summary>EPIC: Newsletter<br /></summary>
+
+    *  As a customer, I can sign up for a newsletter so that I can get access to special offers or promotions.<br />
+    </details>
+    <details>
+    <summary>EPIC: Store Management<br /></summary>
+
+    * As a store owner, I can manage orders based on queries from customers so that the orders are correct.<br />
+    * As a store owner, I can add, edit and delete products in the store so that I can effectively manage store operations.<br />
+    * As a store owner, I want to be able to set and change shipping rates to match carrier rates.<br />
+    </details>
+     <details>
+    <summary>EPIC: Contact and Business Information<br /></summary>
+    * As a customer, I can contact the business owner so that I can communicate with a person.<br />
+    </details><br />
+
+- Uncompleted User Stories:<br/>
+
+    The following User Stories were not completed and moved into the NTH (`Nice To Have` column of [Kanban board](https://github.com/users/OlgaKuvs/projects/4/views/1)) because they were not considered necessary for this project currently (added to future features) and due to time constraints:
+
+    * As a store owner, I can determine product availability to ensure good UX and meet customer expectations.<br />
+    * As a customer, I can unsubscribe from the newsletter so that I no longer receive unwanted content.<br />
+    * As a customer, I would like to know how to return the product so that I can make a return and receive a refund.
+    * As a customer, I can read Frequently Asked Questions so that I can find answers to my questions.<br><br>
+
+- This user story was partially completed and placed in NTH (`Nice To Have`) column of Kanban board. The user can see information about the shipping price, but the delivery time is not indicated:
+
+    * As a customer, I can view delivery information so that I am informed about delivery charges and time.
+
+    User stories related to Business Information only require creating HTML pages and filling them with information, do not include any functionality and are therefore left for the future due to time constraints.
+
+    <a href="#up">Back to Top of page</a>
+
+    ---
