@@ -173,3 +173,18 @@ The following color palette was used from [Coolors](https://coolors.co/):
 <a href="#up">Back to Top of page</a>
 
 ---
+
+## <div id="seo">SEO and Marketing</div>
+
+By using short-tail keywords and analyzing the results of Google trends and related topics, I was able to create a list of long-tail keywords. Keywords are used in various places on the site, including photo titles. When necessary, I use the `strong` tag and make sure all links are described correctly.
+
+I created a sitemap.xml and robots.txt files so that once ready engines like Google could search and crawl the site efficiently. I blocked the `Profiles` app because it doesn't make sense for Google to crawl those pages.
+
+I created a [Facebook business page](https://www.facebook.com/profile.php?id=61555937112755) as the foundation of a social media marketing strategy.
+In case the page becomes inactive or deactivated by Facebook, I also took screenshots to display here:
+
+![](documentation/fb1.png)<br><br>
+
+![](documentation/fb2.png)
+
+---
