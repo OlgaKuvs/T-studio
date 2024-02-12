@@ -3,7 +3,7 @@
 ## Contents:
 - <a href="#ux">UX</a>
     - <a href="#strategy">Strategy</a>
-   
+
 
 
 ## <div id="ux">UX</div>
@@ -105,7 +105,7 @@ Issues were used to create User Stories. I added the acceptance criteria and the
      <details>
     <summary>EPIC: Contact and Business Information<br /></summary>
     * As a customer, I can contact the business owner so that I can communicate with a person.<br />
-    </details><br />
+    </details>
 
 - Uncompleted User Stories:<br/>
 
@@ -113,15 +113,34 @@ Issues were used to create User Stories. I added the acceptance criteria and the
 
     * As a store owner, I can determine product availability to ensure good UX and meet customer expectations.<br />
     * As a customer, I can unsubscribe from the newsletter so that I no longer receive unwanted content.<br />
+
+    User stories related to Business Information only require creating HTML pages and filling them with information, do not include any functionality and are therefore left for the future due to time constraints:
+
     * As a customer, I would like to know how to return the product so that I can make a return and receive a refund.
-    * As a customer, I can read Frequently Asked Questions so that I can find answers to my questions.<br><br>
+    * As a customer, I can read Frequently Asked Questions so that I can find answers to my questions.<br />
 
 - This user story was partially completed and placed in NTH (`Nice To Have`) column of Kanban board. The user can see information about the shipping price, but the delivery time is not indicated:
 
     * As a customer, I can view delivery information so that I am informed about delivery charges and time.
 
-    User stories related to Business Information only require creating HTML pages and filling them with information, do not include any functionality and are therefore left for the future due to time constraints.
-
     <a href="#up">Back to Top of page</a>
 
     ---
+
+     ### <div id="db">Database structure</div>
+
+    ![](documentation/db_diagram.png)
+
+    From the very beginning of the project, I knew that I first needed to understand the structure of the database and the relationships between tables. I have created a database schema to help me with this.<br />
+    The preplanned structure of the database underwent some changes during the work on the project:
+
+    - `phone_number` field was moved from `UserAddress` table to `UserProfile`(`User`) table
+    - In the pre-planned database schema I forgot to include the `rate` field in the `Review` table. It was included in the real db version
+    - In the `Contact` table the `reason` field was removed as unnecessary  <br />
+    The database tables are arranged according to django apps as follows:
+
+    - Products App: Product Model, Category Model, Review Model
+    - Profiles App: UserProfile Model, UserAddress Model
+    - Checkout App: Order Model, OrderLineItem Model
+    - Cart App: Shipping Model
+    - Contact App: Contact Model
