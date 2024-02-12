@@ -21,6 +21,10 @@ class ContactForm(forms.ModelForm):
         }
 
         self.fields['name'].widget.attrs['autofocus'] = True
+        self.fields['name'].widget.attrs['autocomplete'] = 'name'
+        self.fields['email'].widget.attrs['autocomplete'] = 'email'
+        self.fields['phone_number'].widget.attrs['autocomplete'] = 'tel'
         for field in self.fields:
             placeholder = placeholders[field]
             self.fields[field].widget.attrs['placeholder'] = placeholder
+
