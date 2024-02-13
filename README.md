@@ -378,3 +378,43 @@ I ran the above command in my terminal which created a runtime.txt file containi
 <a href="#up">Back to Top of page</a>
 
 ---
+
+### Google Lighthouse Testing
+
+Site pages have been tested using Lighthouse to identify performance and accessibility issues and ensure best practices are followed.
+
+> Homepage (index.html)
+
+![](documentation/lighthouse_homepage.png)
+
+> Products (products.html)
+
+![](documentation/lighthouse_products.png)
+
+> Contact Us (contact.html)
+
+![](documentation/lighthouse_contact.png)
+
+### HTML W3 Validation
+![](documentation/html_valid.png)
+Result: no errors or warnings.
+
+### CSS Validation
+![](documentation/css_valid.png)
+Result: no errors.
+
+### Python Validation
+
+The only issues found in any of the Python files when running through the Pep8CI online validator were due to trailing whitespaces and too long lines, and have been fixed.
+
+![](documentation/python_valid.png)
+Result: no errors.
+
+### Javascript Validation
+
+JavaScript code passes through [Jslint](jslint.com) with no significant issues.
+
+
+<a href="#up">Back to Top of page</a>
+
+---
