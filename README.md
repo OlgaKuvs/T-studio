@@ -5,6 +5,8 @@
     - <a href="#strategy">Strategy</a>
     - <a href="#db">Database structure</a>
     - <a href="#design">Design</a>
+- <a href="#seo">SEO and Marketing</a>
+- <a href="#testing">Testing</a>
 
 
 
@@ -186,5 +188,53 @@ In case the page becomes inactive or deactivated by Facebook, I also took screen
 ![](documentation/fb1.png)<br><br>
 
 ![](documentation/fb2.png)
+
+---
+
+## <div id="testing">Testing</div>
+
+### Manual testing
+
+Due to the large scope of the project, thorough testing was carried out by the developer and numerous users among friends and acquaintances. Usability suggestions were reviewed and taken into account.
+All design features have been manually tested and everything works as expected. Testing was completed on my local terminal as well as Heroku deployment.
+
+- Testing for responsiveness was conducted using Chrome Dev Tools. The website was tested extensively on a range of emulated mobile, tablet and large format screen sizes in both portrait and landscape orientations.<a href="#responsiveness">(Testing results are here)</a>
+
+- All HTML files were passed through the W3C validator with no errors.
+- CSS files were passed through the W3C validator with no errors.
+- The website was tested on browsers Chrome, Firefox, Edge and Opera.
+- All user flows were tested, including navigation, link clicks and form submissions.
+- All forms have been tested to ensure they are validated and can be submitted without errors.
+
+The steps and results are as follows.
+
+#### <div id="testing_us">Testing User Stories </div>
+
+| User story        | User story testing |
+| ------------------ | ------------- |
+| As a user, I can view a list of products so that I can decide if I wish to purchase anything. | Without logging in the user can access a list of products by clicking on the `Store` in the navigation menu to open the dropdown menu. The user clicks `Applicators` to view all the products or chooses a category name to view products from a specific category. The product listing includes a product image, name, price, category and rating. The user can navigate through categories by clicking on the category name at the dropdown menu, at the top of the store pages or in the information about each product. |
+| As a user, I want to see detailed product information so that I can decide whether to make a purchase based on the price, description and option availability.| The user clicks on the product image or product name on the store page to open full product information. The product detail page displays a detailed description of the product and below it a list of reviews (if any) with an individual customer rating. The final product rating is calculated as the average of all individual ratings approved by the admin and is shown in the product information. The functionality for displaying the availability of goods in stock is not implemented in the current project due to time constraints and has been added to future features. |
+| As a user, I can navigate the website easily and intuitively so I can explore the website freely.  | All navigation links on the navigation bar are working properly and bring the user to the correct page. The logo image link allows the user to return to the home page from each part of the site. The drop-down menu of our services contains links to pages of offered services with images and detailed descriptions of each. The hamburger menu is present on medium and small devices and expands to show the main navigation links. |
+| As a user, I want to be able to browse products so that I can easily find what I'm looking for. | The user can search for products in the store by keywords using the `Search our store` field. The search is carried out using keywords contained in the title or description of the product. The search result appears in the top left on large screens and in the center of the page on medium and small screens. |
+| As a user, I can create an account so that I can access my personal information and order history. | The user can create an account by entering their username, email address and password. After filling out the registration form, the user receives an email with a verification code to confirm the authenticity of the e-mail address. By clicking on the link in the email and going through the verification process, the user can log into their account. |
+| As a registered user, I can view my order history so that I know what I have already ordered. | A registered user can log into their account by clicking `My Account` icon in the upper right corner of the navigation bar. On the profile page, a side menu of 3 options is available: `Personal Information`, `Addresses` and `Orders`. By clicking on `Orders` the user’s order history with order number, date and order total is available. By clicking on the order number, detailed information about a specific order appears. |
+| As a registered user, I can edit my user information so that I can have the correct information. | On the user profile page, the user can edit his personal information (first name, last name and phone number). Because the username and email address are unique and are used for authorization, there is no way to edit them. On the addresses page, the user can add a new address, edit an address, delete an address and set the default address (CRUD). To prevent accidental deletion of information, the user is asked to confirm deletion. |
+| As a customer, I can add items to a cart so that I can navigate to other products without losing my order. | User can add products to the cart by clicking `Add to cart` on the product detail page in the store. During the navigation of the site, the items in the cart are saved. The quantity of goods in the cart is indicated by a number next to the cart icon in the upper right corner. |
+| As a customer, I can remove items from my cart to change my selections or not place an order. | When a user enters a shopping cart, he sees `update` and `remove` buttons next to each item. The customer can increase or decrease the quantity of an item, and also remove an item. When all items in the cart are removed, the message `Your cart is empty` appears. |
+| As a customer, I can receive a message on the changes I make to my cart so that I know if the items were added, deleted or updated successfully. | The user is notified with a success message when an item is added or removed from the cart or the quantity is updated. The success message also shows information about the contents of the cart. |
+| As a customer, I may receive an email notification that my order has been successfully placed so that I have order confirmation. | When the order is successfully placed and paid, the user will receive an order confirmation by email. This notification contains complete information about the placed order, namely: order number, date, order total, delivery charge, grand total, user contact phone number and address to which the order will be sent. This confirmation also contains the seller’s email for contact in case of any questions.|
+| As a customer, I can complete the payment process quickly and easily so that the information is keeped secure and private. |User fills in all necessary information on the Step 1 of order checkout. The error message shows when fields are incorrectly completed. After verification, the user proceeds to Step 2 of the checkout process, where he enters card details for payment and completes the purchase. Success message and order confirmation message are displayed to the user when order is completed. Payment success shown in Stripe dashboard. Order confirmation email sent to user. |
+| As a user, I can post reviews on items that I have purchased so that I can advise others if this product is worth purchasing. | After placing an order, the user can see all completed orders in his profile in the `Order History` section. When he clicks on the order number, detailed information about the order opens, and `Leave Review` button appears next to each item. When the user clicks on the `Leave Review` button, a form opens in which the user can write his name, a comment about the product, and also rate the product (from 1 to 5). When a user submits a review, a message appears indicating that the review will be published after admin approval. |
+|As a customer, I can view a list of reviews for each product so that I can find out if customers are satisfied with the product. | A list of all approved reviews is displayed on the detailed product description page.  |
+| As a customer, I can view each product rating to know how good this product is. | The rating for each product is reflected in the form of stars (from 1 to 5) and is calculated as the average rating value of all approved reviews. The product rating is reflected both on the main page of the store and the detailed description page of the item. |
+| As a customer, I can sign up for a newsletter so that I can get access to special offers or promotions.| The user can subscribe using their email to receive newsletters from the company are notified with an on-screen message if the request is successful. Mailchimp form is integrated into the footer and is available on all pages of the site. |
+| As a customer, I can contact the business owner so that I can communicate with a person. | `Contact Us` page is accessible from the main navigation bar at the top of each page, and a link to this page is added at the end of each `Our services` section for customer convenience. On the `Contact Us` page, the customer can fill out a `Contact Form` and ask any question to the business owner. The business owner receives confirmation of the new contact form to their email address.|
+| As a store owner, I can manage orders based on queries from customers so that the orders are correct. | The store owner can manage all customer orders using the Django admin panel. The ability for the store owner to access all customer orders from the frontend interface is not implemented in this project due to time restrictions and is included in future features. |
+| As a store owner, I can add, edit and delete products in the store so that I can effectively manage store operations.| The store owner, as a superuser, has access to add, edit and delete products. To add a new product to the store, a superuser can navigate to `My Account`, `Product Management` on the top right side of the navigation bar. Editing and deleting a product is possible using the `Edit` and `Delete` buttons displayed both on the main page of the store and on the detailed product description page next to each item. To prevent accidental deletion, a message appears asking store owner to confirm the operation.|
+| As a store owner, I want to be able to set and change shipping rates to match carrier's rates.| The store owner can access `Shipping` table through the Django admin panel and change the shipping cost to match the carrier's rates. The cost of order delivery is calculated based on the weight of each item and the carrier’s prices. |
+| As a store owner, I can use web marketing so that I can increase website traffic and sales.| A Facebook business page was created to attract and promote my business to customers through social media.
+| As a store owner, I want sitemap.xml file, robots.txt file, keywords and Meta tags to boost the SEO so that this business reflects as professional on google search and this website is crawlable by google spiders. | To boost the SEO of this business, keywords were created and placed on all pages. Meta tags were added to the website to display relevant and correct information in searches so that this business would appear professional in Google searches and so that the clients would trust it. So that this site can be crawled by Google robots, a robots.txt file was created. Created a sitemap so all site links are disclosed for submission to Google. |
+
+<a href="#up">Back to Top of page</a>
 
 ---
