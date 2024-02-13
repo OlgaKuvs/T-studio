@@ -238,3 +238,42 @@ The steps and results are as follows.
 <a href="#up">Back to Top of page</a>
 
 ---
+
+#### <div id="testing_features">Testing Features</div>
+
+Please see a table of acronyms used throughout testing:
+
+| Key |  Value|
+| ------------------ | ------------- |
+| NLI | Non logged in user |
+| LIU | Logged in user who does not have staff permissions |
+| SUS | Superuser or staff permissions |
+
+##### Navigation links
+
+| Test |  Result |
+| ------------------ | ------------- |
+| NLI can access all links and pages except the link to `My Profile` of the `My Account` menu. |  NLI can access Home page, Our Services pages, Store pages and Contact Us page. All navigation links on the navigation bar are working and bring the user to the correct page. NLI can navigate to the home page by clicking the logo in the page header.
+| NLI can navigate the store easily and intuitively. | NLI can navigate through product categories by clicking on the category name at the dropdown menu and at the top of the store pages. NLI can access the current product category from the product detail page. |
+| NLI can access registration and login pages. | NLI can click to `My Profile` on the right side of the header and select `Login` from dropdown menu to be redirected to the login page. For signing in NLI can click `Register` from the same dropdown menu to be taken to the sign in page. |
+| LIU can access profile page and log out.  | LIU can view `My Profile` and `Logout` links of the `My Account` menu in the right side of the page header.  |
+|LIU can access their personal information. | Having logged into their profile, LIU sees a side menu of 3 items: `Personal Information`, `Addresses` and `Orders`. On `Personal Information` page, the user can edit personal data (first name, last name, phone number). Because username and e-mail should be unique, there is no way to change them.|
+| LIU can log out of their profile.| User can click `Logout` button on the navigation bar and log out of their profile. |
+| SUS can access Product Management and Review Management pages | SUS can click to `Product Management` on the right side of the navbar and access the page to add product to the store. SUS can edit and delete products using the `Edit` and `Delete` buttons displayed on both the store's home page and on the product detail page next to each product. |
+| SUS can approve the reviews.| By clicking on `Review Management` link, SUS can see a table with all the information from the review that the user posted. After checking this information, SUS clicks `Approve` button so that the review is published. |
+
+##### User Forms
+
+| Test |  Result |
+| ------------------ | ------------- |
+| NLI can create account.| NLI is redirected to the registration page by choosing `Register` link from `My Account` dropdown . NLI can also access registration page from `Login` page. They are asked to register if they don't already have an account. The registration form has error handling built in so the NLI must make the correct inputs. If inputs are incorrect the user is shown a message about incorrect data entry. The verification code is sent to the email specified during registration. To confirm registration, NLI must open the email and click on the link. NLI is redirected to the site page to confirm verification. If registration is successful, a message `Your account is created successfully` is displayed to the user. |
+| NLI can log in.| NLI is redirected to the login page by choosing `Login` link from `My Account` dropdown. NLI can also access login page from registration page if they have an account. After authorization the message `You are successfully logged in as <username>` is displayed. If the username or password is incorrect, the message `The username and/or password you specified are not correct` is displayed to the user. |
+| NLI can fill out the `Contact Form`| On the `Contact Us` page, NLI can fill out a `Contact Form` and ask any question to the business owner. The form contains the following fields: `Name`, `E-mail`, `Phone number`, `Message`. The fields `E-mail` and `Phone number` are verified to ensure they comply with the format. The `Message` field has a maximum length of 500 characters to avoid spam and limit message length.|
+| LIU can edit  their personal information. | On the profile `Personal Information` page, LIU can click the `Edit` button to change their personal information (first name, last name, phone number). Because the username and e-mail should be unique, there is no way to change them.|
+|LIU can create, read, update and delete (CRUD) their addresses. | From the profile `Addresses` page LIU can add a new address, view all saved addresses, update and delete any address (CRUD) except `Default address`. Fields `Street Address Line 1`, `City` and `Choose a county` are required. When editing an address, LIU can set a specific address as default. To prevent accidental deletion, a message appears asking the LIU to confirm deletion of a specific address.|
+| LIU can leave a review on the purchased product.| By going to `My Profile >> Orders` and clicking on the order number, detailed information about the order opens, and `Leave Review` button appears next to each product. By clicking on the button, a review form opens and LIU should fill out all the following fields: `Author`, `Comment`, and also check the product rate box (rate it from 1 to 5). When LIU submits a form, a message appears indicating that the review will be published after admin approving. |
+| User can complete the order by filling out the checkout form. | User fills in all necessary information on the Step 1 of order checkout form. The error message shows when fields are incorrectly completed. Custom verification methods have been added to `Full Name` and `Phone Number` fields. Under the checkout form, NLI is asked to create an account or log in, and LIU is asked to save data to their profile. After user data verification, the user proceeds to Step 2 of the checkout process, where he enters card details for payment and completes the purchase. If the order fails due to incorrect information being submitted the order will not be submitted. If there is an error when processing the order the site returns a 500 error without processing the order. |
+
+<a href="#up">Back to Top of page</a>
+
+---
