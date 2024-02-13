@@ -7,6 +7,7 @@
     - <a href="#design">Design</a>
 - <a href="#seo">SEO and Marketing</a>
 - <a href="#testing">Testing</a>
+- <a href="#bugs">Bugs</a>
 
 
 
@@ -314,6 +315,65 @@ Testing for responsiveness was conducted using Chrome Dev Tools. The website was
 | iPad Air |  820 x 1180  |   Pass  |
 | iPad Pro |  1024 x 1366 |   Pass  |
 | HP Laptop 14s |  1920 x 1080|   Pass  |
+
+<a href="#up">Back to Top of page</a>
+
+---
+
+### <div id="bugs">Bugs</div>
+
+##### Review Form processing bug
+
+- When processing data from the Review Form, the following issues occurred:
+
+![](documentation/error1_review_form.png)
+![](documentation/error2_review_form.png)
+
+The issue was resolved by properly configuring the user profile instance:
+
+![](documentation/error_review_fixed.png)
+
+##### Review Form reverse url bug
+
+- When trying to generate a reverse URL in the ReviewView(CreateView) class, the following errors were received:
+
+![](documentation/review_reverse_bug1.png)
+![](documentation/review_reverse_bug2.png)
+
+Steps to solve:
+
+1. Create a namespace for profile app in main urls file, add app_name to profile urls file
+2. Correct all links to profile view functions.
+3. Send product_id and order.id to review_product function.
+4. Add `get_success_url` method to ReviewView.
+5. Create reverse url in correct format to pass order_id as a part of this url:
+ `'profile:order_details, kwargs={'order_id': self.kwargs['order_id']}'`:
+
+![](documentation/review_reverse_bug_fixed.png)
+
+##### User Data Prefill bug
+
+- When trying to pre-populate the checkout form with user profile information, the following issue occurred:
+
+![](documentation/user_name_bug.png)
+
+In the process of investigating the problem, it turned out that to process the form correctly, it is necessary to obtain data in the `full_name` field by combining `first_name` and `last_name` fields data, which are stored in the `UserProfile` model. This was done as follows:
+`full_name = UserProfile.objects.annotate(full_name=Concat('first_name', Value(' '),last_name')).get(user=request.user).full_name`
+
+ ![](documentation/user_name_bug_fixed.png)
+
+
+##### Confirmation e-mail sending bug on production server
+
+- The confirmation email was not sent from the production server and the following error occurred:
+
+![](documentation/email_not_sending.png)
+
+After numerous attempts to solve the issue using Google search, slack community, etc., I decided to contact Tutor support. It only took 5 minutes to get the correct solution from them:
+
+ ![](documentation/email_not_sending_fixed.png)
+
+I ran the above command in my terminal which created a runtime.txt file containing 1 line (python-3.9.18) and the issue was solved.
 
 <a href="#up">Back to Top of page</a>
 
