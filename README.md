@@ -218,7 +218,7 @@ The steps and results are as follows.
 | As a user, I want to be able to browse products so that I can easily find what I'm looking for. | The user can search for products in the store by keywords using the `Search our store` field. The search is carried out using keywords contained in the title or description of the product. The search result appears in the top left on large screens and in the center of the page on medium and small screens. |
 | As a user, I can create an account so that I can access my personal information and order history. | The user can create an account by entering their username, email address and password. After filling out the registration form, the user receives an email with a verification code to confirm the authenticity of the e-mail address. By clicking on the link in the email and going through the verification process, the user can log into their account. |
 | As a registered user, I can view my order history so that I know what I have already ordered. | A registered user can log into their account by clicking `My Account` icon in the upper right corner of the navigation bar. On the profile page, a side menu of 3 options is available: `Personal Information`, `Addresses` and `Orders`. By clicking on `Orders` the user’s order history with order number, date and order total is available. By clicking on the order number, detailed information about a specific order appears. |
-| As a registered user, I can edit my user information so that I can have the correct information. | On the user profile page, the user can edit his personal information (first name, last name and phone number). Because the username and email address are unique and are used for authorization, there is no way to edit them. On the addresses page, the user can add a new address, edit an address, delete an address and set the default address (CRUD). To prevent accidental deletion of information, the user is asked to confirm deletion. |
+| As a registered user, I can edit my user information so that I can have the correct information. | On the user profile page, the user can edit his personal information (first name, last name and phone number). Because the username and email address are unique and are used for authorization, there is no way to edit them. On the addresses page, the user can add a new address, edit an address, delete an address and set the default address (CRUD). To prevent accidental deletion of information, the user is asked to confirm the deletion. |
 | As a customer, I can add items to a cart so that I can navigate to other products without losing my order. | User can add products to the cart by clicking `Add to cart` on the product detail page in the store. During the navigation of the site, the items in the cart are saved. The quantity of goods in the cart is indicated by a number next to the cart icon in the upper right corner. |
 | As a customer, I can remove items from my cart to change my selections or not place an order. | When a user enters a shopping cart, he sees `update` and `remove` buttons next to each item. The customer can increase or decrease the quantity of an item, and also remove an item. When all items in the cart are removed, the message `Your cart is empty` appears. |
 | As a customer, I can receive a message on the changes I make to my cart so that I know if the items were added, deleted or updated successfully. | The user is notified with a success message when an item is added or removed from the cart or the quantity is updated. The success message also shows information about the contents of the cart. |
@@ -232,7 +232,7 @@ The steps and results are as follows.
 | As a store owner, I can manage orders based on queries from customers so that the orders are correct. | The store owner can manage all customer orders using the Django admin panel. The ability for the store owner to access all customer orders from the frontend interface is not implemented in this project due to time restrictions and is included in future features. |
 | As a store owner, I can add, edit and delete products in the store so that I can effectively manage store operations.| The store owner, as a superuser, has access to add, edit and delete products. To add a new product to the store, a superuser can navigate to `My Account`, `Product Management` on the top right side of the navigation bar. Editing and deleting a product is possible using the `Edit` and `Delete` buttons displayed both on the main page of the store and on the detailed product description page next to each item. To prevent accidental deletion, a message appears asking store owner to confirm the operation.|
 | As a store owner, I want to be able to set and change shipping rates to match carrier's rates.| The store owner can access `Shipping` table through the Django admin panel and change the shipping cost to match the carrier's rates. The cost of order delivery is calculated based on the weight of each item and the carrier’s prices. |
-| As a store owner, I can use web marketing so that I can increase website traffic and sales.| A Facebook business page was created to attract and promote my business to customers through social media.
+| As a store owner, I can use web marketing so that I can increase website traffic and sales.| A Facebook business page was created to attract and promote this business to customers through social media.
 | As a store owner, I want sitemap.xml file, robots.txt file, keywords and Meta tags to boost the SEO so that this business reflects as professional on google search and this website is crawlable by google spiders. | To boost the SEO of this business, keywords were created and placed on all pages. Meta tags were added to the website to display relevant and correct information in searches so that this business would appear professional in Google searches and so that the clients would trust it. So that this site can be crawled by Google robots, a robots.txt file was created. Created a sitemap so all site links are disclosed for submission to Google. |
 
 <a href="#up">Back to Top of page</a>
@@ -273,6 +273,47 @@ Please see a table of acronyms used throughout testing:
 |LIU can create, read, update and delete (CRUD) their addresses. | From the profile `Addresses` page LIU can add a new address, view all saved addresses, update and delete any address (CRUD) except `Default address`. Fields `Street Address Line 1`, `City` and `Choose a county` are required. When editing an address, LIU can set a specific address as default. To prevent accidental deletion, a message appears asking the LIU to confirm deletion of a specific address.|
 | LIU can leave a review on the purchased product.| By going to `My Profile >> Orders` and clicking on the order number, detailed information about the order opens, and `Leave Review` button appears next to each product. By clicking on the button, a review form opens and LIU should fill out all the following fields: `Author`, `Comment`, and also check the product rate box (rate it from 1 to 5). When LIU submits a form, a message appears indicating that the review will be published after admin approving. |
 | User can complete the order by filling out the checkout form. | User fills in all necessary information on the Step 1 of order checkout form. The error message shows when fields are incorrectly completed. Custom verification methods have been added to `Full Name` and `Phone Number` fields. Under the checkout form, NLI is asked to create an account or log in, and LIU is asked to save data to their profile. After user data verification, the user proceeds to Step 2 of the checkout process, where he enters card details for payment and completes the purchase. If the order fails due to incorrect information being submitted the order will not be submitted. If there is an error when processing the order the site returns a 500 error without processing the order. |
+
+<a href="#up">Back to Top of page</a>
+
+---
+
+#####  Security Tests
+
+| Test |  Result |
+| ------------------ | ------------- |
+| NLI cannot access profile page.| The link to the profile page is visible only to authorized users. If NLI tries to access profile page by direct link, he is redirected to the login page. |
+| Non SUS cannot access admin panel.| The admin panel is accessible only to the user with a superuser login and password. |
+| NLI cannot leave a review.  | `Leave Review` button is accessible only from the user profile. NLI is redirected to the login page when trying to load the review page via a direct link. |
+| LIU can only leave reviews for products he has purchased. | If LIU tries to go to a page with a link to a product that is not in their orders, or to a product with an order number that is not in their order history, `404 error page` is displayed.|
+
+##### Admin Tests
+
+| Test |  Result |
+| ------------------ | ------------- |
+| Admin can view data in database tables.| Admin can view all data from database tables through django admin.  |
+| Admin can add products to the store.| Admin can access `Product Management` from `My Profile` dropdown and add a product to the store by filling out all the required fields and uploading a product picture. |
+| Admin can edit and delete store products. | Admin can edit and delete products using `Edit` and `Delete` buttons displayed on both the store's home page and on the product detail page next to each product. To prevent accidental deletion of a product, transaction confirmation is required. |
+| Admin can manage the reviews. | Admin can access `Review Management` from `My Profile`dropdown to approve a user's review.  After confirming a review for a specific product, the product rating is automatically recalculated as the average rating value from all confirmed reviews.|
+|Admin can edit items in database. | Admin can access all fields in the database tables and make any changes except `readonly` fields. |
+|Admin can delete items in database. | Admin can access all fields in the database tables and can delete a model instance. Any objects which had foreign keys pointing at the object to be deleted will be deleted along with it.|
+
+#### <div id="responsiveness">Responsiveness Testing</div>
+
+Testing for responsiveness was conducted using Chrome Dev Tools. The website was tested extensively on a range of emulated mobile, tablet and large-format screen sizes.
+
+| Device |  Resolution  |   Result  |
+| ------------------ | ------------- | ------------- |
+| Samsung Galaxy S8+|  360 x 740  |   Pass  |
+| iPhone 6/7/8 |  375 x 667  |   Pass  |
+| iPhone X |  375 x 812  |   Pass  |
+| iPhone 12 PRO |  390 x 844  |   Pass  |
+| Samsung Galaxy A51/71 |  412 x 914  |   Pass  |
+| iPhone XR |  414 x 896  |   Pass  |
+| iPad Mini |  768 x 1024  |   Pass  |
+| iPad Air |  820 x 1180  |   Pass  |
+| iPad Pro |  1024 x 1366 |   Pass  |
+| HP Laptop 14s |  1920 x 1080|   Pass  |
 
 <a href="#up">Back to Top of page</a>
 
