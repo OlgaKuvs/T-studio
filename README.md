@@ -397,10 +397,12 @@ Site pages have been tested using Lighthouse to identify performance and accessi
 
 ### HTML W3 Validation
 ![](documentation/html_valid.png)
+
 Result: no errors or warnings.
 
 ### CSS Validation
 ![](documentation/css_valid.png)
+
 Result: no errors.
 
 ### Python Validation
@@ -408,12 +410,184 @@ Result: no errors.
 The only issues found in any of the Python files when running through the Pep8CI online validator were due to trailing whitespaces and too long lines, and have been fixed.
 
 ![](documentation/python_valid.png)
+
 Result: no errors.
 
 ### Javascript Validation
 
 JavaScript code passes through [Jslint](jslint.com) with no significant issues.
 
+
+<a href="#up">Back to Top of page</a>
+
+---
+
+## <div id="features">Existing Features</div>
+### Navigation
+
+The main navigation is located in the header and is present on all pages (fixed at the top). The hamburger menu is present on medium and small devices and expands to show the main navigation links.
+
+![](documentation/header_mobile.png)
+
+The header contains the offers carousel banner,  the site logo, slogan and main navigation links with two dropdown menus `Our Services` and `Store`, `My Profile` dropdown list and a shopping cart item.
+
+![](documentation/header.png)
+
+When developing this project, I decided to add a detailed footer to it and duplicate links to `Our Services` to improve UX. I have included a subscription option in the footer that allows customers to submit their emails to be added to mailing lists with offers and discounts. This service is provided by mailchimp. The footer also contains contact information and a link to `Contact Us` page, as well as social media links.
+
+![](documentation/footer.png)
+
+
+### Our services pages
+
+`Our services` section consists of the following pages: `Yoga`, `Yoga Therapy`, `Thai Massage`, `Medical Massage`, `Electrical Stimulation`, `Mechanical Therapy`, `Joint Manipulations` and `Baby Massage`. Each of the above pages contains a detailed description of a specific service with a link to the `Сontact Us` at the end of the page. I am not providing screenshots of all `Our services` pages here because they have the same template and only the text and pictures differ.
+
+![](documentation/yoga_classes.png)
+
+### Product pages
+
+The `Store` menu dropdown consists of the following categories: `All applicators`, `Mats`, `Rollers`, `Bands`, `Belts` and `Massagers`. The Store page contains product cards. Each card contains an image and heading with the product name inside an anchor element, that links to the product detail page of the item. The product card also contains the product price, category and product rating (if there is no rating, then `No rating` is shown).
+
+![](documentation/store_main_page.png)
+
+You can navigate through categories in three ways: from the top dropdown menu, from the additional menu at the top of the store page and from the card of each product.
+
+![](documentation/store_menu.png)
+
+The page has a search field that checks the words the user types to see if they appear in the product name or description. Search results are displayed at the top of the page.
+
+![](documentation/search.png)
+
+### Reviews
+
+The product detail page displays a detailed description of the product and below it a list of reviews (if any) with an individual customer rating. The review rating is calculated based on the average score of approved by admin reviews. The product rating is recalculated every time the product page is loaded to avoid errors in the event of an admin accidentally deleting a review in db.
+
+![](documentation/product_detail.png)
+
+### Authentication
+
+Authentication flows come from Django Allauth and are designed to fit the project style. The `Sign Up` form contains the fields needed to create a user account. The user also can click the `Sign In` link to be redirected to the login page. If not all required fields are filled in or are filled in incorrectly, a user will receive an error notification.
+
+![](documentation/sign_up.png)
+
+When a user registers, a confirmation email is sent to their email address to confirm before they can access their account.
+
+![](documentation/verify_email.png)
+
+After confirmation of verification, the user is redirected to the `Sign In` page. On the `Sign In` page, the user enters their login and password. If the details entered are incorrect, they will receive an error notification.
+
+![](documentation/login.png)
+
+### Shopping Cart and Checkout
+
+The cart items section displays a thumbnail image of the product, name, price, quantity and subtotal of each cart item. Every item has `update` and `remove` buttons allowing users to modify their cart without having to return to the products page.
+The total, shipping cost and grand total are displayed at the bottom with the option to proceed to payment or to keep shopping.
+
+![](documentation/shopping_cart.png)
+
+The cost of order delivery is calculated based on the weight of each item and the carrier’s prices, which are stored in the database.
+
+![](documentation/shipping_rates.png)
+
+If a user changes the quantity of a particular product option in their cart, they will receive a success message with details and the cart total will be recalculated.
+
+![](documentation/update_cart.png)
+
+If a user removes an item from their cart, that specific product option will be removed, a success message will be displayed, and the cart total will be recalculated.
+
+![](documentation/remove_from_cart.png)
+
+If the user has no items in their cart, the following view will be displayed:
+
+![](documentation/empty_cart.png)
+
+On proceeding to Step 1 of Checkout the user can complete the shipping information and see a summary of their order. Shipping information is pre-populated for the logged-in user if this has been populated in their profile. Alternatively, they can choose to save the completed information to their profile.
+Products can only be delivered within the Republic of Ireland, a warning about this is displayed before the checkout form, and the country field on the shipping form is not shown to the user.
+
+![](documentation/checkout1.png)
+
+If any required information is not completed, verification messages are displayed. Custom verification methods have been added to `Full Name` and `Phone Number` fields. If the details entered are incorrect, an error message is displayed as well.
+
+![](documentation/checkout_error.png)
+
+After user data verification, the user proceeds to Step 2 of the checkout process, where he enters card details for payment and completes the purchase. If necessary, the user can return to Step 1 of the checkout, and all fields will be pre-filled with the data that he entered before.
+
+![](documentation/checkout2.png)
+
+Once the payment is successfully processed, the user will be shown an order confirmation page and a success message. If the user is registered, the following text will appear with a link to their profile:
+"You can leave your review on `profile page` by opening your order history".
+
+![](documentation/checkout_success.png)
+
+The user will also receive an order confirmation email to the email address registered when placing the order.
+
+![](documentation/order_confirmation_email.png)
+
+### Profile
+
+The profile application has been designed to make it easier for customers to complete some basic post-order options. Implemented the ability to update the user's personal information, add, edit or delete a delivery address (CRUD), view order history and leave feedback.
+
+![](documentation/profile.png)
+
+On `Personal Information` page, the user can edit personal data (first name, last name, phone number). Because username and e-mail should be unique, there is no way to change them.
+
+![](documentation/edit_profile.png)
+
+On the addresses page, the user can add a new address, edit an address, delete an address and set the default address (CRUD).
+
+![](documentation/add_address.png)
+
+![](documentation/edit_address.png)
+
+To prevent accidental deletion of information, the user is asked to confirm the deletion.
+
+![](documentation/delete_address.png)
+
+The user can set any address as default, and this address cannot be edited, because the user must have at least one address in their profile.
+
+![](documentation/default_address.png)
+
+The user can access a list of their orders in the `Orders` section of their profile page.
+
+![](documentation/order_history.png)
+
+By clicking on the order number user sees the detailed order information.
+A `Leave a review` button appears next to each purchased product.
+
+![](documentation/order_details.png)
+
+When the user clicks on the button, a review form opens. The user can write his name, a comment about the product, and also rate the product (from 1 to 5).
+
+![](documentation/leave_review.png)
+
+When a user submits a review, a message appears indicating that the review will be published after admin approval, and the user is redirected back to the order details page.
+
+![](documentation/review_success.png)
+
+### Contact Us page
+
+`Contact Us` page contains complete contact information of the business owner, a Google map indicating the location of the business and a contact form. The user can fill out a `Contact Form` and ask any question to the business owner.
+
+![](documentation/contact_us.png)
+
+The business owner receives confirmation of the new contact form to their email address.
+
+![](documentation/contact_form_email.png)
+
+
+### Admin related permissions
+
+When a superuser logs into an account, they receive additional permissions to edit, delete, and add products to the website and to approve reviews. Edit and delete options are available on the product details page, and the add product option is on the manage products page under the `My Account` dropdown list.
+
+![](documentation/admin_account.png)
+
+![](documentation/add_product.png)
+
+![](documentation/edit_product.png)
+
+An admin can access `Review Management` from `My Profile` dropdown to approve a user's review. Once a review for a specific product is approved, the product rating is automatically recalculated as the average rating value of all approved reviews.
+
+![](documentation/approve_review.png)
 
 <a href="#up">Back to Top of page</a>
 
