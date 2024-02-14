@@ -10,6 +10,7 @@
 - <a href="#bugs">Bugs</a>
 - <a href="#features">Existing Features</a>
 - <a href="#f_features">Features Left to Implement</a>
+- <a href="#technology">Languages, Technologies & Libraries</a>
 
 
 
@@ -606,3 +607,31 @@ An admin can access `Review Management` from `My Profile` dropdown to approve a 
 - Track the delivery of the order and send the customer an email with a request to post a review of the purchased goods.
 - Allow the user to unsubscribe from your newsletter so they no longer receive unwanted content.
 - Create html pages with delivery information, refund policy and Frequently Asked Questions.
+
+## <div id="technology">Languages, Technologies & Libraries</div>
+
+<details>
+<summary>Languages, Technologies & Libraries</summary>
+
+### Languages:
+- **Python**
+- **HTML/CSS** + **Django Template Language**
+- **Javascript**
+
+### Libraries and Frameworks:
+- **Django** framework was used to build this project. Provides a ready installed admin panel and includes many helper template tags that make writing code quick and efficient.
+- **Bootstrap 4** was used as the base front end framework to work alongside Django.
+
+### Technologies:
+
+- **ElephantSQL** as a PostgreSQL database hosting service used for database.
+- **AWS S3 and IAM** used to host static and media files for this project and IAM for the permissions-based roles for accessing the S3 buckets.
+- **Font Awesome** for icons used on the website
+- **Google Fonts** for site fonts
+- **Stripe** for payment processing set up
+- **Heroku** used for hosting the project
+- **GitHub** used to store the code for this project & for the projects Kanban board used to complete it.
+- **Git** used for version control throughout the project and to ensure a clear record of the work done
+- **Privacy Policy Generator** for creation of a privacy policy
+- **Favicon.io** for creation of favicon
+</details>
