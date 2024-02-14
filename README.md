@@ -8,6 +8,8 @@
 - <a href="#seo">SEO and Marketing</a>
 - <a href="#testing">Testing</a>
 - <a href="#bugs">Bugs</a>
+- <a href="#features">Existing Features</a>
+- <a href="#f_features">Features Left to Implement</a>
 
 
 
@@ -592,3 +594,15 @@ An admin can access `Review Management` from `My Profile` dropdown to approve a 
 <a href="#up">Back to Top of page</a>
 
 ---
+
+## <div id="f_features">Features left to Implement</div>
+
+- Allow the user to leave only one review for each purchased line item.
+- Implement review pagination
+- Implement the ability for the user to select a delivery address from all the addresses saved in their profile.
+- Allow the user to make an appointment for a yoga class and/or a massage session.
+- Implement admin access to all customer orders from the frontend template to manage them.
+- Add functionality for changing warehouse stock balances after each customer purchase to manage the quantity of goods in stock.
+- Track the delivery of the order and send the customer an email with a request to post a review of the purchased goods.
+- Allow the user to unsubscribe from your newsletter so they no longer receive unwanted content.
+- Create html pages with delivery information, refund policy and Frequently Asked Questions.
