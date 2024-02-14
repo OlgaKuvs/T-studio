@@ -10,21 +10,21 @@
         <div class="row text-center">
             <div class="col-12 mt-2 my-auto py-2">
                 <h3 class="top-products-link">My Profile</h3>
-                <hr> 
+                <hr>
             </div>
         </div>
-    </div>    
+    </div>
 {% endblock %}
 
 {% block content %}
 <div class="container main text-center">
-    <div class="row">        
-        {% include 'includes/profile-nav.html' %}   
+    <div class="row">
+        {% include 'includes/profile-nav.html' %}
         <div class="col-12 col-lg-6 profile-main">
-            <div class="container">                
+            <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h4 class="profile-header mb-3">Edit Shipping Address</h4>                        
+                        <h4 class="profile-header mb-3">Edit Shipping Address</h4>
                         <form class="mt-3 mb-3" action="{% url 'profile:edit_address' address.id %}" method="POST" id="edit-address-form">
                             {% csrf_token %}
                             {{ form | crispy }}
@@ -42,13 +42,6 @@
 
 {% block postloadjs %}
     {{ block.super }}
-    <script type="text/javascript" src="{% static 'profiles/js/countyfield.js' %}">
-    </script>
-    <!-- Remove disabled attribute from form fields -->
-    <script>
-        $('#edit-address-form').submit(function(){
-        $('#edit-address-form :disabled').removeAttr('disabled');             
-        });
-    </script>
-
+    <script type="text/javascript" src="{% static 'profiles/js/countyfield.js' %}"></script>
+    <script type="text/javascript" src="{% static 'profiles/js/remove_disabled.js' %}"></script>
 {% endblock %}
