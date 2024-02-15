@@ -622,21 +622,20 @@ An admin can access `Review Management` from `My Profile` dropdown to approve a 
 - **Javascript**
 
 ### Libraries and Frameworks:
-- **Django** framework was used to build this project. Provides a ready installed admin panel and includes many helper template tags that make writing code quick and efficient.
-- **Bootstrap 4** was used as the base front end framework to work alongside Django.
+- [Django](https://www.djangoproject.com/start/) framework was used to build this project. Provides a ready installed admin panel and includes many helper template tags that make writing code quick and efficient.
+- [Bootstrap 4](https://getbootstrap.com/docs/4.0/getting-started/introduction/) was used as the base front end framework to work alongside Django.
 
 ### Technologies:
 
-- **ElephantSQL** as a PostgreSQL database hosting service used for database.
-- **AWS S3 and IAM** used to host static and media files for this project and IAM for the permissions-based roles for accessing the S3 buckets.
-- **Font Awesome** for icons used on the website
-- **Google Fonts** for site fonts
-- **Stripe** for payment processing set up
-- **Heroku** used for hosting the project
-- **GitHub** used to store the code for this project & for the projects Kanban board used to complete it.
-- **Git** used for version control throughout the project and to ensure a clear record of the work done
-- **Privacy Policy Generator** for creation of a privacy policy
-- **Favicon.io** for creation of favicon
+- [ElephantSQL](https://www.elephantsql.com/) as a PostgreSQL database hosting service used for database.
+- [AWS S3 and IAM](https://aws.amazon.com/) used to host static and media files for this project and IAM for the permissions-based roles for accessing the S3 buckets.
+- [Font Awesome](https://fontawesome.com/) for icons used on the website
+- [Google Fonts](https://fonts.google.com/) for site fonts
+- [Stripe](https://stripe.com/) for payment processing set up
+- [Heroku](https://www.heroku.com/) used for hosting the project
+- [GitHub](https://github.com/) used to store the code for this project & for the projects Kanban board used to complete it.
+- [Git](https://git-scm.com/) used for version control throughout the project and to ensure a clear record of the work done
+- [Privacy Policy Generator](https://www.privacypolicygenerator.info/) for creation of a privacy policy
 </details>
 
 ## <div id="credits">Credits</div>
@@ -663,24 +662,24 @@ To deploy the project through Heroku I followed these steps:
 5. From the submenu at the top, navigate to the resources tab.
 6. Add the database to the app, in the add-ons section search for 'Heroku Postgres', select the package that appears and add 'Heroku Postgres' as the database.
 7. Click on the setting tab.
-8. Open the config vars section copy the DATABASE_URL to the clipboard for use in the Django configuration.
+8. Open the config vars section copy the `DATABASE_URL` to the clipboard for use in the Django configuration.
 9. Inside the Django app repository create a new file called env.py
-10. Within this file import the os library and set the environment variable for the DATABASE_URL pasting in the address copied from Heroku.
-11. The line should appear as os.environ["DATABASE_URL"]= "Paste the link in here"
-12. Add a secret key to the app using os.environ["SECRET_KEY"] = "your secret key goes here"
-13. Add the secret key just created to the Heroku Config Vars as SECRET_KEY for the KEY value and the secret key value you created as the VALUE
-14. In the settings.py file within the django app, import Path from pathlib, import os and import dj_database_url. Insert the line if os.path.isfile("env.py"): import env
-15. Remove the insecure secret key that django has in the settings file by default and replace it with SECRET_KEY = os.environ.get('SECRET_KEY')
-16. Replace the databases section with DATABASES = { 'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))} ensure the correct indentation for python is used.
+10. Within this file import the os library and set the environment variable for the `DATABASE_URL` pasting in the address copied from Heroku.
+11. The line should appear as `os.environ["DATABASE_URL"]= "Paste the link in here"`
+12. Add a secret key to the app using `os.environ["SECRET_KEY"] = "your secret key goes here"`
+13. Add the secret key just created to the Heroku Config Vars as `SECRET_KEY` for the KEY value and the secret key value you created as the VALUE
+14. In the settings.py file within the django app, `import Path` from pathlib, `import os` and `import dj_database_url`. Insert the line if `os.path.isfile("env.py"): import env`
+15. Remove the insecure secret key that django has in the settings file by default and replace it with `SECRET_KEY = os.environ.get('SECRET_KEY')`
+16. Replace the databases section with `DATABASES = { 'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))}` ensure the correct indentation for python is used.
 17. In the terminal migrate the models over to the new database connection.
-18. Add the KEY - DISABLE_COLLECTSTATIC with the Value - 1 to the config vars.
+18. Add the KEY - `DISABLE_COLLECTSTATIC` with the Value - 1 to the config vars.
 This key value pair must be removed before final deployment.
 19. In the Settings.py file - add the STATIC files settings - the url, storage path, directory path, root path, media url and default file storage path settings and add AWS settings for production server.
-20. Link the files to the templates directory in Heroku TEMPLATES 'DIRS: os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'templates', 'allauth')
-21. Add Heroku to the ALLOWED_HOSTS list the format will be the app name given in Heroku when creating the app followed by .herokuapp.com
-22. In the Heroku settings tab of your project set up the config vars for AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, EMAIL_HOST_PASSWORD, EMAIL_HOST_USER, STRIPE_PUBLIC_KEY, STRIPE_SECRET_KEY, STRIPE_WH_SECRET, set USE_AWS as True.
-23. Create a new file on the top level directory - Procfile
-24. Within the Procfile add the code - web: guincorn PROJECT_NAME.wsgi
+20. Link the files to the templates directory in Heroku TEMPLATES `'DIRS: os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'templates', 'allauth')`
+21. Add Heroku to the `ALLOWED_HOSTS` list the format will be the app name given in Heroku when creating the app followed by .herokuapp.com
+22. In the Heroku settings tab of your project set up the config vars for `AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, EMAIL_HOST_PASSWORD, EMAIL_HOST_USER, STRIPE_PUBLIC_KEY, STRIPE_SECRET_KEY, STRIPE_WH_SECRET, set USE_AWS as True`.
+23. Create a new file on the top level directory - `Procfile`
+24. Within the Procfile add the code - `web: guincorn PROJECT_NAME.wsgi`
 25. In the terminal, add the changed files, commit and push to GitHub
 26. In Heroku, navigate to the deployment tab and deploy the branch manually, watch the build logs for any errors.
 27. Heroku will now build the app for you. Once it has completed the build process you will see a 'Your App Was Successfully Deployed' message and a link to the app to visit the live site.
@@ -693,7 +692,7 @@ This key value pair must be removed before final deployment.
 2. Click on the arrow on the green code button at the top of the list of files.
 select the clone by https option and copy the URL it provides to the clipboard.
 3. Navigate to your code editor of choice and within the terminal change the directory to the location you want to clone the repository to.
-4. Type 'git clone' and paste the https link you copied from github.
+4. Type `git clone` and paste the https link you copied from github.
 5. Press enter and git will clone the repository to your local machine.
 </details><br>
 
