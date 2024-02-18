@@ -1,5 +1,9 @@
 # <div id="up">T-STUDIO</div>
 
+![](documentation/mockup.png)
+
+### [Live site](https://t-studio-bbb312a89660.herokuapp.com/)
+
 ## Contents:
 - <a href="#ux">UX</a>
     - <a href="#strategy">Strategy</a>
@@ -668,12 +672,12 @@ To deploy the project through Heroku I followed these steps:
 11. The line should appear as `os.environ["DATABASE_URL"]= "Paste the link in here"`
 12. Add a secret key to the app using `os.environ["SECRET_KEY"] = "your secret key goes here"`
 13. Add the secret key just created to the Heroku Config Vars as `SECRET_KEY` for the KEY value and the secret key value you created as the VALUE
-14. In the settings.py file within the django app, `import Path` from pathlib, `import os` and `import dj_database_url`. Insert the line if `os.path.isfile("env.py"): import env`
+14. In the settings.py file within the django app, `import Path` from pathlib, `import os` and `import dj_database_url`. Insert the lines `from dotenv import load_dotenv` and `load_dotenv()`
 15. Remove the insecure secret key that django has in the settings file by default and replace it with `SECRET_KEY = os.environ.get('SECRET_KEY')`
 16. Replace the databases section with `DATABASES = { 'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))}` ensure the correct indentation for python is used.
 17. In the terminal migrate the models over to the new database connection.
-18. Add the KEY - `DISABLE_COLLECTSTATIC` with the Value - 1 to the config vars.
-This key value pair must be removed before final deployment.
+18. Add the KEY - `DISABLE_COLLECTSTATIC` with Value 1 to the config vars.
+This key-value pair must be removed before final deployment.
 19. In the Settings.py file - add the STATIC files settings - the url, storage path, directory path, root path, media url and default file storage path settings and add AWS settings for production server.
 20. Link the files to the templates directory in Heroku TEMPLATES `'DIRS: os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'templates', 'allauth')`
 21. Add Heroku to the `ALLOWED_HOSTS` list the format will be the app name given in Heroku when creating the app followed by .herokuapp.com
@@ -690,7 +694,7 @@ This key value pair must be removed before final deployment.
 
 1. Navigate to https://github.com/OlgaKuvs/T-studio
 2. Click on the arrow on the green code button at the top of the list of files.
-select the clone by https option and copy the URL it provides to the clipboard.
+Select the clone by https option and copy the URL it provides to the clipboard.
 3. Navigate to your code editor of choice and within the terminal change the directory to the location you want to clone the repository to.
 4. Type `git clone` and paste the https link you copied from github.
 5. Press enter and git will clone the repository to your local machine.

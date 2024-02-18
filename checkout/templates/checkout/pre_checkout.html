@@ -18,7 +18,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container mt-2"> 
+<div class="container mt-2">
     <div class="row">
         <div class="col-12 col-lg-6 order-lg-last mb-5">
             <p class="text-muted">Order Summary ({{ product_count }})</p>
@@ -42,7 +42,7 @@
                         </a>
                     </div>
                     <div class="col-7">
-                        <p class="my-0"><strong>{{ item.product.name }}</strong></p>                        
+                        <p class="my-0"><strong>{{ item.product.name }}</strong></p>
                         <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
                     </div>
                     <div class="col-xs-5 col-sm-3 text-right">
@@ -60,7 +60,7 @@
                 <div class="col-3">
                     <p class="my-0">€{{ total | floatformat:2 }}</p>
                     <p class="my-0">€{{ shipping_cost | floatformat:2 }}</p>
-                    <p class="my-0"><strong>€{{ grand_total | floatformat:2 }}</strong></p>                    
+                    <p class="my-0"><strong>€{{ grand_total | floatformat:2 }}</strong></p>
                 </div>
             </div>
         </div>
@@ -71,9 +71,6 @@
                 {% csrf_token %}
                 <fieldset class="rounded px-3 mb-3">
                     <legend class="fieldset-label small w-auto"><h4>Details</h4></legend>
-                    {% if order_form.full_name.errors %}
-                    {{ order_form.full_name.errors }}
-                    {% endif %}
                     {{ order_form.full_name | as_crispy_field }}
                     {{ order_form.email | as_crispy_field }}
                 </fieldset>
@@ -92,25 +89,13 @@
                             <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
                         {% else %}
                             <label class="form-check-label" for="id-save-info">
-                                <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
+                                <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or
                                 <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
                             </label>
                         {% endif %}
                     </div>
                 </fieldset>
-                {% comment %}
-                <fieldset class="px-3">
-                    <legend class="fieldset-label small px-2 w-auto payment-label">Payment</legend>
-                    <!-- A Stripe card element will go here -->
-                    <div class="mb-3" id="card-element"></div>
-                    <!-- Used to display form errors -->
-                    <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
-                    <!-- Pass the client secret to the view so we can get the payment intent id -->
-                    <input type="hidden" value="{{ client_secret }}" name="client_secret">
-                </fieldset>
-                {% endcomment %}
-
-                <div class="submit-button text-right mt-5 mb-2">                    
+                <div class="submit-button text-right mt-5 mb-2">
                     <a href="{% url 'view_cart' %}" class="btn btn-basic mr-3 btn-order">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
@@ -123,26 +108,11 @@
                             <i class="fas fa-chevron-right"></i>
                         </span>
                     </button>
-                        {% comment %}
-                        <span class="icon">
-                            <i class="fas fa-lock"></i>
-                        </span>
-                        {% endcomment %}
-                    
-                    {% comment %}
-                    <p class="small text-danger my-0">
-                        <span class="icon">
-                            <i class="fas fa-exclamation-circle"></i>
-                        </span>
-                        <span>Your card will be charged <strong>€{{ grand_total|floatformat:2 }}</strong></span>
-                    </p>
-                    {% endcomment %}
                 </div>
-            </form>           
+            </form>
         </div>
     </div>
 </div>
 {% endblock %}
 
 
-   

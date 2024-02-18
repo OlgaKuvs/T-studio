@@ -17,7 +17,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container text-center mt-2"> 
+<div class="container text-center mt-2">
     <div class="row justify-content-center">
         <div class="col-12">
             <div class="order-history table-responsive">
@@ -26,7 +26,7 @@
                     <thead>
                         <tr>
                             <th class="m-3">User</th>
-                            <th class="m-3">Author</th>                                        
+                            <th class="m-3">Author</th>
                             <th class="m-3">Product</th>
                             <th class="m-3">Comment</th>
                             <th class="m-3">Rate</th>
@@ -37,10 +37,10 @@
                     <tbody>
                         {% for review in reviews %}
                             <tr>
-                                <td class="m-3">{{ review.user }} {{ review.id }} </td>
-                                <td class="m-3">{{ review.author }}</td>   
-                                <td class="p-3">{{ review.product }} {{review.product.id }}</td>   
-                                <td class="m-3">{{ review.comment }}</td>                                
+                                <td class="m-3">{{ review.user }}</td>
+                                <td class="m-3">{{ review.author }}</td>
+                                <td class="p-3">{{ review.product }}</td>
+                                <td class="m-3">{{ review.comment }}</td>
                                 <td class="m-3">{{ review.rate }}</td>
                                 <td class="m-3">{{ review.created_at|date:'d M Y'}}</td>
                                 <td class="m-3">

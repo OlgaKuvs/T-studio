@@ -1,12 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% comment %}
-    {% block extra_css %}
-        <link rel="stylesheet" href="{% static 'products/css/products.css' %}">
-    {% endblock %}
-{% endcomment %}
-
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
@@ -26,12 +20,12 @@
             <form method="POST" action="" class="form mb-2">
                 {% csrf_token %}
                 {{ form | crispy }}
-                <div class="text-right">                    
+                <div class="text-right">
                     <button class="btn btn-basic" type="submit">Send review</button>
                     <span class="btn btn-cancel ml-3" onclick="window.history.back()">Cancel</span>
                 </div>
             </form>
-        </div>            
+        </div>
     </div>
 </div>
 
