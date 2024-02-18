@@ -1,9 +1,9 @@
-/* Carousel */
+/* Carousel - https://codepen.io/VitalijPetras/pen/mdybrmr */
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     background-color: #ff7b54 !important;
-    
+
 }
 
 
@@ -11,12 +11,12 @@
   .img-fluid {
     width: 233px !important;
     height: 350px !important;
-  }  
+  }
 
 }
 
-  @media (min-width: 576px) and (max-width: 767px) {    
-    
+  @media (min-width: 576px) and (max-width: 767px) {
+
     .carousel-multiple .carousel-item.active,
     .carousel-multiple .carousel-item-next,
     .carousel-multiple .carousel-item-prev {
@@ -217,7 +217,7 @@
       visibility: visible;
     }
   }
-  @media (min-width: 1200px) {    
+  @media (min-width: 1200px) {
     .carousel-multiple .carousel-item.active,
     .carousel-multiple .carousel-item-next,
     .carousel-multiple .carousel-item-prev {
